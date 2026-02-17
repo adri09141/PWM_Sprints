@@ -2,7 +2,7 @@
 - Seccion Sobre Nosotros
 - Seccion Catalogo
 - Seccion Pagina Principal
-- Seccion Ficha Animal [En Proces]
+- Seccion Ficha Animal
 
 **Secciones Realizadas:**
 - Seccion Reseñas
