@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Perfil</title>
+    <title>Login/Registro</title>
     <style>
     body {
 	  text-align: center;
@@ -20,10 +20,33 @@
         vertical-align: middle;
         resize: none;
     }
+    #main_menu {
+	  border-bottom: 2px solid #cccccc;
+      width: 800px;
+      margin: 0 auto; /* Centrar el menú horizontalmente */
+      margin-bottom: 30px;
+	}
+	#main_menu li {
+	  display: inline-block; 
+	  list-style: none;
+	  padding: 25px;
+	  font: bold 15px verdana, sans-serif;
+	}
+    #main_menu ul {
+        margin: 0;
+        padding: 0;
+    }
     </style>
 </head>
 <body>
-    <h1>Datos del Usuario</h1>
+    <h1>Registro de Usuario</h1>
+    <nav id="main_menu" >
+        <ul>
+        <li>Iniciar Sesión</li>
+        <li>Crear Cuenta</li>
+        <li>Reinicializar Contraseña</li>
+        </ul>
+    </nav>
     <table>
         <tr>
             <td>Nombre:</td>
@@ -54,10 +77,10 @@
             <td><input type="email" id="correo" name="correo" style="font-size: 14px; margin:20px; width: 280px;"></td>
         </tr>
         <tr>
-            <td>Nº de adopciones:</td>
-            <td><textarea id="n_adopciones" name="n_adopciones" rows="1" cols="30"></textarea></td>
+            <td>Contraseña:</td>
+            <td><textarea id="contrasena" name="contrasena" rows="1" cols="30"></textarea></td>
         </tr>
     </table>
-    <br><input type="button" value="Actualizar" style="font-size: 20px; padding:  15px 30px;" ></br>
+    <br><input type="button" value="Confirmar" style="font-size: 20px; padding:  15px 30px;" ></br>
 </body>
 </html>
