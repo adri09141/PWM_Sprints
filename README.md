@@ -1,11 +1,11 @@
 **Secciones que Faltan:**
-- Seccion Sobre Nosotros
-- Seccion Catalogo
 - Seccion Pagina Principal
-- Seccion Ficha Animal
 
 **Secciones Realizadas:**
+- Seccion Sobre Nosotros
 - Seccion Reseñas
 - Seccion Login/Registro
 - Seccion Adopción
 - Seccion Perfil
+- Seccion Ficha Animal
+- Seccion Catalogo
