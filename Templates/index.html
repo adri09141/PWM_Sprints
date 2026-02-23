@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo de Animales</title>
-  <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8">
+    <title>Mi Refugio</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="../xlu-include-file.js"></script>
+
+    <style>
+        main {
+            display: flex;
+            flex-direction: column; /* Obliga a los hijos a ponerse uno debajo del otro */
+            gap: 50px; /* Crea una separación perfecta de 50px entre catálogo y reseñas */
+            padding: 20px; /* Un poco de aire a los lados */
+        }
+
+        section {
+            width: 100%;
+            clear: both; /* Evita que se peguen a los elementos de arriba */
+            overflow: hidden; /* Truco ninja para "encerrar" a los animales flotantes */
+        }
+    </style>
 </head>
 <body>
 
-<h1>Listado de Adopción</h1>
+<header xlu-include-file="_header.html"></header>
 
-<div xlu-include-file="catalogoRecuadro.html"
-     data-nombre="Michi"
-     data-especie="Gato"
-     data-edad="1 año">
-</div>
+<main>
+    <div xlu-include-file="catalogo.html"></div>
 
-<div xlu-include-file="catalogoRecuadro.html"
-     data-nombre="Firulais"
-     data-especie="Perro"
-     data-edad="3 años">
-</div>
+    <section xlu-include-file="reseñas.html"></section>
+</main>
 
-<script src="../xlu-include-file.js"></script>
+<footer xlu-include-file="_footer.html"></footer>
 
-<script>
-  xLuIncludeFile();
-</script>
+<script>xLuIncludeFile();</script>
 
 </body>
 </html>

@@ -48,7 +48,7 @@ async function xLuIncludeFile() {
 
                     let content = await response.text();
 
-                    if (file === "catalogoRecuadro.html") {
+                    if (file === "_tarjetaAnimal.html") {
                         let articleData = {
                             nombre: z[i].getAttribute("data-nombre") || 'Sin nombre',
                             especie: z[i].getAttribute("data-especie") || 'Desconocida',
@@ -59,8 +59,40 @@ async function xLuIncludeFile() {
                                         .replace(/{{especie}}/g, articleData.especie)
                                         .replace(/{{edad}}/g, articleData.edad);
                     }
+                    if (file === "_tarjetaReseña.html") {
+                        let articleData = {
+                            titulo: z[i].getAttribute("data-titulo") || 'Sin nombre',
+                            reseña: z[i].getAttribute("data-reseña") || 'Desconocida',
+                            n_p: z[i].getAttribute("data-nombre_perro") || 'Desconocida'
+                        };
 
+                        content = content.replace(/{{titulo}}/g, articleData.titulo)
+                            .replace(/{{reseña}}/g, articleData.reseña)
+                            .replace(/{{nombre_perro}}/g, articleData.n_p);
+                    }
+                    else if (file.includes("_fichaAnimal.html")) {
+                        let fichaData = {
+                            nombre: z[i].getAttribute("data-nombre") || 'Sin nombre',
+                            especie: z[i].getAttribute("data-especie") || 'Desconocida',
+                            raza: z[i].getAttribute("data-raza") || 'Desconocida',
+                            edad: z[i].getAttribute("data-edad") || '0',
+                            meses: z[i].getAttribute("data-meses") || '0',
+                            sexo: z[i].getAttribute("data-sexo") || 'Desconocido',
+                            peso: z[i].getAttribute("data-peso") || '0',
+                            tasa: z[i].getAttribute("data-tasa") || '0€',
+                            descripcion: z[i].getAttribute("data-descripcion") || 'Sin descripción'
+                        };
 
+                        content = content.replace(/{{nombre}}/g, fichaData.nombre)
+                            .replace(/{{especie}}/g, fichaData.especie)
+                            .replace(/{{raza}}/g, fichaData.raza)
+                            .replace(/{{edad}}/g, fichaData.edad)
+                            .replace(/{{meses}}/g, fichaData.meses)
+                            .replace(/{{sexo}}/g, fichaData.sexo)
+                            .replace(/{{peso}}/g, fichaData.peso)
+                            .replace(/{{tasa}}/g, fichaData.tasa)
+                            .replace(/{{descripcion}}/g, fichaData.descripcion);
+                    }
                     a.removeAttribute("xlu-include-file");
                     //a.innerHTML = await response.text();
                     a.innerHTML = content;

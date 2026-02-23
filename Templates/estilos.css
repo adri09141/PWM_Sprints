@@ -1,27 +1,32 @@
 /**
-* Estilos CSS para el catalogo de animales en adopción y reseñas de los mismos.
+* Estilos CSS, usados en mas de un fichero [_tarjetaAnimal, _tarjetaReseña].
 */
 .contenedor {
-    float: left;
     width: 325px;
     height: 450px;
     margin: 50px;
-    display: center;
+    text-align: center;
     padding: 20px;
     background: #CCCCCC;
-    }
+}
+.grupo-tarjetas {
+    display: flex;
+    flex-wrap: wrap; /* Si no caben en la pantalla, bajan solas a la siguiente línea */
+    gap: 30px; /* Separación perfecta entre tarjetas, sin usar margins raros */
+    width: 100%;
+}
 /**
-* Estilos CSS para la ficha del animal
+* Estilos CSS para la ficha del animal unicamente
 */
 .main_aside {
-    float: left; 
+    float: left;
     width: 400px;
     margin: 20px;
 }
 
 .datos_derecha {
-    float: left; 
-    margin-top: 40px; 
+    float: left;
+    margin-top: 40px;
     font: 15px verdana, sans-serif;
 }
 .foto1 {
@@ -48,25 +53,25 @@
 .contenedor_boton {
     clear: both;
     text-align: center;
-    font-size: 20px; 
-    padding: 15px 30px; 
+    font-size: 20px;
+    padding: 15px 30px;
     cursor: pointer;
 }
 .descripcion {
     clear: both;
-    padding: 20px; 
-    line-height: 1.6; 
+    padding: 20px;
+    line-height: 1.6;
     text-align: justify;
 }
 /**
-* Estilos CSS para el footer
+* Estilos CSS para el footer unicamente
 */
+
 /* Caja principal que ocupa todo el ancho */
 .main-footer {
-    background-color: #C0C0D8;
-    padding: 20px 50px;
-    border-top: 3px solid #5B9BD5;
-    border-bottom: 3px solid #5B9BD5;
+    clear: both; /* EVITA QUE SE SUBA EL FOOTER */
+    width: 100%;
+    background-color: #ffffff;
 }
 
 /* Contenedor que alinea los 3 bloques en una fila */
@@ -74,8 +79,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Sombra */
 }
 
 /* Estilo del Logo y Nombre */
@@ -85,6 +91,7 @@
     gap: 15px;
 }
 
+/* --- ESTILOS DE IMAGEN --- */
 .logo-placeholder, .logo-img {
     width: 100px;
     height: 50px;
@@ -97,26 +104,20 @@
 }
 
 /* Estilo del Menú de Navegación */
-.footer-nav ul {
+.footer-nav {
     display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    gap: 30px;
 }
 
-.footer-nav li {
-    padding: 0 15px;
-    border-left: 1px solid #000;
-}
-
-.footer-nav li:first-child {
-    border-left: none;
-}
-
-.footer-nav a {
+.enlace-footer {
     text-decoration: none;
-    color: #000;
+    color: #333333;
     font-weight: bold;
+    font-family: Verdana, sans-serif;
+}
+
+.enlace-footer:hover {
+    color: #ff6b6b;
 }
 
 /* Estilo de las Redes Sociales (Círculos) */
@@ -124,7 +125,8 @@
     display: flex;
     gap: 10px;
 }
-/* Contenedor circular */
+
+/* --- ESTILOS DE IMAGEN --- */
 .social-link {
     width: 35px;
     height: 35px;
@@ -137,9 +139,46 @@
     border: 1px solid #999;
 }
 
-/* Imagen dentro del círculo */
 .icono-social {
     width: 70%;
     height: auto;
     display: block;
+}
+
+/**
+    ESTILOS HEADER
+ */
+
+/* --- Contenedor principal del Header --- */
+.contenedor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* --- Contenedor del menú --- */
+.header-nav {
+    display: flex;
+    gap: 30px;
+}
+
+/* --- Estilos directos de los enlaces --- */
+.enlace-nav {
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+    font-family: Verdana, sans-serif;
+}
+
+.enlace-nav:hover {
+    color: #ff6b6b;
 }
