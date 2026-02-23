@@ -58,3 +58,88 @@
     line-height: 1.6; 
     text-align: justify;
 }
+/**
+* Estilos CSS para el footer
+*/
+/* Caja principal que ocupa todo el ancho */
+.main-footer {
+    background-color: #C0C0D8;
+    padding: 20px 50px;
+    border-top: 3px solid #5B9BD5;
+    border-bottom: 3px solid #5B9BD5;
+}
+
+/* Contenedor que alinea los 3 bloques en una fila */
+.contenedor-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo del Logo y Nombre */
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-placeholder, .logo-img {
+    width: 100px;
+    height: 50px;
+    background-color: #9DA3BD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 1px solid #000;
+}
+
+/* Estilo del Menú de Navegación */
+.footer-nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav li {
+    padding: 0 15px;
+    border-left: 1px solid #000;
+}
+
+.footer-nav li:first-child {
+    border-left: none;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+/* Estilo de las Redes Sociales (Círculos) */
+.footer-social {
+    display: flex;
+    gap: 10px;
+}
+/* Contenedor circular */
+.social-link {
+    width: 35px;
+    height: 35px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #999;
+}
+
+/* Imagen dentro del círculo */
+.icono-social {
+    width: 70%;
+    height: auto;
+    display: block;
+}
