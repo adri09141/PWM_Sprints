@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Mi Refugio</title>
-    <link rel="stylesheet" href="estilos.css">
-    <script src="../xlu-include-file.js"></script>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+    <script src="assets/js/xlu-include-file.js"></script>
 
     <style>
         main {
@@ -23,15 +23,16 @@
 </head>
 <body>
 
-<header xlu-include-file="_header.html"></header>
+<header xlu-include-file="components/_header.html"></header>
 
 <main>
     <div xlu-include-file="catalogo.html"></div>
 
     <section xlu-include-file="reseñas.html"></section>
+    <section xlu-include-file="fichaAnimal.html"></section>
 </main>
 
-<footer xlu-include-file="_footer.html"></footer>
+<footer xlu-include-file="components/_footer.html"></footer>
 
 <script>xLuIncludeFile();</script>
 

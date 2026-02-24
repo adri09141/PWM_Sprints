@@ -48,7 +48,7 @@ async function xLuIncludeFile() {
 
                     let content = await response.text();
 
-                    if (file === "_tarjetaAnimal.html") {
+                    if (file === "components/_tarjetaAnimal.html") {
                         let articleData = {
                             nombre: z[i].getAttribute("data-nombre") || 'Sin nombre',
                             especie: z[i].getAttribute("data-especie") || 'Desconocida',
@@ -59,7 +59,7 @@ async function xLuIncludeFile() {
                                         .replace(/{{especie}}/g, articleData.especie)
                                         .replace(/{{edad}}/g, articleData.edad);
                     }
-                    if (file === "_tarjetaReseña.html") {
+                    if (file === "components/_tarjetaReseña.html") {
                         let articleData = {
                             titulo: z[i].getAttribute("data-titulo") || 'Sin nombre',
                             reseña: z[i].getAttribute("data-reseña") || 'Desconocida',
@@ -70,7 +70,7 @@ async function xLuIncludeFile() {
                             .replace(/{{reseña}}/g, articleData.reseña)
                             .replace(/{{nombre_perro}}/g, articleData.n_p);
                     }
-                    else if (file.includes("_fichaAnimal.html")) {
+                    else if (file.includes("components/_fichaAnimal.html")) {
                         let fichaData = {
                             nombre: z[i].getAttribute("data-nombre") || 'Sin nombre',
                             especie: z[i].getAttribute("data-especie") || 'Desconocida',

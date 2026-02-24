@@ -4,25 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo de Animales</title>
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
 
 <h1 style="text-align: center">Listado de Adopción</h1>
 <div class="grupo-tarjetas">
-  <div xlu-include-file="_tarjetaAnimal.html"
+  <div xlu-include-file="components/_tarjetaAnimal.html"
        data-nombre="Michi"
        data-especie="Gato"
        data-edad="1 año">
   </div>
 
-  <div xlu-include-file="_tarjetaAnimal.html"
+  <div xlu-include-file="components/_tarjetaAnimal.html"
        data-nombre="Antonio Lobato"
        data-especie="Perro"
        data-edad="3 año">
   </div>
-</div>>
-<script src="../xlu-include-file.js"></script>
+</div>
+<script src="assets/js/xlu-include-file.js"></script>
 
 <script>
   xLuIncludeFile();

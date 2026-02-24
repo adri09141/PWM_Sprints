@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Reseñas de Adoptantes</title>
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body>
 
@@ -12,20 +12,20 @@
 
 <div class="grupo-tarjetas">
 
-  <div xlu-include-file="_tarjetaReseña.html"
+  <div xlu-include-file="components/_tarjetaReseña.html"
        data-titulo="¡El mejor amigo!"
        data-reseña="¡Michi es el mejor gato del mundo!"
        data-nombre_perro="Michi">
   </div>
 
-  <div xlu-include-file="_tarjetaReseña.html"
+  <div xlu-include-file="components/_tarjetaReseña.html"
        data-titulo="Súper feliz"
        data-reseña="Estamos encantados con el nuevo integrante."
        data-nombre_perro="Firulais">
   </div>
 
 </div>
-<script src="../xlu-include-file.js"></script>
+<script src="assets/js/xlu-include-file.js"></script>
 <script>xLuIncludeFile();</script>
 
 </body>
