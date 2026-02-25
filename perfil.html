@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
     <style>
         body {
             text-align: center;
@@ -23,6 +24,7 @@
     </style>
 </head>
 <body>
+<header xlu-include-file="components/_header.html"></header>
 <h1>Datos del Usuario</h1>
 <table>
     <tr>
@@ -59,5 +61,11 @@
     </tr>
 </table>
 <br><input type="button" value="Actualizar" style="font-size: 20px; padding:  15px 30px;" ></br>
+<footer xlu-include-file="components/_footer.html"></footer>
+<script src="assets/js/xlu-include-file.js"></script>
+
+<script>
+    xLuIncludeFile();
+</script>
 </body>
 </html>

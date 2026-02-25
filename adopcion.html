@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="assets/js/xlu-include-file.js"></script>
+    <link rel="stylesheet" href="assets/css/estilos.css">
     <title>Adopción</title>
     <style>
         h1 {
@@ -21,15 +21,18 @@
         }
     </style>
 </head>
-<header xlu-include-file="components/_header.html"></header>
+
 <body>
+    <header xlu-include-file="components/_header.html"></header>
     <form>
         <h1><label for="mensaje">¿Por qué quieres adoptar?</label></h1>
         <textarea id="mensaje" name="mensaje" rows="8" cols="120"></textarea><br><br>
-        <input type="button" value="Enviar" style="font-size: 20px; padding:  15px 30px;" >
+        <a href="index.html" class="enlace-nav">
+            <input type="button" value="Enviar" style="font-size: 20px; padding:  15px 30px;" >
+        </a>
     </form>
+    <footer xlu-include-file="components/_footer.html"></footer>
 </body>
-<footer xlu-include-file="components/_footer.html"></footer>
 <script src="assets/js/xlu-include-file.js"></script>
 
 <script>xLuIncludeFile();</script>
