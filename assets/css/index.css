@@ -108,12 +108,3 @@
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
 }
 
-.boton-saber-mas {
-    background-color: #999;
-    padding: 10px 25px;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
-    color: #000;
-    font-weight: bold;
-}
