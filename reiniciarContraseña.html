@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <title>Reiniciar Contraseña</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    table {
+      margin: 0 auto; text-align: left;
+    }
+    td {
+      font: bold 20px verdana, sans-serif;
+    }
+    textarea{
+      font: normal 15px verdana, sans-serif;
+      margin: 20px;
+      vertical-align: middle;
+      resize: none;
+    }
+    #main_menu {
+      border-bottom: 2px solid #cccccc;
+      width: 800px;
+      margin: 0 auto; /* Centrar el menú horizontalmente */
+      margin-bottom: 30px;
+    }
+    #main_menu li {
+      display: inline-block;
+      list-style: none;
+      padding: 25px;
+      font: bold 15px verdana, sans-serif;
+    }
+    #main_menu ul {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<header xlu-include-file="components/_header.html"></header>
+<body>
+<h1>Reiniciar Contraseña</h1>
+<nav id="main_menu" >
+  <ul>
+    <a href="iniciarSension.html" class="enlace-nav">
+      <li>Iniciar Sesión</li>
+    </a>
+    <a href="crearCuenta.html" class="enlace-nav">
+      <li>Crear Cuenta</li>
+    </a>
+    <li>Reinicializar Contraseña</li>
+  </ul>
+</nav>
+<table>
+  <tr>
+    <td>Contraseña Actual:</td>
+    <td><textarea id="contrasena_actual" name="contrasena_actual" rows="1" cols="30"></textarea></td>
+  </tr>
+  <tr>
+    <td>Nueva Contraseña:</td>
+    <td><textarea id="contrasena_nueva1" name="contrasena_nueva1" rows="1" cols="30"></textarea></td>
+  </tr>
+  <tr>
+    <td>Repetir Contraseña:</td>
+    <td><textarea id="contrasena_nueva2" name="contrasena_nueva2" rows="1" cols="30"></textarea></td>
+  </tr>
+</table>
+<br>
+<a href="perfil.html" class="enlace-nav">
+  <input type="button" value="Confirmar" style="font-size: 20px; padding:  15px 30px;" >
+</a>
+
+</body>
+<footer xlu-include-file="components/_footer.html"></footer>
+<script src="assets/js/xlu-include-file.js"></script>
+
+<script>
+  xLuIncludeFile();
+</script>
+
+</html>
