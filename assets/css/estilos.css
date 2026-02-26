@@ -73,10 +73,6 @@
     object-fit: cover;
 }
 
-.info-catalogo -texto {
-    margin-bottom: 0;
-    flex-grow: 0;
-}
 .info-catalogo {
     display: flex;
     justify-content: space-between;
@@ -85,7 +81,6 @@
 }
 
 .datos-catalogo p {
-    margin: 5px 0;
     font-size: 18px;
     text-align: left;
 }
