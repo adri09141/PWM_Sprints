@@ -1,35 +1,21 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo</title>
-    <link rel="stylesheet" href="../assets/css/estilos.css">
-    <style>
-        h2 {
-            font: normal 30px verdana;
-        }
-        h3 {
-            font: normal 15px verdana, sans-serif;
-        }
-    </style>
-</head>
-
-
-<main class="main-catalogo">
-    <article class="contenedor">
-        <figure>
+<article class="contenedor">
+    <div class="foto-catalogo">
             <img src="https://placehold.co/250x250?text=FOTO+1" alt="Foto 1">
-        </figure>
-        <h2>{{nombre}}</h2>
-        <h3>Especie: {{especie}}</h3>
-        <h3>Edad: {{edad}}</h3>
-    </article>
-    <div class="contenedor_boton">
-        <a href="fichaAnimal.html" class="enlace-nav">
-            <input type="button" value="Quiero Adoptarlo">
-        </a>
     </div>
-</main>
-</html>
 
+    <h2 class="titulo">{{nombre}}</h2>
+
+    <div class="info-catalogo">
+        <div class="texto">
+            <p>Especie: {{especie}}</p>
+            <p>Edad: {{edad}}</p>
+        </div>
+
+        <div class="contenedor-boton">
+            <a href="fichaAnimal.html">
+                <input type="button" value="Quiero Adoptarlo" class="boton-adopcion">
+            </a>
+        </div>
+    </div>
+
+</article>
