@@ -1,0 +1,43 @@
+/* Estilos para los títulos de esta página */
+h1 {
+    font: bold 40px verdana, sans-serif;
+    margin: 20px 20px 0 20px;
+}
+
+h2 {
+    font: bold 20px verdana, sans-serif;
+    margin: 0 20px 20px 20px;
+}
+
+/* --- ESTRUCTURA DE FOTOS Y TEXTOS --- */
+
+.foto1 {
+    flex-shrink: 0;
+}
+
+.datos_derecha {
+    font: 15px verdana, sans-serif;
+    line-height: 1.6;
+    max-width: 1200px;
+    margin-top: 0;
+}
+.contenedor-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;              /* Espacio perfecto entre la foto y el texto */
+    margin: 20px 40px;
+}
+.foto2 {
+    /* clear: both; asegura que esta foto se vaya abajo del todo y no se monte con los textos de arriba */
+    clear: both;
+    display: block;
+    width: 500px;
+    margin: 20px auto; /* Centrada con un poco de aire arriba y abajo */
+}
+
+.foto3 {
+    clear: both;
+    display: block;
+    width: 600px;
+    margin: 0 auto;
+}

@@ -1,0 +1,37 @@
+/* --- ESTILOS EXCLUSIVOS DE ACCESO (Login, Registro, Recuperar) --- */
+
+/* Menú de pestañas superior */
+.main_menu {
+    border-bottom: 2px solid #cccccc;
+    width: 800px;
+    margin: 0 auto 30px auto;
+}
+
+.main_menu ul {
+    margin: 0;
+    padding: 0;
+}
+
+.main_menu li {
+    display: inline-block;
+    list-style: none;
+    padding: 25px;
+    font: bold 15px verdana, sans-serif;
+}
+
+/* Formularios y tablas de las pantallas de acceso */
+.tabla-acceso {
+    margin: 0 auto;
+    text-align: left;
+}
+
+.tabla-acceso td {
+    font: bold 20px verdana, sans-serif;
+}
+
+.tabla-acceso textarea {
+    font: normal 15px verdana, sans-serif;
+    margin: 20px;
+    vertical-align: middle;
+    resize: none;
+}
