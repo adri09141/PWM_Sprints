@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animales adoptados</title>
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <link rel="stylesheet" href="assets/css/estilos-acceso.css">
+  <link rel="stylesheet" href="assets/css/estilos-animal.css">
+</head>
+<body>
+<header xlu-include-file="components/_header.html"></header>
+
+<nav class="main_menu">
+  <ul>
+    <li><a href="perfil.html" class="enlace-nav">Datos</a></li>
+    <li>Adoptados</li>
+  </ul>
+</nav>
+
+<div class="grupo-tarjetas">
+  <div xlu-include-file="components/_tarjetaAdoptado.html"
+       data-nombre="XXX"
+       data-especie="XXX"
+       data-edad="XXX">
+  </div>
+
+  <div xlu-include-file="components/_tarjetaAdoptado.html"
+       data-nombre="XXX"
+       data-especie="XXX"
+       data-edad="XXX">
+  </div>
+</div>
+<footer xlu-include-file="components/_footer.html"></footer>
+<script src="assets/js/xlu-include-file.js"></script>
+
+<script>
+  xLuIncludeFile();
+</script>
+
+</body>
+</html>
