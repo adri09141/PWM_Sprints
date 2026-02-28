@@ -34,77 +34,76 @@ function xLuIncludeFile() {
 }
 */
 
+const templateCache = new Map();
+
 async function xLuIncludeFile() {
-    let z = document.getElementsByTagName("*");
+    const elements = document.querySelectorAll('[xlu-include-file]');
 
-    for (let i = 0; i < z.length; i++) {
-        if (z[i].getAttribute("xlu-include-file")) {
-            let a = z[i].cloneNode(false);
-            let file = z[i].getAttribute("xlu-include-file");
+    if (elements.length === 0) return;
 
-            try {
-                let response = await fetch(file);
-                if (response.ok) {
+    const promises = Array.from(elements).map(async (el) => {
+        const file = el.getAttribute("xlu-include-file");
 
-                    let content = await response.text();
-
-                    if (file === "components/_tarjetaAnimal.html") {
-                        let articleData = {
-                            nombre: z[i].getAttribute("data-nombre") || 'Sin nombre',
-                            especie: z[i].getAttribute("data-especie") || 'Desconocida',
-                            edad: z[i].getAttribute("data-edad") || 'Desconocida'
-                        };
-
-                        content = content.replace(/{{nombre}}/g, articleData.nombre)
-                                        .replace(/{{especie}}/g, articleData.especie)
-                                        .replace(/{{edad}}/g, articleData.edad);
-                    }
-                    if (file === "components/_tarjetaResena.html") {
-                        let articleData = {
-                            titulo: z[i].getAttribute("data-titulo") || 'Sin nombre',
-                            reseña: z[i].getAttribute("data-reseña") || '“Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante”',
-                            n_p: z[i].getAttribute("data-nombre_perro") || 'Sin nombre'
-                        };
-
-                        content = content.replace(/{{titulo}}/g, articleData.titulo)
-                            .replace(/{{reseña}}/g, articleData.reseña)
-                            .replace(/{{nombre_perro}}/g, articleData.n_p);
-                    }
-                    else if (file.includes("components/_fichaAnimal.html")) {
-                        let fichaData = {
-                            nombre: z[i].getAttribute("data-nombre") || 'Sin nombre',
-                            especie: z[i].getAttribute("data-especie") || 'Desconocida',
-                            raza: z[i].getAttribute("data-raza") || 'Desconocida',
-                            edad: z[i].getAttribute("data-edad") || '0',
-                            meses: z[i].getAttribute("data-meses") || '0',
-                            sexo: z[i].getAttribute("data-sexo") || 'Desconocido',
-                            peso: z[i].getAttribute("data-peso") || '0',
-                            tasa: z[i].getAttribute("data-tasa") || '0€',
-                            descripcion: z[i].getAttribute("data-descripcion") || 'Sin descripción'
-                        };
-
-                        content = content.replace(/{{nombre}}/g, fichaData.nombre)
-                            .replace(/{{especie}}/g, fichaData.especie)
-                            .replace(/{{raza}}/g, fichaData.raza)
-                            .replace(/{{edad}}/g, fichaData.edad)
-                            .replace(/{{meses}}/g, fichaData.meses)
-                            .replace(/{{sexo}}/g, fichaData.sexo)
-                            .replace(/{{peso}}/g, fichaData.peso)
-                            .replace(/{{tasa}}/g, fichaData.tasa)
-                            .replace(/{{descripcion}}/g, fichaData.descripcion);
-                    }
-                    a.removeAttribute("xlu-include-file");
-                    //a.innerHTML = await response.text();
-                    a.innerHTML = content;
-                    z[i].parentNode.replaceChild(a, z[i]);
-                    xLuIncludeFile();
-                }
-            } catch (error) {
-                console.error("Error fetching file:", error);
+        try {
+            let content;
+            if (templateCache.has(file)) {
+                content = templateCache.get(file);
+            } else {
+                const response = await fetch(file);
+                if (!response.ok) throw new Error(`Error ${response.status}`);
+                content = await response.text();
+                templateCache.set(file, content);
             }
 
-            return;
+            const renderedContent = content.replace(/{{\s*([a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ_]+)\s*}}/g, (match, variableName) => {
+
+                const valorHTML = el.getAttribute(`data-${variableName}`);
+
+                return valorHTML !== null ? valorHTML : obtenerValorPorDefecto(variableName);
+            });
+
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = renderedContent;
+
+            const parent = el.parentNode;
+            while (tempDiv.firstChild) {
+                parent.insertBefore(tempDiv.firstChild, el);
+            }
+            parent.removeChild(el);
+
+        } catch (error) {
+            console.error(`Error en ${file}`, error);
         }
+    });
+
+    await Promise.all(promises);
+
+    if (document.querySelector('[xlu-include-file]')) {
+        await xLuIncludeFile();
     }
+}
+
+function obtenerValorPorDefecto(key) {
+    const defaults = {
+        // Tarjeta Animal
+        'nombre': 'SIN NOMBRE', // Puse mayúsculas para que se vea igual a tu foto 1
+        'especie': 'Desconocida',
+        'edad': 'Desconocida',
+
+        // Tarjeta Reseña
+        'titulo': 'Sin Título',
+        'reseña': '“Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante”',
+        'nombre_perro': 'Sin nombre',
+
+        // Ficha Animal
+        'raza': 'Desconocida',
+        'meses': '0',
+        'sexo': 'Desconocido',
+        'peso': '0',
+        'tasa': '0€',
+        'descripcion': 'Sin descripción'
+    };
+
+    return defaults[key] || '';
 }
 
