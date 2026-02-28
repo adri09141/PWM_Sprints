@@ -9,7 +9,7 @@
 ---
 
 ## Descripción del Proyecto
-La web trata sobre la adobcion de animales donde un usuario pueda ver un catalogo un cataogo de diferentes animales, para cada animal podra acceder a si informacion como sexo, edad, especie, su historia y como llegó a la fundación ademas de varias fotos y videos de el, si se decanta por su adopcion puede mandar una solicitud de adopcion 
+La web trata sobre la adopción de animales donde un usuario puede ver un catalogo un catalogo de diferentes animales, para cada animal podra acceder a su información como sexo, edad, especie, su historia y cómo llegó a la fundación además de varias fotos y videos de el, si se decanta por su adopcion puede mandar una solicitud de adopcion 
 
 ---
 
@@ -37,17 +37,19 @@ A continuación se detallan los requisitos que cumple la aplicación:
 ## Listado de Páginas HTML y Mockups
 **Página de inicio de la aplicación web:** `index.html`
 
-| Archivo HTML       | Mockup que implementa | Descripción / Notas                                                                |
-|:-------------------|:----------------------|:-----------------------------------------------------------------------------------|
-| `index.html`       | *Pagina principal*    | Página principal de aterrizaje.                                                    |
-| `catalogo.html`    | *Catalogo*            | Donde se ven los diferentes animales disponibles.                                  |
-| `fichaAnimal.html` | *Ficha animal*        | Donde se ve toda la información de un animal                                       |
-| `reseñas.html`     | *Finales Felices*     | Aqui se verá las reseñas de los usuarios que adoptaron                             |
-| `login.html`       | *login/registro*      | La pagina donde el usuario se podra registrar o iniciar secion                     |
-| `nosotros.html`    | *Sobre nosotros*      | Página dondabarca toda la informacion de nuestra fundación                         |
-| `perfil.html`      | *Perfil*              | Página donde se ve la informacion del perfil de cada usuario                       |
-| `adopcion.html`    | *Adopción*            | Página que pregunta al usuario su motivo para querer adopatar el animal que quiere |
-| `...`              | ...                   | ...                                                                                |
+| Archivo HTML            | Mockup que implementa | Descripción / Notas                                                                                        |
+|:------------------------|:----------------------|:-----------------------------------------------------------------------------------------------------------|
+| `index.html`            | *Pagina principal*    | Página principal de aterrizaje.                                                                            |
+| `catalogo.html`         | *Catalogo*            | Donde se ven los diferentes animales disponibles.                                                          |
+| `fichaAnimal.html`      | *Ficha animal*        | Donde se ve toda la información de un animal                                                               |
+| `reseñas.html`          | *Finales Felices*     | Aqui se verá las reseñas de los usuarios que adoptaron                                                     |
+| `sobreNosotros.html`    | *Sobre nosotros*      | Página donde abarca toda la informacion de nuestra fundación                                                 |
+| `perfil.html`           | *Perfil*              | Página donde se ve la informacion del perfil de cada usuario                                               |
+| `adopcion.html`         | *Adopción*            | Página que pregunta al usuario su motivo para querer adopatar el animal que quiere                         |
+| `iniciarSension`        | *Login/Registro*      | Página donde el usuario inicia sesión ingresando su correo electrónico y contraseña.                       |
+| `reiniciarContraseña`   | *Login/Registro*      | Página donde el usuario puede recuperar o restablecer su contraseña mediante su correo electrónico.        |
+| `crearCuenta`           | *Login/Registro*      | Página donde el usuario puede registrarse creando una nueva cuenta con sus datos personales.               |
+
 
 ---
 
@@ -56,10 +58,16 @@ Lista de fragmentos de código o plantillas reutilizables identificadas:
 
 | Nombre del Archivo Template        | Archivo(s) donde se carga/usa      |
 |:-----------------------------------|:-----------------------------------|
-| `header.html`                      | Todas las paginas                  |
-| `footer.html`                      | Todas las páginas                  |
-| `catalogoRecuadro.html`            | `index.html` `Catalogo.html`       |
-| `fichaAnimal.html`                 | `fichaAnimal.html`                 |
-| `reseñasRecuadro.html`             | `index.html` `finalesFelices.html` |
+| `_header.html`                     | Todas las paginas                  |
+| `_footer.html`                     | Todas las páginas                  |
+| `_tarjetaAnimal.html`              | `index.html` `catalogo.html`       |
+| `_fichaAnimal.html`                | `fichaAnimal.html`                 |
+| `_tarjeReseñas.html`               | `index.html` `reseñas.html`        |
 
+
+---
+## Otros Aspectos a Considerar en la Evaluación
+* **Tareas implementadas con JavaScript:** Se desarrolló un sistema de renderizado dinámico que funciona como un motor de plantillas. A través de JS, damos vida a los templates (como el header o las tarjetas de animales) buscando etiquetas específicas `{{ }}` y rellenándolas dinámicamente con los datos, evitando así la duplicidad de código.
+* **Organización de las hojas de estilo:** Hemos optado por una arquitectura CSS modular. Como se puede observar en el repositorio, hemos separado los estilos en diferentes archivos según la sección o componente (por ejemplo, `estilos-acceso.css`, `estilos-fichaAnimal.css`, `estilos-sobreNosotros.css`, etc.) para facilitar su mantenimiento.
+* **Aspectos de Look & Feel:** Se ha priorizado un diseño limpio, intuitivo y responsive, enfocado en destacar la parte visual (fotos y vídeos) para fomentar la adopción.
 ---

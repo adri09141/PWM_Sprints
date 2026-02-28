@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <link rel="stylesheet" href="assets/css/estilos-acceso.css">
+  <title>Registro de Usuario</title>
+</head>
+
+<body style="text-align: center;">
+
+<header xlu-include-file="components/_header.html"></header>
+
+<h1>Registro de Usuario</h1>
+<nav class="main_menu">
+  <ul>
+    <li><a href="iniciarSension.html" class="enlace-nav">Iniciar Sesión</a></li>
+    <li>Crear Cuenta</li>
+    <li><a href="reiniciarContrasena.html" class="enlace-nav">Reinicializar Contraseña</a></li>
+  </ul>
+</nav>
+
+<table class="tabla-acceso">
+  <tr>
+    <td>Nombre:</td>
+    <td><textarea id="nombre" name="nombre" rows="1" cols="30"></textarea></td>
+  </tr>
+  <tr>
+    <td>Apellidos:</td>
+    <td><textarea id="apellidos" name="apellidos" rows="1" cols="30"></textarea></td>
+  </tr>
+  <tr>
+    <td>Fecha de Nacimiento:</td>
+    <td><input type="date" id="fecha_nacimiento" name="fecha_nacimiento" style="font-size: 15px; margin-left: 20px;"></td>
+  </tr>
+  <tr>
+    <td>DNI:</td>
+    <td><textarea id="dni" name="dni" rows="1" cols="30"></textarea></td>
+  </tr>
+  <tr>
+    <td>Dirección:</td>
+    <td><textarea id="direccion" name="direccion" rows="1" cols="30"></textarea></td>
+  </tr>
+  <tr>
+    <td>Teléfono:</td>
+    <td><textarea id="telefono" name="telefono" rows="1" cols="30"></textarea></td>
+  </tr>
+  <tr>
+    <td>Correo:</td>
+    <td><input type="email" id="correo" name="correo" placeholder="ejemplo@gmail.com" style="font-size: 14px; margin:20px; width: 280px;"></td>
+  </tr>
+  <tr>
+    <td>Contraseña:</td>
+    <td><textarea id="contrasena" name="contrasena" rows="1" cols="30"></textarea></td>
+  </tr>
+</table>
+
+<br>
+
+<a href="perfil.html" class="enlace-nav">
+  <input type="button" value="Confirmar" style="font-size: 20px; padding: 15px 30px;">
+</a>
+
+<footer xlu-include-file="components/_footer.html"></footer>
+
+<script src="assets/js/xlu-include-file.js"></script>
+<script>
+  xLuIncludeFile();
+</script>
+
+</body>
+</html>

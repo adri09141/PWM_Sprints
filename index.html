@@ -4,21 +4,18 @@
     <meta charset="UTF-8">
     <title>Mi Refugio</title>
     <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/estilos-fichaAnimal.css">
+    <link rel="stylesheet" href="assets/css/estilos-resenas.css">
     <script src="assets/js/xlu-include-file.js"></script>
 
     <style>
         main {
             display: flex;
-            flex-direction: column; /* Obliga a los hijos a ponerse uno debajo del otro */
-            gap: 50px; /* Crea una separación perfecta de 50px entre catálogo y reseñas */
-            padding: 20px; /* Un poco de aire a los lados */
+            flex-direction: column;
+            gap: 20px; /* Separación entre las secciones grandes */
         }
 
-        section {
-            width: 100%;
-            clear: both; /* Evita que se peguen a los elementos de arriba */
-            overflow: hidden; /* Truco ninja para "encerrar" a los animales flotantes */
-        }
     </style>
 </head>
 <body>
@@ -26,10 +23,54 @@
 <header xlu-include-file="components/_header.html"></header>
 
 <main>
-    <div xlu-include-file="catalogo.html"></div>
 
-    <section xlu-include-file="reseñas.html"></section>
-    <section xlu-include-file="fichaAnimal.html"></section>
+    <section class="seccionPrincipal">
+        <h1>Nombre de la web</h1>
+        <p>Frase de la web</p>
+        <div class="botonesSeccionPrincipal">
+            <a href="crearCuenta.html" class="enlace-nav">
+                <button class="botonPrincipal">Registro</button>
+            </a>
+            <a href="catalogo.html" class="enlace-nav">
+                <button class="botonPrincipal">Catálogo</button>
+            </a>
+        </div>
+    </section>
+
+    <h2 class="titulo-apartado">Animales:</h2>
+    <section class="grid-contenedor">
+        <div xlu-include-file="components/_tarjetaAnimal.html"></div>
+        <div xlu-include-file="components/_tarjetaAnimal.html"></div>
+        <div xlu-include-file="components/_tarjetaAnimal.html"></div>
+    </section>
+    <a href="catalogo.html" class="enlace-nav">
+        <button class="boton-saber-mas">Ver más</button>
+    </a>
+
+    <section class="animalesAdoptados">
+        <h2>Vidas salvadas</h2>
+        <div class="contenedor-contador">
+            <div class="caja-numero">X</div>
+            <div class="caja-numero">X</div>
+            <div class="caja-numero">X</div>
+            <div class="caja-numero">X</div>
+            <div class="caja-numero">X</div>
+        </div>
+        <p>Frase conmovedora</p>
+        <a href="sobreNosotros.html" class="enlace-nav">
+            <button class="boton-saber-mas">Saber más</button>
+        </a>
+    </section>
+
+    <h2 class="titulo-apartado">Reseñas:</h2>
+    <section class="grid-contenedor">
+        <div xlu-include-file="components/_tarjetaResena.html"></div>
+        <div xlu-include-file="components/_tarjetaResena.html"></div>
+        <div xlu-include-file="components/_tarjetaResena.html"></div>
+    </section>
+    <a href="resenas.html" class="enlace-nav">
+        <button class="boton-saber-mas">Ver más</button>
+    </a>
 </main>
 
 <footer xlu-include-file="components/_footer.html"></footer>

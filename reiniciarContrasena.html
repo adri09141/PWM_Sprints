@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <link rel="stylesheet" href="assets/css/estilos-acceso.css">
+  <title>Reiniciar Contraseña</title>
+</head>
+
+<body style="text-align: center;">
+
+<header xlu-include-file="components/_header.html"></header>
+
+<h1>Reiniciar Contraseña</h1>
+
+<nav class="main_menu">
+  <ul>
+    <li><a href="iniciarSension.html" class="enlace-nav">Iniciar Sesión</a></li>
+    <li><a href="crearCuenta.html" class="enlace-nav">Crear Cuenta</a></li>
+    <li>Reinicializar Contraseña</li>
+  </ul>
+</nav>
+
+<table class="tabla-acceso">
+  <tr>
+    <td>Contraseña Actual:</td>
+    <td><textarea id="contrasena_actual" name="contrasena_actual" rows="1" cols="30"></textarea></td>
+  </tr>
+  <tr>
+    <td>Nueva Contraseña:</td>
+    <td><textarea id="contrasena_nueva1" name="contrasena_nueva1" rows="1" cols="30"></textarea></td>
+  </tr>
+  <tr>
+    <td>Repetir Contraseña:</td>
+    <td><textarea id="contrasena_nueva2" name="contrasena_nueva2" rows="1" cols="30"></textarea></td>
+  </tr>
+</table>
+
+<br>
+
+<a href="perfil.html" class="enlace-nav">
+  <input type="button" value="Confirmar" style="font-size: 20px; padding: 15px 30px;">
+</a>
+
+<footer xlu-include-file="components/_footer.html"></footer>
+
+<script src="assets/js/xlu-include-file.js"></script>
+<script>
+  xLuIncludeFile();
+</script>
+
+</body>
+</html>

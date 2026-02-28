@@ -59,11 +59,11 @@ async function xLuIncludeFile() {
                                         .replace(/{{especie}}/g, articleData.especie)
                                         .replace(/{{edad}}/g, articleData.edad);
                     }
-                    if (file === "components/_tarjetaReseña.html") {
+                    if (file === "components/_tarjetaResena.html") {
                         let articleData = {
                             titulo: z[i].getAttribute("data-titulo") || 'Sin nombre',
-                            reseña: z[i].getAttribute("data-reseña") || 'Desconocida',
-                            n_p: z[i].getAttribute("data-nombre_perro") || 'Desconocida'
+                            reseña: z[i].getAttribute("data-reseña") || '“Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante Reseña adoptante”',
+                            n_p: z[i].getAttribute("data-nombre_perro") || 'Sin nombre'
                         };
 
                         content = content.replace(/{{titulo}}/g, articleData.titulo)
