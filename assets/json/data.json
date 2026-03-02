@@ -1,0 +1,40 @@
+{
+  "animales": [
+    {"id": 1,
+      "nombre": "firulais",
+      "especie": "perro",
+      "raza": "pug",
+      "edad": 2,
+      "sexo":  "M",
+      "tiempoEsperando":  60,
+      "peso":  5,
+      "descripcion": "es un perro muy tranquilo, le gusta pasear, jugar y dormir"
+    }
+  ],
+
+  "reseñas": [
+    {
+      "id": 1,
+      "titulo": "un puqueño angel",
+      "reseña": "hace unos meses que lo adoptamos y esta muy contento todos los dias, nos alegra cada mañana",
+      "nombre": "copo"
+    }
+  ],
+
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "pepe",
+      "apellido": "lopez",
+      "fechaNacimiento": "10/5/2000",
+      "dni": "42269874G",
+      "direccion": "las palmas, calle lechuga n1 4B",
+      "telefono": 642658569,
+      "correo": "pepelpz13@gmail.com",
+      "contraseña": "lopez1234"
+    }
+  ]
+
+
+
+}
