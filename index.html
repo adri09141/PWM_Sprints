@@ -19,11 +19,8 @@
     </style>
 </head>
 <body>
-
-<header xlu-include-file="components/_header.html"></header>
-
 <main>
-
+    <header id="header"> </header>
     <section class="seccionPrincipal">
         <h1>Nombre de la web</h1>
         <p>Frase de la web</p>
@@ -63,19 +60,24 @@
     </section>
 
     <h2 class="titulo-apartado">Reseñas:</h2>
-    <section class="grid-contenedor">
-        <div xlu-include-file="components/_tarjetaResena.html"></div>
-        <div xlu-include-file="components/_tarjetaResena.html"></div>
-        <div xlu-include-file="components/_tarjetaResena.html"></div>
+    <section class="grid-contenedor" id = "tarjetaResena">
     </section>
     <a href="resenas.html" class="enlace-nav">
         <button class="boton-saber-mas">Ver más</button>
     </a>
+    <footer id="footer"> </footer>
 </main>
 
-<footer xlu-include-file="components/_footer.html"></footer>
 
 <script>xLuIncludeFile();</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        loadHTMLAndExecuteScripts('#header', 'components/_header.html');
+        loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
+        cargarContenidoDinamico();
+    });
+</script>
 
 </body>
 </html>
