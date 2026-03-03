@@ -136,10 +136,12 @@ function cargarContenidoDinamico() {
                 data.animales.forEach(item => {
                     let div = document.createElement('div');
                     div.setAttribute('xlu-include-file', 'components/_tarjetaAnimal.html');
+                    div.setAttribute('data-id', item.id); // ¡VITAL para el enlace!
                     div.setAttribute('data-nombre', item.nombre || 'Sin título');
                     div.setAttribute('data-especie', item.especie || 'Sin título');
                     div.setAttribute('data-edad', item.edad || 'Sin título');
                     tarjetaAnimal.appendChild(div);
+
                 })
 
             }
