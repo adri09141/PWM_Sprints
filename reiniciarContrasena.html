@@ -25,30 +25,32 @@
 <table class="tabla-acceso">
   <tr>
     <td>Contraseña Actual:</td>
-    <td><textarea id="contrasena_actual" name="contrasena_actual" rows="1" cols="30"></textarea></td>
+    <td><input type="password" id="contrasena_actual" name="contrasena_actual"></td>
   </tr>
   <tr>
     <td>Nueva Contraseña:</td>
-    <td><textarea id="contrasena_nueva1" name="contrasena_nueva1" rows="1" cols="30"></textarea></td>
+    <td><input type="password" id="contrasena_nueva1" name="contrasena_nueva1"></td>
   </tr>
   <tr>
     <td>Repetir Contraseña:</td>
-    <td><textarea id="contrasena_nueva2" name="contrasena_nueva2" rows="1" cols="30"></textarea></td>
+    <td><input type="password" id="contrasena_nueva2" name="contrasena_nueva2"></td>
   </tr>
 </table>
 
 <br>
 
-<a href="perfil.html" class="enlace-nav">
-  <input type="button" value="Confirmar" style="font-size: 20px; padding: 15px 30px;">
-</a>
+<p id="mensaje_error" style="color: red; display: none;">Las contraseñas nuevas no coinciden o están vacías.</p>
+
+<input type="button" id="btn_confirmar" value="Confirmar" style="font-size: 20px; padding: 15px 30px;">
 
 <footer xlu-include-file="components/_footer.html"></footer>
 
 <script src="assets/js/xlu-include-file.js"></script>
 <script>
   xLuIncludeFile();
+
 </script>
+<script src="assets/js/validar-contrasena.js"></script>
 
 </body>
 </html>
