@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <title>Reseñas de Adoptantes</title>
   <link rel="stylesheet" href="assets/css/estilos.css">
+  <link rel="stylesheet" href="assets/css/home.css">
   <link rel="stylesheet" href="assets/css/estilos-resenas.css">
+  <script src="assets/js/xlu-include-file.js"></script>
 </head>
 <body>
 <header xlu-include-file="components/_header.html"></header>
@@ -13,21 +15,18 @@
 
 <div class="grupo-tarjetas">
 
-  <div xlu-include-file="components/_tarjetaResena.html"
-       data-titulo="XXXXX XXXXX"
-       data-reseña="XX XXX XX XXXX XXX"
-       data-nombre_perro="XXX">
-  </div>
-
-  <div xlu-include-file="components/_tarjetaResena.html"
-       data-titulo="XXXXX XXXXX"
-       data-reseña="XX XXX XX XXXX XXX"
-       data-nombre_perro="XXX">
-  </div>
+  <section class="grid-contenedor" id = "tarjetaResena"></section>
 </div>
 <footer xlu-include-file="components/_footer.html"></footer>
 <script src="assets/js/xlu-include-file.js"></script>
 <script>xLuIncludeFile();</script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    loadHTMLAndExecuteScripts('#header', 'components/_header.html');
+    loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
+    cargarContenidoDinamico();
+  });
+</script>
 </body>
 </html>

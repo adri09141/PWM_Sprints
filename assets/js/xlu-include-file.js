@@ -115,10 +115,6 @@ function cargarContenidoDinamico() {
         .then(data => {
             let tarjeteResena = document.querySelector('#tarjetaResena');
             let tarjetaAnimal = document.querySelector('#tarjetaAnimal');
-            if (!tarjeteResena || !tarjetaAnimal) {
-                console.error('No se encontró #tarjeteResena o #tarjetaAnimal en el DOM');
-                return;
-            }
             if(tarjeteResena) {
                 data.reseñas.forEach(item => {
                     // 1. Creamos un div normal
