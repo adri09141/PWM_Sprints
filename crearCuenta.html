@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/estilos.css">
   <link rel="stylesheet" href="assets/css/estilos-acceso.css">
+  <script src="assets/js/validar-fecha.js"></script>
   <script src="assets/js/xlu-include-file.js"></script>
+
   <title>Registro de Usuario</title>
 </head>
 
@@ -23,7 +25,7 @@
     </ul>
   </nav>
 
-  <form>
+  <form id = "formulario_registro">
     <table class="tabla-acceso">
       <tr>
         <td>Nombre:</td>
@@ -39,6 +41,7 @@
         <td>Fecha de Nacimiento:</td>
         <td><input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required
             style="font-size: 15px; margin-left: 20px;"></td>
+
       </tr>
       <tr>
         <td>DNI:</td>
@@ -69,8 +72,8 @@
 
     <br>
 
-    <button type="submit" style="font-size: 20px; padding: 15px 30px;" class="botonPrincipal">Confirmar</button>
-    <div id="registroError" style="color: red; margin-top: 10px;"></div>
+    <button type="submit" style="font-size: 20px; padding: 15px 30px;" class="botonPrincipal">Crear</button>
+    <div id="mensaje_error" style="color: red; margin-top: 10px;"></div>
   </form>
 
   <footer id = "footer"></footer>

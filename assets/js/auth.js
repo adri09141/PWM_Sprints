@@ -1,3 +1,6 @@
+/**
+ *  : <
+ */
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Manejo del Login
     const loginForm = document.getElementById('loginForm');
