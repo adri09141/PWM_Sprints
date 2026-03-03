@@ -109,14 +109,19 @@ function executeScripts(container) {
         document.head.appendChild(scriptTag).parentNode.removeChild(scriptTag);
     });
 }
-function cargarContenidoDinamico() {
+function cargarContenidoDinamico(limite= null) {
     fetch('assets/json/data.json')
         .then(response => response.json())
         .then(data => {
             let tarjeteResena = document.querySelector('#tarjetaResena');
             let tarjetaAnimal = document.querySelector('#tarjetaAnimal');
+
+            // Si hay límite, cortamos el array. Si no (null), usamos data.reseñas tal cual.
+            const listaResenas = limite ? data.reseñas.slice(0, limite) : data.reseñas;
+            const listaAnimales = limite ? data.animales.slice(0, limite) : data.animales;
+
             if(tarjeteResena) {
-                data.reseñas.forEach(item => {
+                listaResenas.forEach(item => {
                     // 1. Creamos un div normal
                     let div = document.createElement('div');
 
@@ -133,7 +138,7 @@ function cargarContenidoDinamico() {
                 });
             }
             if(tarjetaAnimal) {
-                data.animales.forEach(item => {
+                listaAnimales.forEach(item => {
                     let div = document.createElement('div');
                     div.setAttribute('xlu-include-file', 'components/_tarjetaAnimal.html');
                     div.setAttribute('data-id', item.id); // ¡VITAL para el enlace!
