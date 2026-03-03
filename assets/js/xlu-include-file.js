@@ -113,29 +113,40 @@ function cargarContenidoDinamico() {
     fetch('assets/json/data.json')
         .then(response => response.json())
         .then(data => {
-            let dynamicContentSection = document.querySelector('#tarjetaResena');
-            if (!dynamicContentSection) {
-                console.error('No se encontró #dynamicContent en el DOM');
+            let tarjeteResena = document.querySelector('#tarjetaResena');
+            let tarjetaAnimal = document.querySelector('#tarjetaAnimal');
+            if (!tarjeteResena || !tarjetaAnimal) {
+                console.error('No se encontró #tarjeteResena o #tarjetaAnimal en el DOM');
                 return;
             }
+            if(tarjeteResena) {
+                data.reseñas.forEach(item => {
+                    // 1. Creamos un div normal
+                    let div = document.createElement('div');
 
-            // ¡AQUÍ ESTÁ LA MAGIA! Entramos directamente a la lista de 'reseñas'
-            data.reseñas.forEach(item => {
-                // 1. Creamos un div normal
-                let div = document.createElement('div');
+                    // 2. Le ponemos tu atributo para que llame al molde
+                    div.setAttribute('xlu-include-file', 'components/_tarjetaResena.html');
 
-                // 2. Le ponemos tu atributo para que llame al molde
-                div.setAttribute('xlu-include-file', 'components/_tarjetaResena.html');
+                    // 3. Le pasamos los datos del JSON (usando 'item.nombre' como en tu JSON)
+                    div.setAttribute('data-titulo', item.titulo || 'Sin título');
+                    div.setAttribute('data-reseña', item.reseña || 'Sin texto');
+                    div.setAttribute('data-nombre_perro', item.nombre || 'Desconocido');
 
-                // 3. Le pasamos los datos del JSON (usando 'item.nombre' como en tu JSON)
-                div.setAttribute('data-titulo', item.titulo || 'Sin título');
-                div.setAttribute('data-reseña', item.reseña || 'Sin texto');
-                div.setAttribute('data-nombre_perro', item.nombre || 'Desconocido');
+                    // 4. Lo metemos en la sección
+                    tarjeteResena.appendChild(div);
+                });
+            }
+            if(tarjetaAnimal) {
+                data.animales.forEach(item => {
+                    let div = document.createElement('div');
+                    div.setAttribute('xlu-include-file', 'components/_tarjetaAnimal.html');
+                    div.setAttribute('data-nombre', item.nombre || 'Sin título');
+                    div.setAttribute('data-especie', item.especie || 'Sin título');
+                    div.setAttribute('data-edad', item.edad || 'Sin título');
+                    tarjetaAnimal.appendChild(div);
+                })
 
-                // 4. Lo metemos en la sección
-                dynamicContentSection.appendChild(div);
-            });
-
+            }
             // Inyectamos los datos en los moldes
             xLuIncludeFile();
         })
