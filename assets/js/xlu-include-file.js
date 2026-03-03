@@ -115,10 +115,6 @@ function cargarContenidoDinamico() {
         .then(data => {
             let tarjeteResena = document.querySelector('#tarjetaResena');
             let tarjetaAnimal = document.querySelector('#tarjetaAnimal');
-            if (!tarjeteResena || !tarjetaAnimal) {
-                console.error('No se encontró #tarjeteResena o #tarjetaAnimal en el DOM');
-                return;
-            }
             if(tarjeteResena) {
                 data.reseñas.forEach(item => {
                     // 1. Creamos un div normal
@@ -140,10 +136,12 @@ function cargarContenidoDinamico() {
                 data.animales.forEach(item => {
                     let div = document.createElement('div');
                     div.setAttribute('xlu-include-file', 'components/_tarjetaAnimal.html');
+                    div.setAttribute('data-id', item.id); // ¡VITAL para el enlace!
                     div.setAttribute('data-nombre', item.nombre || 'Sin título');
                     div.setAttribute('data-especie', item.especie || 'Sin título');
                     div.setAttribute('data-edad', item.edad || 'Sin título');
                     tarjetaAnimal.appendChild(div);
+
                 })
 
             }

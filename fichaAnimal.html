@@ -8,24 +8,69 @@
   <title>Ficha del Animal</title>
 </head>
 <body>
-<header xlu-include-file="components/_header.html"></header>
+
+<header id="header"></header>
+
 <h1>Ficha del Animal</h1>
-<div xlu-include-file="components/_fichaAnimal.html"
-     data-nombre="XXX"
-     data-especie="XXX"
-     data-raza="XXXXXX"
-     data-edad="X"
-     data-meses="X"
-     data-sexo="XXX"
-     data-peso="XX"
-     data-tasa="XXX"
-     data-descripcion="XXXXXXXXXXXXXX XXXXXXXXXXXX XXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXX XXXXXXXXXXXXXX XXXXXXXX">
+
+<div id="contenedor-ficha">
+  <p>Cargando información del animal...</p>
 </div>
-<footer xlu-include-file="components/_footer.html"></footer>
+
+<footer id="footer"></footer>
+
 <script src="assets/js/xlu-include-file.js"></script>
 
 <script>
-  xLuIncludeFile();
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Cargamos Header y Footer (como en el index)
+    loadHTMLAndExecuteScripts('#header', 'components/_header.html');
+    loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
+
+    // 2. Obtener el ID de la URL (ej: fichaAnimal.html?id=1)
+    const urlParams = new URLSearchParams(window.location.search);
+    const idBuscado = urlParams.get('id');
+
+    // 3. Ir a buscar los datos al JSON
+    fetch('assets/json/data.json')
+            .then(response => response.json())
+            .then(data => {
+              // Buscamos el animal que coincida con el ID
+              const animal = data.animales.find(a => a.id == idBuscado);
+
+              const contenedor = document.getElementById('contenedor-ficha');
+
+              if (animal) {
+                // Creamos el elemento con los atributos data necesarios
+                const ficha = document.createElement('div');
+                ficha.setAttribute('xlu-include-file', 'components/_fichaAnimal.html');
+
+                // Mapeamos los datos del JSON a los atributos data
+                ficha.setAttribute('data-nombre', animal.nombre);
+                ficha.setAttribute('data-especie', animal.especie);
+                ficha.setAttribute('data-raza', animal.raza);
+                ficha.setAttribute('data-edad', animal.edad );
+                ficha.setAttribute('data-meses', animal.meses);
+                ficha.setAttribute('data-sexo', animal.sexo);
+                ficha.setAttribute('data-peso', animal.peso);
+                ficha.setAttribute('data-tasa', animal.tasa);
+                ficha.setAttribute('data-descripcion', animal.descripcion);
+
+                // Reemplazamos el mensaje de carga por el componente
+                contenedor.innerHTML = '';
+                contenedor.appendChild(ficha);
+
+                // 4. Ejecutamos la magia para que el template se rellene
+                xLuIncludeFile();
+              } else {
+                contenedor.innerHTML = '<p>Lo sentimos, no se encontró el animal solicitado.</p>';
+              }
+            })
+            .catch(error => {
+              console.error('Error cargando la ficha:', error);
+              document.getElementById('contenedor-ficha').innerHTML = '<p>Error al cargar los datos.</p>';
+            });
+  });
 </script>
 
 </body>
