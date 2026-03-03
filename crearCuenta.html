@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,64 +11,75 @@
 
 <body style="text-align: center;">
 
-<header xlu-include-file="components/_header.html"></header>
+  <header xlu-include-file="components/_header.html"></header>
 
-<h1>Registro de Usuario</h1>
-<nav class="main_menu">
-  <ul>
-    <li><a href="iniciarSension.html" class="enlace-nav">Iniciar Sesión</a></li>
-    <li>Crear Cuenta</li>
-    <li><a href="reiniciarContrasena.html" class="enlace-nav">Reinicializar Contraseña</a></li>
-  </ul>
-</nav>
+  <h1>Registro de Usuario</h1>
+  <nav class="main_menu">
+    <ul>
+      <li><a href="iniciarSension.html" class="enlace-nav">Iniciar Sesión</a></li>
+      <li>Crear Cuenta</li>
+      <li><a href="reiniciarContrasena.html" class="enlace-nav">Reinicializar Contraseña</a></li>
+    </ul>
+  </nav>
 
-<table class="tabla-acceso">
-  <tr>
-    <td>Nombre:</td>
-    <td><textarea id="nombre" name="nombre" rows="1" cols="30"></textarea></td>
-  </tr>
-  <tr>
-    <td>Apellidos:</td>
-    <td><textarea id="apellidos" name="apellidos" rows="1" cols="30"></textarea></td>
-  </tr>
-  <tr>
-    <td>Fecha de Nacimiento:</td>
-    <td><input type="date" id="fecha_nacimiento" name="fecha_nacimiento" style="font-size: 15px; margin-left: 20px;"></td>
-  </tr>
-  <tr>
-    <td>DNI:</td>
-    <td><textarea id="dni" name="dni" rows="1" cols="30"></textarea></td>
-  </tr>
-  <tr>
-    <td>Dirección:</td>
-    <td><textarea id="direccion" name="direccion" rows="1" cols="30"></textarea></td>
-  </tr>
-  <tr>
-    <td>Teléfono:</td>
-    <td><textarea id="telefono" name="telefono" rows="1" cols="30"></textarea></td>
-  </tr>
-  <tr>
-    <td>Correo:</td>
-    <td><input type="email" id="correo" name="correo" placeholder="ejemplo@gmail.com" style="font-size: 14px; margin:20px; width: 280px;"></td>
-  </tr>
-  <tr>
-    <td>Contraseña:</td>
-    <td><textarea id="contrasena" name="contrasena" rows="1" cols="30"></textarea></td>
-  </tr>
-</table>
+  <form id="registroForm">
+    <table class="tabla-acceso">
+      <tr>
+        <td>Nombre:</td>
+        <td><input type="text" id="nombre" name="nombre" required minlength="2"
+            style="width: 280px; font-size: 14px; margin: 5px;"></td>
+      </tr>
+      <tr>
+        <td>Apellidos:</td>
+        <td><input type="text" id="apellidos" name="apellidos" required minlength="2"
+            style="width: 280px; font-size: 14px; margin: 5px;"></td>
+      </tr>
+      <tr>
+        <td>Fecha de Nacimiento:</td>
+        <td><input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required
+            style="font-size: 15px; margin-left: 20px;"></td>
+      </tr>
+      <tr>
+        <td>DNI:</td>
+        <td><input type="text" id="dni" name="dni" required pattern="\d{8}[a-zA-Z]"
+            title="Debe contener 8 dígitos y 1 letra" style="width: 280px; font-size: 14px; margin: 5px;"></td>
+      </tr>
+      <tr>
+        <td>Dirección:</td>
+        <td><input type="text" id="direccion" name="direccion" required
+            style="width: 280px; font-size: 14px; margin: 5px;"></td>
+      </tr>
+      <tr>
+        <td>Teléfono:</td>
+        <td><input type="tel" id="telefono" name="telefono" required pattern="\d{9}" title="Debe contener 9 números"
+            style="width: 280px; font-size: 14px; margin: 5px;"></td>
+      </tr>
+      <tr>
+        <td>Correo:</td>
+        <td><input type="email" id="correo" name="correo" required placeholder="ejemplo@gmail.com"
+            style="width: 280px; font-size: 14px; margin: 5px;"></td>
+      </tr>
+      <tr>
+        <td>Contraseña:</td>
+        <td><input type="password" id="contrasena" name="contrasena" required minlength="4"
+            style="width: 280px; font-size: 14px; margin: 5px;"></td>
+      </tr>
+    </table>
 
-<br>
+    <br>
 
-<a href="perfil.html" class="enlace-nav">
-  <input type="button" value="Confirmar" style="font-size: 20px; padding: 15px 30px;">
-</a>
+    <button type="submit" style="font-size: 20px; padding: 15px 30px;" class="botonPrincipal">Confirmar</button>
+    <div id="registroError" style="color: red; margin-top: 10px;"></div>
+  </form>
 
-<footer xlu-include-file="components/_footer.html"></footer>
+  <footer xlu-include-file="components/_footer.html"></footer>
 
-<script src="assets/js/xlu-include-file.js"></script>
-<script>
-  xLuIncludeFile();
-</script>
+  <script src="assets/js/xlu-include-file.js"></script>
+  <script>
+    xLuIncludeFile();
+  </script>
 
+  <script src="assets/js/auth.js"></script>
 </body>
+
 </html>

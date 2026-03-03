@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,41 +11,46 @@
 
 <body style="text-align: center;">
 
-<header xlu-include-file="components/_header.html"></header>
+  <header xlu-include-file="components/_header.html"></header>
 
-<h1>Iniciar Sesión</h1>
+  <h1>Iniciar Sesión</h1>
 
-<nav class="main_menu">
-  <ul>
-    <li>Iniciar Sesión</li>
-    <li><a href="crearCuenta.html" class="enlace-nav">Crear Cuenta</a></li>
-    <li><a href="reiniciarContrasena.html" class="enlace-nav">Reinicializar Contraseña</a></li>
-  </ul>
-</nav>
+  <nav class="main_menu">
+    <ul>
+      <li>Iniciar Sesión</li>
+      <li><a href="crearCuenta.html" class="enlace-nav">Crear Cuenta</a></li>
+      <li><a href="reiniciarContrasena.html" class="enlace-nav">Reinicializar Contraseña</a></li>
+    </ul>
+  </nav>
 
-<table class="tabla-acceso">
-  <tr>
-    <td>Correo:</td>
-    <td><input type="email" id="correo" name="correo" placeholder="ejemplo@gmail.com" style="font-size: 14px; margin:20px; width: 280px;"></td>
-  </tr>
-  <tr>
-    <td>Contraseña:</td>
-    <td><textarea id="contrasena" name="contrasena" rows="1" cols="30"></textarea></td>
-  </tr>
-</table>
+  <form id="loginForm">
+    <table class="tabla-acceso">
+      <tr>
+        <td>Correo:</td>
+        <td><input type="email" id="correo" name="correo" required placeholder="ejemplo@gmail.com"
+            style="font-size: 14px; margin:20px; width: 280px;"></td>
+      </tr>
+      <tr>
+        <td>Contraseña:</td>
+        <td><input type="password" id="contrasena" name="contrasena" required minlength="4"
+            style="width: 280px; font-size: 14px; margin: 20px;"></td>
+      </tr>
+    </table>
 
-<br>
+    <br>
 
-<a href="perfil.html" class="enlace-nav">
-  <input type="button" value="Confirmar" style="font-size: 20px; padding: 15px 30px;">
-</a>
+    <button type="submit" style="font-size: 20px; padding: 15px 30px;" class="botonPrincipal">Confirmar</button>
+    <div id="loginError" style="color: red; margin-top: 10px;"></div>
+  </form>
 
-<footer xlu-include-file="components/_footer.html"></footer>
+  <footer xlu-include-file="components/_footer.html"></footer>
 
-<script src="assets/js/xlu-include-file.js"></script>
-<script>
-  xLuIncludeFile();
-</script>
+  <script src="assets/js/xlu-include-file.js"></script>
+  <script>
+    xLuIncludeFile();
+  </script>
 
+  <script src="assets/js/auth.js"></script>
 </body>
+
 </html>
