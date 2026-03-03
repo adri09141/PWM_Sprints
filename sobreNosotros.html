@@ -6,10 +6,11 @@
   <title>Sobre Nosotros</title>
   <link rel="stylesheet" href="assets/css/estilos.css">
   <link rel="stylesheet" href="assets/css/estilos-sobreNosotros.css">
+  <script src="assets/js/xlu-include-file.js"></script>
 </head>
 <body>
 
-<header xlu-include-file="components/_header.html"></header>
+<header id = "header"></header>
 
 <h1>Sobre Nosotros</h1>
 <h2>Quienes Somos</h2>
@@ -62,11 +63,14 @@
   <b style="font: normal 20px verdana, sans-serif;">Horario: Lunes a Viernes de 10:00 a 18:00</b>
 </p>
 
-<footer xlu-include-file="components/_footer.html"></footer>
+<footer id = "footer"></footer>
 
-<script src="assets/js/xlu-include-file.js"></script>
 <script>
   xLuIncludeFile();
+  document.addEventListener('DOMContentLoaded', (event) => {
+    loadHTMLAndExecuteScripts('#header', 'components/_header.html');
+    loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
+  });
 </script>
 
 </body>

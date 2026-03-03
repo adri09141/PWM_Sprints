@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="assets/css/estilos.css">
   <link rel="stylesheet" href="assets/css/estilos-acceso.css">
   <link rel="stylesheet" href="assets/css/estilos-animal.css">
+  <script src="assets/js/xlu-include-file.js"></script>
 </head>
 <body>
-<header xlu-include-file="components/_header.html"></header>
+<header id = "header"></header>
 
 <nav class="main_menu">
   <ul>
@@ -31,12 +32,15 @@
        data-edad="XXX">
   </div>
 </div>
-<footer xlu-include-file="components/_footer.html"></footer>
-<script src="assets/js/xlu-include-file.js"></script>
-
+<footer id = "footer"></footer>
 <script>
   xLuIncludeFile();
 </script>
-
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    loadHTMLAndExecuteScripts('#header', 'components/_header.html');
+    loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
+  });
+</script>
 </body>
 </html>

@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/estilos.css">
   <link rel="stylesheet" href="assets/css/estilos-acceso.css">
+  <script src="assets/js/xlu-include-file.js"></script>
   <title>Reiniciar Contraseña</title>
 </head>
 
 <body style="text-align: center;">
 
-<header xlu-include-file="components/_header.html"></header>
+<header id = "header"></header>
 
 <h1>Reiniciar Contraseña</h1>
 
@@ -43,12 +44,14 @@
 
 <input type="button" id="btn_confirmar" value="Confirmar" style="font-size: 20px; padding: 15px 30px;">
 
-<footer xlu-include-file="components/_footer.html"></footer>
+<footer id = "footer"></footer>
 
-<script src="assets/js/xlu-include-file.js"></script>
 <script>
   xLuIncludeFile();
-
+  document.addEventListener('DOMContentLoaded', (event) => {
+    loadHTMLAndExecuteScripts('#header', 'components/_header.html');
+    loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
+  });
 </script>
 <script src="assets/js/validar-contrasena.js"></script>
 
