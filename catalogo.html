@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="assets/js/xlu-include-file.js"></script>
   <title>Catálogo de Animales</title>
   <link rel="stylesheet" href="assets/css/estilos.css">
   <link rel="stylesheet" href="assets/css/estilos-animal.css">
   <link rel="stylesheet" href="assets/css/home.css">
 
 </head>
+
 <body>
-<header xlu-include-file="components/_header.html"></header>
-<h1 style="text-align: center">Listado de Adopción</h1>
-<div class="grupo-tarjetas">
-  <section class="grid-contenedor" id = "tarjetaAnimal"></section>
-</div>
-<footer xlu-include-file="components/_footer.html"></footer>
-<script src="assets/js/xlu-include-file.js"></script>
+  <header id="header"></header>
+  <h1 style="text-align: center">Listado de Adopción</h1>
+  <div class="grupo-tarjetas">
+    <section class="grid-contenedor" id="tarjetaAnimal"></section>
+  </div>
+  <footer id="footer"></footer>
+  <script src="assets/js/xlu-include-file.js"></script>
 
-<script>
-  xLuIncludeFile();
-</script>
+  <script>
+    xLuIncludeFile();
+  </script>
 
 
-<script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    loadHTMLAndExecuteScripts('#header', 'components/_header.html');
-    loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
-    cargarContenidoDinamico();
-  });
-</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      loadHTMLAndExecuteScripts('#header', 'components/_header.html');
+      loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
+      cargarContenidoDinamico();
+    });
+  </script>
 </body>
+
 </html>
