@@ -1,28 +1,36 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-    // Buscamos el botón en el HTML
     const formulario_registro = document.getElementById('formulario_registro');
 
-    // Solo añadimos el evento si el botón existe en la página actual
     if (formulario_registro) {
         formulario_registro.addEventListener('submit', function(evento) {
-            evento.preventDefault(); //Evitamos que se recarge sola
+            evento.preventDefault();
+
             let mensajeError = document.getElementById('mensaje_error');
-            let fechaInput = document.getElementById('fecha_nacimiento').value;
+            let cajaFisicaFecha = document.getElementById('fecha_nacimiento');
+            let fechaInput = cajaFisicaFecha.value;
+
             if (!fechaInput) {
                 mensajeError.style.display = 'block';
                 mensajeError.textContent = "Por favor, introduce una fecha.";
                 return;
             }
+
             let fechaActual = new Date();
-            let fechaLimpia = new Date(fechaInput)
-            // 2. Comprobar si son iguales y no están vacías
+            fechaActual.setHours(0, 0, 0, 0);
+            let fechaLimpia = new Date(fechaInput);
+
+            let fechaMayorEdad = new Date(fechaLimpia);
+            fechaMayorEdad.setFullYear(fechaMayorEdad.getFullYear() + 18);
+
             if (fechaLimpia > fechaActual) {
-                mensajeError.style.display = 'block'; // Mostrar error
+                mensajeError.style.display = 'block';
                 mensajeError.textContent = "¡No puedes nacer en el futuro, jefe!";
+            } else if (fechaMayorEdad > fechaActual) {
+                mensajeError.style.display = 'block';
+                mensajeError.textContent = "Lo sentimos, los menores de 18 años no pueden adoptar.";
             } else {
                 mensajeError.style.display = 'none';
-                window.location.href = 'index.html'; // Redirigir
+                window.location.href = 'index.html';
             }
         });
     }

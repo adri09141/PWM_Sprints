@@ -26,7 +26,7 @@
 <table class="tabla-acceso">
   <tr>
     <td>Contraseña Actual:</td>
-    <td><input type="password" id="contrasena_actual" name="contrasena_actual"></td>
+    <td><input type="password" id="contrasena_actual" name="contrasena_actual" required minlength="4"></td>
   </tr>
   <tr>
     <td>Nueva Contraseña:</td>
@@ -34,13 +34,14 @@
   </tr>
   <tr>
     <td>Repetir Contraseña:</td>
-    <td><input type="password" id="contrasena_nueva2" name="contrasena_nueva2"></td>
+    <td>
+      <input type="password" id="contrasena_nueva2" name="contrasena_nueva2">
+      <div id="mensaje_error" style="color: red; display: none; margin-top: 5px; font-size: 14px; text-align: left;"></div>
+    </td>
   </tr>
 </table>
 
 <br>
-
-<p id="mensaje_error" style="color: red; display: none;">Las contraseñas nuevas no coinciden o están vacías.</p>
 
 <input type="button" id="btn_confirmar" value="Confirmar" style="font-size: 20px; padding: 15px 30px;">
 

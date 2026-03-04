@@ -39,9 +39,11 @@
       </tr>
       <tr>
         <td>Fecha de Nacimiento:</td>
-        <td><input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required
-            style="font-size: 15px; margin-left: 20px;"></td>
+        <td>
+          <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required style="font-size: 15px; margin-left: 20px;">
 
+          <div id="mensaje_error" style="color: red; display: none; margin-left: 20px; margin-top: 5px; font-size: 14px;"></div>
+        </td>
       </tr>
       <tr>
         <td>DNI:</td>
@@ -73,7 +75,6 @@
     <br>
 
     <button type="submit" style="font-size: 20px; padding: 15px 30px;" class="botonPrincipal">Crear</button>
-    <div id="mensaje_error" style="color: red; margin-top: 10px;"></div>
   </form>
 
   <footer id = "footer"></footer>
