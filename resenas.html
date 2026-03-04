@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Reseñas de Adoptantes</title>
@@ -8,24 +9,26 @@
   <link rel="stylesheet" href="assets/css/estilos-resenas.css">
   <script src="assets/js/xlu-include-file.js"></script>
 </head>
+
 <body>
-<header id = "header"></header>
-<h2>Lo que dicen nuestros adoptantes</h2>
+  <header id="header"></header>
+  <h2>Lo que dicen nuestros adoptantes</h2>
 
 
-<div class="grupo-tarjetas">
+  <div class="grupo-tarjetas-resenas">
 
-  <section class="grid-contenedor" id = "tarjetaResena"></section>
-</div>
-<footer id = "footer"></footer>
-<script>xLuIncludeFile();</script>
+    <section class="grid-contenedor" id="tarjetaResena"></section>
+  </div>
+  <footer id="footer"></footer>
+  <script>xLuIncludeFile();</script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    loadHTMLAndExecuteScripts('#header', 'components/_header.html');
-    loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
-    cargarContenidoDinamico();
-  });
-</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      loadHTMLAndExecuteScripts('#header', 'components/_header.html');
+      loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
+      cargarContenidoDinamico();
+    });
+  </script>
 </body>
+
 </html>

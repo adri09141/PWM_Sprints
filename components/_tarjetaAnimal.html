@@ -1,20 +1,25 @@
 <article class="contenedor">
     <div class="foto-catalogo">
+        <span class="badge-especie">{{especie}}</span>
         <img src="{{foto}}" alt="Foto de {{nombre}}">
     </div>
 
-    <h2 class="titulo">{{nombre}}</h2>
+    <div class="cuerpo-tarjeta">
+        <h2 class="titulo">{{nombre}}</h2>
 
-    <div class="info-catalogo">
-        <div class="texto">
-            <p>Especie: {{especie}}</p>
-            <p>Edad: {{edad}}</p>
-        </div>
+        <div class="separador"></div>
 
-        <div class="contenedor-boton">
-            <a href="fichaAnimal.html?id={{id}}">
-                <input type="button" value="Quiero Adoptarlo" class="boton-adopcion">
-            </a>
+        <div class="info-catalogo">
+            <div class="datos-catalogo">
+                <p>🐾 <span>{{especie}}</span></p>
+                <p>🎂 <span>{{edad}}</span></p>
+            </div>
+
+            <div class="contenedor-boton">
+                <a href="fichaAnimal.html?id={{id}}">
+                    <button class="boton-adopcion">Adoptarme ♥</button>
+                </a>
+            </div>
         </div>
     </div>
 

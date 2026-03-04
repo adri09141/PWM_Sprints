@@ -178,4 +178,3 @@ function obtenerValorPorDefecto(key) {
 
     return defaults[key] || '';
 }
-
