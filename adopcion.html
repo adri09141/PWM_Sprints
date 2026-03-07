@@ -25,12 +25,11 @@
 
 <body>
     <header id = "header"></header>
-    <form>
+    <form id="formulario_adopcion">
         <h1><label for="mensaje">¿Por qué quieres adoptar?</label></h1>
-        <textarea id="mensaje" name="mensaje" rows="8" cols="120"></textarea><br><br>
-        <a href="index.html" class="enlace-nav">
-            <input type="button" value="Enviar" style="font-size: 20px; padding:  15px 30px;" >
-        </a>
+        <textarea id="mensaje" name="mensaje" rows="8" cols="120" required minlength="4"></textarea><br><br>
+
+        <button type="submit" style="font-size: 20px; padding: 15px 30px;" class="botonPrincipal">Enviar</button>
     </form>
     <footer id = "footer"></footer>
 </body>
@@ -40,5 +39,19 @@
         loadHTMLAndExecuteScripts('#header', 'components/_header.html');
         loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
     });
+    const formAdopcion = document.getElementById('formulario_adopcion');
+    let usuarioMemoria = JSON.parse(localStorage.getItem('usuarioLogueado'));
+    if(!usuarioMemoria) {alert("Debe iniciar sension");}
+    if (formAdopcion && usuarioMemoria ) {
+        formAdopcion.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evitamos que la página se recargue sola
+
+            // Si el código llega hasta aquí, significa que el texto cumple con el required y el minlength (HTML5 ya hizo su trabajo).
+            alert("¡Petición enviada! Gracias por querer darle un hogar a uno de nuestros peludos.");
+
+            // Ahora sí lo mandamos al inicio
+            window.location.href = 'index.html';
+        });
+    }
 </script>
 </html>
