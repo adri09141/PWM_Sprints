@@ -198,5 +198,11 @@
       "contraseña": "lucia2024",
       "numeroAdopciones": 0
     }
+  ],
+  "usuarios": [
+    { "nombre" :"Prueba",
+      "correo": "prueba@gmail.com",
+      "contrasena":  "1234"
+    }
   ]
 }
