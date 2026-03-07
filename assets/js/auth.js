@@ -22,16 +22,54 @@ function hacerLogin(evento) {
 
 // 2. FUNCIÓN PARA REGISTRARSE
 function hacerRegistro(evento) {
+    // Evitamos que recargue la página
     evento.preventDefault();
+
+    // --- PASO 1: VALIDAMOS LA FECHA PRIMERO ---
+    let mensajeError = document.getElementById('mensaje_error');
+    let cajaFisicaFecha = document.getElementById('fecha_nacimiento');
+    let fechaInput = cajaFisicaFecha.value;
+
+    if (!fechaInput) {
+        mensajeError.style.display = 'block';
+        mensajeError.textContent = "Por favor, introduce una fecha.";
+        return; // El 'return' hace que la función se detenga aquí y no registre a nadie
+    }
+
+    let fechaActual = new Date();
+    fechaActual.setHours(0, 0, 0, 0);
+    let fechaLimpia = new Date(fechaInput);
+
+    let fechaMayorEdad = new Date(fechaLimpia);
+    fechaMayorEdad.setFullYear(fechaMayorEdad.getFullYear() + 18);
+
+    if (fechaLimpia > fechaActual) {
+        mensajeError.style.display = 'block';
+        mensajeError.textContent = "¡No puedes nacer en el futuro, jefe!";
+        return; // Detenemos el registro
+    } else if (fechaMayorEdad > fechaActual) {
+        mensajeError.style.display = 'block';
+        mensajeError.textContent = "Lo sentimos, los menores de 18 años no pueden adoptar.";
+        return; // Detenemos el registro
+    }
+
+    // --- PASO 2: SI PASÓ LAS PRUEBAS, GUARDAMOS ---
+    mensajeError.style.display = 'none'; // Escondemos el error por si estaba visible
 
     let nombre = document.getElementById('nombre').value;
     let correo = document.getElementById('correo').value;
-
+    let contrasena = document.getElementById('contrasena').value;
+    let apellidos = document.getElementById('apellidos').value;
+    let fechaNacimiento = document.getElementById('fecha_nacimiento').value;
+    let dni = document.getElementById('dni').value;
+    let direccion = document.getElementById('direccion').value;
+    let telefono = document.getElementById('telefono').value;
     // Guardamos los datos simulando que ya entró
-    localStorage.setItem('usuarioLogueado', JSON.stringify({ nombre: nombre, correo: correo }));
+    localStorage.setItem('usuarioLogueado', JSON.stringify({ nombre: nombre, correo: correo, contrasena: contrasena, apellidos: apellidos, fecha_nacimiento : fechaNacimiento, dni: dni,direccion: direccion, telefono: telefono }));
+
+    // --- PASO 3: REDIRIGIMOS ---
     window.location.href = 'index.html';
 }
-
 // 3. FUNCIÓN PARA CAMBIAR LOS BOTONES SI ESTÁ LOGUEADO
 function revisarSesion() {
     let usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
@@ -64,10 +102,20 @@ function cargarDatosGuardados()
         if(misDatosCompletos){
             document.getElementById('nombre').value = misDatosCompletos.nombre || "";
             document.getElementById('correo').value = misDatosCompletos.correo || "";
+            document.getElementById('apellidos').value = misDatosCompletos.apellidos || "";
+            document.getElementById('fecha_nacimiento').value = misDatosCompletos.fecha_nacimiento || "";
+            document.getElementById('dni').value = misDatosCompletos.dni || "";
+            document.getElementById('direccion').value = misDatosCompletos.direccion || "";
+            document.getElementById('telefono').value = misDatosCompletos.telefono || "";
         }else {
             // PLAN B: Es un usuario nuevo (TÚ). No está en el JSON, así que usamos lo de la memoria.
             document.getElementById('nombre').value = usuarioMemoria.nombre || "";
             document.getElementById('correo').value = usuarioMemoria.correo || "";
+            document.getElementById('apellidos').value = usuarioMemoria.apellidos || "";
+            document.getElementById('fecha_nacimiento').value = usuarioMemoria.fecha_nacimiento || "";
+            document.getElementById('dni').value = usuarioMemoria.dni || "";
+            document.getElementById('direccion').value = usuarioMemoria.direccion || "";
+            document.getElementById('telefono').value = usuarioMemoria.telefono || "";
         }
     })
 }

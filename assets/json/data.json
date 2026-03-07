@@ -200,9 +200,15 @@
     }
   ],
   "usuarios": [
-    { "nombre" :"Prueba",
+    {
+      "nombre": "Prueba",
+      "apellidos": "García López",
+      "fecha_nacimiento": "1995-05-20",
+      "dni": "12345678Z",
+      "direccion": "Calle Falsa 123",
+      "telefono": "600123456",
       "correo": "prueba@gmail.com",
-      "contrasena":  "1234"
+      "contrasena": "1234"
     }
   ]
 }
