@@ -5,24 +5,23 @@
     {
       "id": 1,
       "nombre": "Firulais",
-      "especie": "perro",
-      "raza": "pug",
+      "especie": "Perro",
+      "raza": "Pug",
       "edad": 2,
       "meses": 18,
       "sexo": "M",
       "peso": 8.5,
       "descripcion": "Firulais es un perro muy tranquilo y cariñoso. Le encanta pasear a ritmo suave, jugar con pelotas pequeñas y dormir largas siestas al lado de sus dueños. Está acostumbrado a vivir en piso, por lo que se adapta perfectamente a espacios pequeños. Es sociable con otros perros y muy bueno con niños. Ideal para familias o personas que busquen un compañero fiel y relajado.",
-      "foto1": "https://placehold.co/300x500?text=FOTO+1",
-      "foto2": "https://placehold.co/300x500?text=FOTO+1",
-      "foto3": "https://placehold.co/300x500?text=FOTO+1",
-      "foto4": "https://placehold.co/300x500?text=FOTO+1",
-      "video": "https://placehold.co/300x500?text=FOTO+1"
+      "foto1": "./img/animal_id_1/Foto1.png",
+      "foto2": "./img/animal_id_1/Foto2.png",
+      "foto3": "./img/animal_id_1/Foto3.png",
+      "foto4": "./img/animal_id_1/Foto4.png"
     },
     {
       "id": 2,
       "nombre": "Luna",
-      "especie": "gato",
-      "raza": "siamés",
+      "especie": "Gato",
+      "raza": "Siamés",
       "edad": 1,
       "meses": 6,
       "sexo": "F",
@@ -31,14 +30,13 @@
       "foto1": "https://placehold.co/300x500?text=FOTO+1",
       "foto2": "https://placehold.co/300x500?text=FOTO+1",
       "foto3": "https://placehold.co/300x500?text=FOTO+1",
-      "foto4": "https://placehold.co/300x500?text=FOTO+1",
-      "video": "https://placehold.co/300x500?text=FOTO+1"
+      "foto4": "https://placehold.co/300x500?text=FOTO+1"
     },
     {
       "id": 3,
       "nombre": "Rocky",
-      "especie": "perro",
-      "raza": "mestizo",
+      "especie": "Perro",
+      "raza": "Mestizo",
       "edad": 4,
       "meses": 30,
       "sexo": "F",
@@ -47,14 +45,13 @@
       "foto1": "https://placehold.co/300x500?text=FOTO+1",
       "foto2": "https://placehold.co/300x500?text=FOTO+1",
       "foto3": "https://placehold.co/300x500?text=FOTO+1",
-      "foto4": "https://placehold.co/300x500?text=FOTO+1",
-      "video": "https://placehold.co/300x500?text=FOTO+1"
+      "foto4": "https://placehold.co/300x500?text=FOTO+1"
     },
     {
       "id": 4,
       "nombre": "Tambor",
-      "especie": "conejo",
-      "raza": "belier",
+      "especie": "Conejo",
+      "raza": "Belier",
       "edad": 1,
       "meses": 4,
       "sexo": "M",
@@ -63,14 +60,13 @@
       "foto1": "https://placehold.co/300x500?text=FOTO+1",
       "foto2": "https://placehold.co/300x500?text=FOTO+1",
       "foto3": "https://placehold.co/300x500?text=FOTO+1",
-      "foto4": "https://placehold.co/300x500?text=FOTO+1",
-      "video": "https://placehold.co/300x500?text=FOTO+1"
+      "foto4": "https://placehold.co/300x500?text=FOTO+1"
     },
     {
       "id": 5,
       "nombre": "Max",
-      "especie": "perro",
-      "raza": "pastor alemán",
+      "especie": "Perro",
+      "raza": "Pastor alemán",
       "edad": 3,
       "meses": 24,
       "sexo": "M",
@@ -79,14 +75,13 @@
       "foto1": "https://placehold.co/300x500?text=FOTO+1",
       "foto2": "https://placehold.co/300x500?text=FOTO+1",
       "foto3": "https://placehold.co/300x500?text=FOTO+1",
-      "foto4": "https://placehold.co/300x500?text=FOTO+1",
-      "video": "https://placehold.co/300x500?text=FOTO+1"
+      "foto4": "https://placehold.co/300x500?text=FOTO+1"
     },
     {
       "id": 6,
       "nombre": "Nala",
-      "especie": "gato",
-      "raza": "persa",
+      "especie": "Gato",
+      "raza": "Persa",
       "edad": 2,
       "meses": 12,
       "sexo": "F",
@@ -95,14 +90,13 @@
       "foto1": "https://placehold.co/300x500?text=FOTO+1",
       "foto2": "https://placehold.co/300x500?text=FOTO+1",
       "foto3": "https://placehold.co/300x500?text=FOTO+1",
-      "foto4": "https://placehold.co/300x500?text=FOTO+1",
-      "video": "https://placehold.co/300x500?text=FOTO+1"
+      "foto4": "https://placehold.co/300x500?text=FOTO+1"
     },
     {
       "id": 7,
       "nombre": "Simba",
-      "especie": "perro",
-      "raza": "labrador",
+      "especie": "Perro",
+      "raza": "Labrador",
       "edad": 5,
       "meses": 40,
       "sexo": "M",
@@ -111,8 +105,7 @@
       "foto1": "https://placehold.co/300x500?text=FOTO+1",
       "foto2": "https://placehold.co/300x500?text=FOTO+1",
       "foto3": "https://placehold.co/300x500?text=FOTO+1",
-      "foto4": "https://placehold.co/300x500?text=FOTO+1",
-      "video": "https://placehold.co/300x500?text=FOTO+1"
+      "foto4": "https://placehold.co/300x500?text=FOTO+1"
     }
   ],
 
@@ -210,7 +203,8 @@
       "direccion": "Calle Falsa 123",
       "telefono": "600123456",
       "correo": "prueba@gmail.com",
-      "contrasena": "1234"
+      "contrasena": "1234",
+      "n_adopciones": "33"
     }
   ]
 }

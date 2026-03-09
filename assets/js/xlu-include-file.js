@@ -146,6 +146,7 @@ function cargarContenidoDinamico(limite = null) {
                     div.setAttribute('data-nombre', item.nombre || 'Sin título');
                     div.setAttribute('data-especie', item.especie || 'Sin título');
                     div.setAttribute('data-edad', item.edad || 'Sin título');
+                    div.setAttribute('data-foto1', item.foto1 || 'Sin foto');
                     tarjetaAnimal.appendChild(div);
 
                 })
