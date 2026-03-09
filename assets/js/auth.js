@@ -65,7 +65,7 @@ function hacerRegistro(evento) {
     let direccion = document.getElementById('direccion').value;
     let telefono = document.getElementById('telefono').value;
     // Guardamos los datos simulando que ya entró
-    localStorage.setItem('usuarioLogueado', JSON.stringify({ nombre: nombre, correo: correo, contrasena: contrasena, apellidos: apellidos, fecha_nacimiento : fechaNacimiento, dni: dni,direccion: direccion, telefono: telefono }));
+    localStorage.setItem('usuarioLogueado', JSON.stringify({ nombre: nombre, correo: correo, contrasena: contrasena, apellidos: apellidos, fecha_nacimiento : fechaNacimiento, dni: dni,direccion: direccion, telefono: telefono}));
 
     // --- PASO 3: REDIRIGIMOS ---
     window.location.href = 'index.html';
@@ -107,6 +107,7 @@ function cargarDatosGuardados()
             document.getElementById('dni').value = misDatosCompletos.dni || "";
             document.getElementById('direccion').value = misDatosCompletos.direccion || "";
             document.getElementById('telefono').value = misDatosCompletos.telefono || "";
+            document.getElementById('n_adopciones').value = misDatosCompletos.n_adopciones || "0";
         }else {
             // PLAN B: Es un usuario nuevo (TÚ). No está en el JSON, así que usamos lo de la memoria.
             document.getElementById('nombre').value = usuarioMemoria.nombre || "";
@@ -116,6 +117,7 @@ function cargarDatosGuardados()
             document.getElementById('dni').value = usuarioMemoria.dni || "";
             document.getElementById('direccion').value = usuarioMemoria.direccion || "";
             document.getElementById('telefono').value = usuarioMemoria.telefono || "";
+            document.getElementById('n_adopciones').value = usuarioMemoria.n_adopciones || "0";
         }
     })
 }

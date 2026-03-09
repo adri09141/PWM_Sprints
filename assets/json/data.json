@@ -209,7 +209,8 @@
       "direccion": "Calle Falsa 123",
       "telefono": "600123456",
       "correo": "prueba@gmail.com",
-      "contrasena": "1234"
+      "contrasena": "1234",
+      "n_adopciones": "33"
     }
   ]
 }
