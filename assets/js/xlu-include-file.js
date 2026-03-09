@@ -109,18 +109,19 @@ function executeScripts(container) {
         document.head.appendChild(scriptTag).parentNode.removeChild(scriptTag);
     });
 }
-function cargarContenidoDinamico(limite= null) {
+function cargarContenidoDinamico(limite = null) {
     fetch('assets/json/data.json')
         .then(response => response.json())
         .then(data => {
             let tarjeteResena = document.querySelector('#tarjetaResena');
             let tarjetaAnimal = document.querySelector('#tarjetaAnimal');
+            let contenedorContador = document.querySelector('#contenedorContador');
 
             // Si hay límite, cortamos el array. Si no (null), usamos data.reseñas tal cual.
             const listaResenas = limite ? data.reseñas.slice(0, limite) : data.reseñas;
             const listaAnimales = limite ? data.animales.slice(0, limite) : data.animales;
 
-            if(tarjeteResena) {
+            if (tarjeteResena) {
                 listaResenas.forEach(item => {
                     // 1. Creamos un div normal
                     let div = document.createElement('div');
@@ -137,7 +138,7 @@ function cargarContenidoDinamico(limite= null) {
                     tarjeteResena.appendChild(div);
                 });
             }
-            if(tarjetaAnimal) {
+            if (tarjetaAnimal) {
                 listaAnimales.forEach(item => {
                     let div = document.createElement('div');
                     div.setAttribute('xlu-include-file', 'components/_tarjetaAnimal.html');
@@ -150,6 +151,22 @@ function cargarContenidoDinamico(limite= null) {
                 })
 
             }
+
+            if (contenedorContador) {
+                let div = document.createElement('div');
+                div.setAttribute('xlu-include-file', 'components/_contador.html');
+
+                let contadorStr = String(data.contador || 0).padStart(5, '0');
+
+                div.setAttribute('data-digito1', contadorStr[0]);
+                div.setAttribute('data-digito2', contadorStr[1]);
+                div.setAttribute('data-digito3', contadorStr[2]);
+                div.setAttribute('data-digito4', contadorStr[3]);
+                div.setAttribute('data-digito5', contadorStr[4]);
+
+                contenedorContador.appendChild(div);
+            }
+
             // Inyectamos los datos en los moldes
             xLuIncludeFile();
         })
@@ -173,7 +190,14 @@ function obtenerValorPorDefecto(key) {
         'sexo': 'Desconocido',
         'peso': '0',
         'tasa': '0€',
-        'descripcion': 'Sin descripción'
+        'descripcion': 'Sin descripción',
+
+        // Contador
+        'digito1': '0',
+        'digito2': '0',
+        'digito3': '0',
+        'digito4': '0',
+        'digito5': '0'
     };
 
     return defaults[key] || '';
