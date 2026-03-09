@@ -1,6 +1,6 @@
 /* Sección home */
 .seccionPrincipal {
-    background-image: url('https://placehold.co/1200x400/cccccc/cccccc');
+    background-image: url('https://images.pexels.com/photos/97082/weimaraner-puppy-dog-snout-97082.jpeg');
     background-size: cover;
     background-position: center;
 
@@ -24,10 +24,16 @@
     font-size: 3rem;
     margin-bottom: 10px;
     font-family: Verdana, sans-serif;
-    color: #000;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
 }
 
-.botonPrincipal {
+.seccionPrincipal p {
+    color: #FFFFFF;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+.botonRegitrarse {
     background-color: #9DA3BD;
     color: white;
     padding: 15px 30px;
@@ -37,8 +43,107 @@
     font-weight: bold;
     transition: background-color 0.3s;
 }
-.botonPrincipal:hover {
+.botonRegitrarse:hover {
     background-color: #7A8199;
+}
+
+/*botones de la seccion principal*/
+.botonCatalogo {
+    position: relative;
+    display: inline-block;
+        background: linear-gradient(to bottom, #4D50B3, #ADAEDC);
+    /* Gradient background */
+    color: white;
+    /* White text color */
+    font-family: "Segoe UI", sans-serif;
+    /* Stylish and legible font */
+    font-weight: bold;
+    font-size: 18px;
+    /* Large font size */
+    border: none;
+    /* No border */
+    border-radius: 30px;
+    /* Rounded corners */
+    padding: 14px 28px;
+    /* Large padding */
+    cursor: pointer;
+    /* Cursor on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+    animation: button-shimmer 2s infinite;
+    transition: all 0.3s ease-in-out;
+    /* Smooth transition */
+}
+
+.botonCatalogo:hover {
+    background: linear-gradient(to bottom, #4D7DB3, #ADBBDC);
+    animation: button-particles 1s ease-in-out infinite;
+    transform: translateY(-2px);
+}
+
+.botonCatalogo:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.botonRegitrarse {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(to bottom, #FF692E, #FFDA8A);
+    /* Gradient background */
+    color: white;
+    /* White text color */
+    font-family: "Segoe UI", sans-serif;
+    /* Stylish and legible font */
+    font-weight: bold;
+    font-size: 18px;
+    /* Large font size */
+    border: none;
+    /* No border */
+    border-radius: 30px;
+    /* Rounded corners */
+    padding: 14px 28px;
+    /* Large padding */
+    cursor: pointer;
+    /* Cursor on hover */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow */
+    animation: button-shimmer 2s infinite;
+    transition: all 0.3s ease-in-out;
+    /* Smooth transition */
+}
+
+.botonRegitrarse:hover {
+    background: linear-gradient(to bottom, #FF8A5C, #FFE0B8);
+    animation: button-particles 1s ease-in-out infinite;
+    transform: translateY(-2px);
+}
+
+.botonRegitrarse:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Shimmer animation */
+@keyframes button-shimmer {
+    0% {
+        background-position: left top;
+    }
+
+    100% {
+        background-position: right bottom;
+    }
+}
+
+/* Particle animation */
+@keyframes button-particles {
+    0% {
+        background-position: left top;
+    }
+
+    100% {
+        background-position: right bottom;
+    }
 }
 
 /* Organización de los recuadros (Grid animales y reseñas) */
