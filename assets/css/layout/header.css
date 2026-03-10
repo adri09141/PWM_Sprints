@@ -1,0 +1,54 @@
+/**
+    ESTILOS HEADER
+ */
+
+/* --- Contenedor principal del Header --- */
+/* --- Contenedor principal inyectado en el body --- */
+#header-container {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    /* Es crucial que el contenedor padre no tenga fondo transparente */
+    background-color: #ffffff;
+}
+
+/* --- Tu main-header de _header.html --- */
+.main-header {
+    /* Ya no necesita el sticky, z-index ni el top, el padre se encarga */
+    width: 100%;
+}
+
+.contenedor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* La sombra se queda aquí */
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* --- Contenedor del menú --- */
+.header-nav {
+    display: flex;
+    gap: 30px;
+}
+
+/* --- Estilos directos de los enlaces --- */
+.enlace-nav {
+    text-decoration: none;
+    color: #333333;
+    font-weight: bold;
+    font-family: Verdana, sans-serif;
+}
+
+.enlace-nav:hover {
+    color: #ff6b6b;
+}

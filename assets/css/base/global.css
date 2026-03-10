@@ -1,0 +1,34 @@
+/* Organización de los recuadros (Grid animales y reseñas) */
+
+.grid-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Alinea las tarjetas por la parte de arriba */
+    gap: 50px;
+    /* Espacio controlado entre ellas */
+    flex-wrap: wrap;
+    padding: 20px;
+    width: 90%;
+    /* Para que no se peguen a los bordes */
+    margin: 0 auto;
+}
+
+.grid-contenedor .contenedor {
+    margin: 10px !important;
+    float: none !important;
+    /* El float rompe el Flexbox, hay que quitarlo */
+}
+
+.titulo-apartado {
+    margin-left: 10%;
+    /* Coincide con el padding del banner */
+    font-family: 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 2rem;
+    /* Un poco más grande para que destaque */
+    margin-top: 60px;
+    /* Espacio respecto a la sección de arriba */
+    margin-bottom: 20px;
+    text-align: left;
+}

@@ -1,0 +1,117 @@
+/* --- ESTILOS DE BOTONES --- */
+
+/* BOTÓN QUIERO ADOPTARLO */
+.boton-adopcion {
+    background: linear-gradient(135deg, #D4916B 0%, #C47A54 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 14px rgba(196, 122, 84, 0.35);
+}
+
+.boton-adopcion:hover {
+    background: linear-gradient(135deg, #C47A54 0%, #A85F3B 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(196, 122, 84, 0.5);
+}
+
+.boton-adopcion:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(196, 122, 84, 0.3);
+}
+
+.botonRegitrarse {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(to bottom, #FF692E, #FFDA8A);
+    color: white;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 28px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: button-shimmer 2s infinite;
+    transition: all 0.3s ease-in-out;
+}
+
+.botonRegitrarse:hover {
+    background: linear-gradient(to bottom, #FF8A5C, #FFE0B8);
+    animation: button-particles 1s ease-in-out infinite;
+    transform: translateY(-2px);
+}
+
+.botonRegitrarse:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.botonCatalogo {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(to bottom, #4D50B3, #ADAEDC);
+    color: white;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 28px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: button-shimmer 2s infinite;
+    transition: all 0.3s ease-in-out;
+}
+
+.botonCatalogo:hover {
+    background: linear-gradient(to bottom, #4D7DB3, #ADBBDC);
+    animation: button-particles 1s ease-in-out infinite;
+    transform: translateY(-2px);
+}
+
+.botonCatalogo:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes button-shimmer {
+    0% {
+        background-position: left top;
+    }
+
+    100% {
+        background-position: right bottom;
+    }
+}
+
+@keyframes button-particles {
+    0% {
+        background-position: left top;
+    }
+
+    100% {
+        background-position: right bottom;
+    }
+}
+
+.boton-saber-mas {
+    display: block;
+    margin: 0 auto 40px auto;
+    padding: 10px 40px;
+    background-color: #D9D9D9;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    color: #000;
+}
