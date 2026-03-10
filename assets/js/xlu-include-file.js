@@ -132,7 +132,8 @@ function cargarContenidoDinamico(limite = null) {
                     // 3. Le pasamos los datos del JSON (usando 'item.nombre' como en tu JSON)
                     div.setAttribute('data-titulo', item.titulo || 'Sin título');
                     div.setAttribute('data-reseña', item.reseña || 'Sin texto');
-                    div.setAttribute('data-nombre_perro', item.nombre || 'Desconocido');
+                    div.setAttribute('data-nombre_perro', item.nombreAnimal || 'Desconocido');
+                    div.setAttribute('data-foto_perro', item.foto || 'https://placehold.co/300x300?text=Sin+Foto');
 
                     // 4. Lo metemos en la sección
                     tarjeteResena.appendChild(div);
