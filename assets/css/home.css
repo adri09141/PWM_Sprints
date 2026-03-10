@@ -152,7 +152,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start; /* Alinea las tarjetas por la parte de arriba */
-    gap: 40px;               /* Espacio controlado entre ellas */
+    gap: 50px;               /* Espacio controlado entre ellas */
     flex-wrap: wrap;
     padding: 20px;
     width: 90%;              /* Para que no se peguen a los bordes */

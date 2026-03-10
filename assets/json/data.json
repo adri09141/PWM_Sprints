@@ -1,6 +1,5 @@
 {
   "contador": 1,
-
   "animales": [
     {
       "id": 1,
@@ -108,7 +107,6 @@
       "foto4": "./img/animal_id_7/Foto4.png"
     }
   ],
-
   "reseñas": [
     {
       "id": 1,
@@ -116,7 +114,8 @@
       "nombreAnimal": "Copo",
       "titulo": "Un pequeño ángel",
       "reseña": "Hace unos meses que lo adoptamos y está muy contento todos los días, nos alegra cada mañana.",
-      "fecha": "2023-10-15"
+      "fecha": "2023-10-15",
+      "foto": "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400&q=80"
     },
     {
       "id": 2,
@@ -124,7 +123,8 @@
       "nombreAnimal": "Thor",
       "titulo": "El mejor compañero",
       "reseña": "Al principio era tímido, pero ahora es el rey de la casa. El proceso de adopción fue excelente.",
-      "fecha": "2024-01-20"
+      "fecha": "2024-01-20",
+      "foto": "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=400&q=80"
     },
     {
       "id": 3,
@@ -132,7 +132,8 @@
       "nombreAnimal": "Luna",
       "titulo": "Una compañera perfecta",
       "reseña": "Es muy limpia y tranquila. Se adaptó rápido a nuestro hogar.",
-      "fecha": "2024-03-02"
+      "fecha": "2024-03-02",
+      "foto": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&q=80"
     },
     {
       "id": 4,
@@ -140,10 +141,10 @@
       "nombreAnimal": "Max",
       "titulo": "Protector y fiel",
       "reseña": "Desde que llegó, nos sentimos más seguros. Es muy obediente.",
-      "fecha": "2024-05-18"
+      "fecha": "2024-05-18",
+      "foto": "https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=400&q=80"
     }
   ],
-
   "usuarios": [
     {
       "id": 1,

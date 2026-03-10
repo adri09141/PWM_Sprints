@@ -1,71 +1,144 @@
-/* --- ESTILOS PARA LA TARJETA DE RESEÑA --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
-.tarjeta-resena {
-    width: 300px;
-    /* Ajustado para dar aire */
-    background-color: #D9D9D9;
-    /* El gris de la imagen */
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Verdana', sans-serif;
-    margin: 0;
-}
-
-.tarjeta-resena .titulo {
-    font-size: 32px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.tarjeta-resena .texto {
-    font-size: 16px;
-    line-height: 1.3;
-    text-align: left;
-    margin-top: 0;
-    margin-bottom: 20px;
-    flex-grow: 1;
-    /* Empuja el footer hacia abajo si hay poco texto */
-}
-
-.tarjeta-resena .imagen-reseña {
-    display: flex;
-    justify-content: space-between;
-    /* Nombre a la izquierda, foto a la derecha */
-    align-items: center;
-    /* Alineación vertical al centro */
-    gap: 15px;
-}
-
-.tarjeta-resena .nombre-animal-reseña {
-    font-size: 16px;
-    font-weight: normal;
-    flex-shrink: 0;
-    /* Evita que el nombre se comprima si es largo */
-}
-
-.tarjeta-resena .foto-reseña {
-    width: 200px;
-    /* Tamaño del recuadro de la foto */
-    height: 200px;
-    background-color: #808080;
-    /* Gris oscuro del placeholder */
-    overflow: hidden;
-}
-
-.tarjeta-resena .foto-reseña img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Para que la foto no se deforme */
-}
+/* --- TARJETA DE RESEÑA — Estética cálida y editorial --- */
 
 .grupo-tarjetas-resenas {
     display: flex;
     flex-wrap: wrap;
-    /* Si no caben en la pantalla, bajan solas a la siguiente línea */
-    gap: 20px;
-    /* Separación perfecta entre tarjetas, sin usar margins raros */
+    gap: 28px;
     width: 100%;
+    padding: 40px 0;
+    justify-content: flex-start;
 }
+
+.tarjeta-resena {
+    width: 300px;
+    background-color: #FAF7F2;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'DM Sans', sans-serif;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(80, 50, 20, 0.08), 0 8px 32px rgba(80, 50, 20, 0.06);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    position: relative;
+}
+
+.tarjeta-resena:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 4px 16px rgba(80, 50, 20, 0.12), 0 16px 48px rgba(80, 50, 20, 0.1);
+}
+
+/* Franja de color superior aleatoria por posición */
+.tarjeta-resena::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background: linear-gradient(90deg, #C8956C, #E8B48A);
+}
+
+.tarjeta-resena:nth-child(3n+2)::before {
+    background: linear-gradient(90deg, #7B9E87, #A8C5B0);
+}
+
+.tarjeta-resena:nth-child(3n+3)::before {
+    background: linear-gradient(90deg, #B5896B, #D4A882);
+}
+
+/* Contenido interno */
+.tarjeta-resena__cuerpo {
+    padding: 28px 26px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Comillas decorativas */
+.tarjeta-resena__cuerpo::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    line-height: 0.6;
+    color: #C8956C;
+    opacity: 0.35;
+    display: block;
+    margin-bottom: 12px;
+    margin-left: -4px;
+}
+
+.tarjeta-resena .titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    color: #2C1A0E;
+    margin: 0 0 14px 0;
+    line-height: 1.2;
+}
+
+.tarjeta-resena .texto {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: #5C4033;
+    margin: 0;
+    flex-grow: 1;
+}
+
+/* Footer con foto y nombre */
+.tarjeta-resena .imagen-reseña {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    margin-top: 22px;
+}
+
+.tarjeta-resena .imagen-reseña img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.tarjeta-resena:hover .imagen-reseña img {
+    transform: scale(1.04);
+}
+
+/* Estrellitas decorativas opcionales (si se añaden con JS) */
+.tarjeta-resena .estrellas {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 10px;
+}
+
+.tarjeta-resena .estrellas span {
+    color: #C8956C;
+    font-size: 14px;
+}
+
+/* Animación de entrada escalonada */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tarjeta-resena {
+    animation: fadeSlideUp 0.5s ease both;
+}
+
+.tarjeta-resena:nth-child(1) { animation-delay: 0.05s; }
+.tarjeta-resena:nth-child(2) { animation-delay: 0.15s; }
+.tarjeta-resena:nth-child(3) { animation-delay: 0.25s; }
+.tarjeta-resena:nth-child(4) { animation-delay: 0.35s; }
+.tarjeta-resena:nth-child(5) { animation-delay: 0.45s; }
+.tarjeta-resena:nth-child(6) { animation-delay: 0.55s; }
