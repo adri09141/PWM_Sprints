@@ -30,13 +30,22 @@ function hacerRegistro(evento) {
     evento.preventDefault();
 
     // --- PASO 1: VALIDAMOS LA FECHA PRIMERO ---
-    let mensajeError = document.getElementById('mensaje_error');
+    let error_fecha = document.getElementById('error_fecha');
+    let error_contrasena = document.getElementById('error_contrasena');
     let cajaFisicaFecha = document.getElementById('fecha_nacimiento');
     let fechaInput = cajaFisicaFecha.value;
-
+    let cajaFisicaContrasena = document.getElementById('contrasena').value;
+    const regex = /^(?=(.*[a-zA-Z]){3})(?=.*[0-9])(?=.*[!@#$%^&*.,\-_]).+$/;
+    if(!regex.test(cajaFisicaContrasena))
+    {
+        error_contrasena.style.display = 'block';
+        error_contrasena.textContent = "Debe tener al menos [3 letras, 1 numero y 1 caracter especial]";
+        return; // El 'return' hace que la función se detenga aquí y no registre a nadie
+    }
+    error_contrasena.style.display = 'none';
     if (!fechaInput) {
-        mensajeError.style.display = 'block';
-        mensajeError.textContent = "Por favor, introduce una fecha.";
+        error_fecha.style.display = 'block';
+        error_fecha.textContent = "Por favor, introduce una fecha.";
         return; // El 'return' hace que la función se detenga aquí y no registre a nadie
     }
 
@@ -48,18 +57,18 @@ function hacerRegistro(evento) {
     fechaMayorEdad.setFullYear(fechaMayorEdad.getFullYear() + 18);
 
     if (fechaLimpia > fechaActual) {
-        mensajeError.style.display = 'block';
-        mensajeError.textContent = "¡No puedes nacer en el futuro, jefe!";
+        error_fecha.style.display = 'block';
+        error_fecha.textContent = "¡No puedes nacer en el futuro, jefe!";
         return; // Detenemos el registro
     } else if (fechaMayorEdad > fechaActual) {
-        mensajeError.style.display = 'block';
-        mensajeError.textContent = "Lo sentimos, los menores de 18 años no pueden adoptar.";
+        error_fecha.style.display = 'block';
+        error_fecha.textContent = "Lo sentimos, los menores de 18 años no pueden adoptar.";
         return; // Detenemos el registro
     }
 
     // --- PASO 2: SI PASÓ LAS PRUEBAS, GUARDAMOS ---
-    mensajeError.style.display = 'none'; // Escondemos el error por si estaba visible
-
+    // Escondemos el error por si estaba visible
+    error_fecha.style.display = 'none';
     let nombre = document.getElementById('nombre').value;
     let correo = document.getElementById('correo').value;
     let contrasena = document.getElementById('contrasena').value;

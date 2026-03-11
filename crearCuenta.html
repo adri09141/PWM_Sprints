@@ -40,7 +40,7 @@
         <td>
           <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required style="font-size: 15px; margin-left: 20px;">
 
-          <div id="mensaje_error" style="color: red; display: none; margin-left: 20px; margin-top: 5px; font-size: 14px;"></div>
+          <div id="error_fecha" style="color: red; display: none; margin-left: 20px; margin-top: 5px; font-size: 14px;"></div>
         </td>
       </tr>
       <tr>
@@ -60,8 +60,10 @@
       </tr>
       <tr>
         <td>Correo:</td>
-        <td><input type="email" id="correo" name="correo" required placeholder="ejemplo@gmail.com"
-            style="width: 280px; font-size: 14px; margin: 5px;"></td>
+        <td>
+          <input type="email" id="correo" name="correo" required placeholder="ejemplo@gmail.com" style="width: 280px; font-size: 14px; margin: 5px;">
+          <div id="error_contrasena"style="color: red; display: none; margin-left: 20px; margin-top: 5px; font-size: 14px;"></div>
+        </td>
       </tr>
       <tr>
         <td>Contraseña:</td>

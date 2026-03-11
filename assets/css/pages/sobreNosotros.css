@@ -12,8 +12,10 @@ h2 {
 
 /* --- ESTRUCTURA DE FOTOS Y TEXTOS --- */
 
-.foto1 {
+.foto1 img {
     flex-shrink: 0;
+    width: 600px;
+    height: auto;
 }
 
 .datos_derecha {
@@ -32,7 +34,7 @@ h2 {
     /* clear: both; asegura que esta foto se vaya abajo del todo y no se monte con los textos de arriba */
     clear: both;
     display: block;
-    width: 500px;
+    text-align: center;
     margin: 20px auto; /* Centrada con un poco de aire arriba y abajo */
 }
 
