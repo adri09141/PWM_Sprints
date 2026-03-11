@@ -26,11 +26,18 @@
 <table class="tabla-acceso">
   <tr>
     <td>Contraseña Actual:</td>
-    <td><input type="password" id="contrasena_actual" name="contrasena_actual" required minlength="4"></td>
+    <td><input type="password" id="contrasena_actual" name="contrasena_actual" required minlength="4">
+      <button type="button" id="btn_ver_contrasena1" style="cursor: pointer; padding: 5px;">Ver</button>
+      <div id="mensaje_error2" style="color: red; display: none; margin-top: 5px; font-size: 14px; text-align: left;"></div>
+    </td>
   </tr>
   <tr>
     <td>Nueva Contraseña:</td>
-    <td><input type="password" id="contrasena_nueva1" name="contrasena_nueva1"></td>
+    <td>
+      <input type="password" id="contrasena" name="contrasena">
+      <button type="button" id="btn_ver_contrasena2" style="cursor: pointer; padding: 5px;">Ver</button>
+      <div id="error_contrasena" style="color: red; display: none; margin-top: 5px; font-size: 14px; text-align: left;"></div>
+    </td>
   </tr>
   <tr>
     <td>Repetir Contraseña:</td>
@@ -55,6 +62,6 @@
   });
 </script>
 <script src="assets/js/validar-contrasena.js"></script>
-
+<script src="assets/js/auth.js"></script>
 </body>
 </html>

@@ -31,18 +31,12 @@ function hacerRegistro(evento) {
 
     // --- PASO 1: VALIDAMOS LA FECHA PRIMERO ---
     let error_fecha = document.getElementById('error_fecha');
-    let error_contrasena = document.getElementById('error_contrasena');
     let cajaFisicaFecha = document.getElementById('fecha_nacimiento');
     let fechaInput = cajaFisicaFecha.value;
-    let cajaFisicaContrasena = document.getElementById('contrasena').value;
-    const regex = /^(?=(.*[a-zA-Z]){3})(?=.*[0-9])(?=.*[!@#$%^&*.,\-_]).+$/;
-    if(!regex.test(cajaFisicaContrasena))
+    if(verificaContrasena())
     {
-        error_contrasena.style.display = 'block';
-        error_contrasena.textContent = "Debe tener al menos [3 letras, 1 numero y 1 caracter especial]";
-        return; // El 'return' hace que la función se detenga aquí y no registre a nadie
+        return;
     }
-    error_contrasena.style.display = 'none';
     if (!fechaInput) {
         error_fecha.style.display = 'block';
         error_fecha.textContent = "Por favor, introduce una fecha.";
@@ -103,6 +97,21 @@ function revisarSesion() {
         }
     }
 }
+// Sirve para Verificar la fecha mediante una expresion regular
+function  verificaContrasena() {
+    let error_contrasena = document.getElementById('error_contrasena');
+    let cajaFisicaContrasena = document.getElementById('contrasena').value;
+    const regex = /^(?=(.*[a-zA-Z]){3})(?=.*[0-9])(?=.*[!@#$%^&*.,\-_]).+$/;
+
+    if(!regex.test(cajaFisicaContrasena))
+    {
+        error_contrasena.style.display = 'block';
+        error_contrasena.textContent = "Debe tener al menos [3 letras, 1 numero y 1 caracter especial]";
+        return true;
+    }
+    error_contrasena.style.display = 'none';
+    return false;
+}
 // 4. FUNCIÓN PARA CARGAR DATOS
 function cargarDatosGuardados()
 {
@@ -152,7 +161,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (formRegistro) {
         formRegistro.addEventListener('submit', hacerRegistro);
     }
-
+    let inputContrasena = document.getElementById('contrasena');
+    let btnVerPass = document.getElementById('btn_ver_contrasena');
+    if(inputContrasena && btnVerPass)
+    {
+        btnVerPass.addEventListener('click', function() {
+            // Si está en modo contraseña (oculta)...
+            if (inputContrasena.type === "password") {
+                inputContrasena.type = "text"; // La hacemos visible
+                btnVerPass.textContent = "Ocultar"; // Cambiamos el texto del botón
+            } else {
+                // Si ya estaba visible, la volvemos a ocultar
+                inputContrasena.type = "password";
+                btnVerPass.textContent = "Ver";
+            }
+        });
+    }
     // Comprobamos la sesión en todas las páginas
     revisarSesion();
 });
