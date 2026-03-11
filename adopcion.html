@@ -29,7 +29,7 @@
         <h1><label for="mensaje">¿Por qué quieres adoptar?</label></h1>
         <textarea id="mensaje" name="mensaje" rows="8" cols="120" required minlength="4"></textarea><br><br>
 
-        <button type="submit" style="font-size: 20px; padding: 15px 30px;" class="botonPrincipal">Enviar</button>
+        <button type="submit" style="font-size: 20px; padding: 15px 30px; " class="botonPrincipal" id = "enviar">Enviar</button>
     </form>
     <footer id = "footer"></footer>
 </body>
@@ -45,12 +45,15 @@
     if (formAdopcion && usuarioMemoria ) {
         formAdopcion.addEventListener('submit', function(e) {
             e.preventDefault(); // Evitamos que la página se recargue sola
+            let btnEnviar = document.getElementById('enviar');
+            btnEnviar.style.backgroundColor = '#4CAF50';
+            btnEnviar.style.color = 'white';
+            btnEnviar.textContent = "Enviando.. ✅";
+            btnEnviar.disabled = true;
 
-            // Si el código llega hasta aquí, significa que el texto cumple con el required y el minlength (HTML5 ya hizo su trabajo).
-            alert("¡Petición enviada! Gracias por querer darle un hogar a uno de nuestros peludos.");
-
-            // Ahora sí lo mandamos al inicio
-            window.location.href = 'index.html';
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 1000);
         });
     }
 </script>

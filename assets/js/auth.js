@@ -4,23 +4,52 @@ function hacerLogin(evento) {
 
     let correo = document.getElementById('correo').value;
     let contrasena = document.getElementById('contrasena').value;
+    let btnError = document.getElementById('error'); // Asegúrate de tener este div en tu HTML
 
+    // Limpiamos el error antes de comprobar
+    if(btnError) btnError.style.display = 'none';
 
     fetch('assets/json/data.json')
         .then(res => res.json())
         .then(data => {
             let usuariosNuevos = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
             let todosLosUsuarios = data.usuarios.concat(usuariosNuevos);
-            // Buscamos en la lista combinada
-            let usuario = todosLosUsuarios.find(u => u.correo === correo && u.contrasena === contrasena);
 
-            if (usuario) {
-                // Guardamos sus datos
-                localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
-                window.location.href = 'index.html';
-            } else {
-                alert('Correo o contraseña incorrectos, jefe.'); // Simple y directo por ahora
+            // 1. Primero buscamos si el correo existe (independientemente de la contraseña)
+            let usuarioPorCorreo = todosLosUsuarios.find(u => u.correo === correo);
+
+            // Si no encontramos el correo...
+            if (!usuarioPorCorreo) {
+                if(btnError) {
+                    btnError.style.display = 'block';
+                    btnError.textContent = "El correo introducido no está registrado.";
+                }
+                return; // Cortamos
             }
+
+            // 2. Si el correo existe, comprobamos si la contraseña coincide
+            if (usuarioPorCorreo.contrasena !== contrasena) {
+                if(btnError) {
+                    btnError.style.display = 'block';
+                    btnError.textContent = "La contraseña es incorrecta.";
+                }
+                return; // Cortamos
+            }
+
+            // 3. Si llega aquí, es que TODO está bien (correo y contraseña correctos)
+            localStorage.setItem('usuarioLogueado', JSON.stringify(usuarioPorCorreo));
+
+            let btnConfirmar = document.getElementById('confirmar'); // Botón de login
+            if (btnConfirmar) {
+                btnConfirmar.style.backgroundColor = '#4CAF50';
+                btnConfirmar.style.color = 'white';
+                btnConfirmar.textContent = "Accediendo... ✅";
+                btnConfirmar.disabled = true;
+            }
+
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 1000);
         });
 }
 
@@ -39,7 +68,7 @@ function hacerRegistro(evento) {
     }
     if (!fechaInput) {
         error_fecha.style.display = 'block';
-        error_fecha.textContent = "Por favor, introduce una fecha.";
+        error_fecha.textContent = "Por favor, introduzca su fecha de nacimiento.";
         return; // El 'return' hace que la función se detenga aquí y no registre a nadie
     }
 
@@ -52,11 +81,11 @@ function hacerRegistro(evento) {
 
     if (fechaLimpia > fechaActual) {
         error_fecha.style.display = 'block';
-        error_fecha.textContent = "¡No puedes nacer en el futuro, jefe!";
+        error_fecha.textContent = "La fecha introducida no es válida.";
         return; // Detenemos el registro
     } else if (fechaMayorEdad > fechaActual) {
         error_fecha.style.display = 'block';
-        error_fecha.textContent = "Lo sentimos, los menores de 18 años no pueden adoptar.";
+        error_fecha.textContent = "Debe ser mayor de 18 años para poder registrarse.";
         return; // Detenemos el registro
     }
 
@@ -79,7 +108,16 @@ function hacerRegistro(evento) {
     usuariosNuevos.push(nuevoUsuario);
     localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosNuevos));
     // --- PASO 3: REDIRIGIMOS ---
-    window.location.href = 'index.html';
+    let btnCrear = document.getElementById('crear');
+    btnCrear.style.backgroundColor = '#4CAF50';
+    btnCrear.style.color = 'white';
+    btnCrear.textContent = "¡Cuenta creada! ✅";
+    btnCrear.disabled = true;
+
+    // Redirigimos rápido (2 segundo es suficiente si el botón cambia)
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 1000);
 }
 // 3. FUNCIÓN PARA CAMBIAR LOS BOTONES SI ESTÁ LOGUEADO
 function revisarSesion() {
