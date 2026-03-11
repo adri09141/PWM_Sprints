@@ -1,54 +1,195 @@
-/**
-    ESTILOS HEADER
- */
-
-/* --- Contenedor principal del Header --- */
-/* --- Contenedor principal inyectado en el body --- */
 #header-container {
     position: sticky;
     top: 0;
     z-index: 1000;
     width: 100%;
-    /* Es crucial que el contenedor padre no tenga fondo transparente */
-    background-color: #ffffff;
 }
 
-/* --- Tu main-header de _header.html --- */
 .main-header {
-    /* Ya no necesita el sticky, z-index ni el top, el padre se encarga */
     width: 100%;
+    background-color: #FAF7F2;
+    border-bottom: 1px solid rgba(200, 149, 108, 0.18);
+    /* Sombra cálida sutil */
+    box-shadow: 0 2px 24px rgba(80, 40, 10, 0.07);
+    /* Animación de entrada */
+    animation: headerEntrada 0.5s ease both;
+}
+
+@keyframes headerEntrada {
+    from { opacity: 0; transform: translateY(-100%); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .contenedor-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 30px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    /* La sombra se queda aquí */
+    padding: 0 52px;
+    height: 72px;
+    max-width: 1300px;
+    margin: 0 auto;
+    gap: 32px;
 }
 
+/* ── Brand / Logo ── */
 .header-brand {
+    flex-shrink: 0;
+}
+
+.header-logo {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
+    text-decoration: none;
 }
 
-/* --- Contenedor del menú --- */
+.header-logo img {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.header-logo:hover img {
+    transform: rotate(-6deg) scale(1.05);
+}
+
+/* Nombre de la marca junto al logo */
+.header-logo::after {
+    content: 'Huellas Felices';
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2C1A0E;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
+
+/* ── Navegación ── */
 .header-nav {
     display: flex;
-    gap: 30px;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    justify-content: center;
 }
 
-/* --- Estilos directos de los enlaces --- */
 .enlace-nav {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #5C4033;
     text-decoration: none;
-    color: #333333;
-    font-weight: bold;
-    font-family: Verdana, sans-serif;
+    padding: 8px 16px;
+    border-radius: 100px;
+    letter-spacing: 0.01em;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    white-space: nowrap;
 }
 
 .enlace-nav:hover {
-    color: #ff6b6b;
+    color: #2C1A0E;
+    background-color: rgba(200, 149, 108, 0.1);
+}
+
+/* Enlace activo */
+.enlace-nav.activo {
+    color: #C8956C;
+    font-weight: 500;
+}
+
+/* ── Perfil ── */
+.header-perfil {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-perfil a#enlacePerfilHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 6px 16px 6px 6px;
+    border-radius: 100px;
+    border: 1px solid rgba(200, 149, 108, 0.3);
+    background-color: transparent;
+    transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.header-perfil a#enlacePerfilHeader:hover {
+    background-color: rgba(200, 149, 108, 0.08);
+    border-color: rgba(200, 149, 108, 0.55);
+    box-shadow: 0 2px 12px rgba(200, 149, 108, 0.15);
+}
+
+.header-perfil a#enlacePerfilHeader img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(200, 149, 108, 0.3);
+}
+
+.header-perfil .perfil {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #2C1A0E;
+}
+
+/* Botón Salir */
+.header-perfil #enlaceLogout {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #701705;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 100px;
+    transition: color 0.2s, background-color 0.2s;
+    margin-left: 0 !important;
+}
+
+.header-perfil #enlaceLogout:hover {
+    color: #F00000;
+    background-color: #FF8A8A;
+}
+
+/* ── Línea decorativa inferior (acento) ── */
+.main-header::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #C8956C 40%, #7B9E87 70%, transparent 100%);
+    opacity: 0.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+    .contenedor-header {
+        padding: 0 24px;
+        height: 64px;
+    }
+
+    .header-nav {
+        gap: 0;
+    }
+
+    .enlace-nav {
+        font-size: 12px;
+        padding: 7px 11px;
+    }
+}
+
+@media (max-width: 640px) {
+    .header-nav {
+        display: none;
+    }
+
+    .header-logo::after {
+        font-size: 17px;
+    }
 }
