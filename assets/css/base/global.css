@@ -21,14 +21,10 @@
 }
 
 .titulo-apartado {
-    margin-left: 10%;
     /* Coincide con el padding del banner */
-    font-family: 'Times New Roman', serif;
-    font-weight: bold;
-    font-size: 2rem;
-    /* Un poco más grande para que destaque */
-    margin-top: 60px;
-    /* Espacio respecto a la sección de arriba */
-    margin-bottom: 20px;
-    text-align: left;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 50px;
+    margin: 25px auto 10px auto;
+    position: relative;
+    text-align: center;
 }

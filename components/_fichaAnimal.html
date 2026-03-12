@@ -1,44 +1,75 @@
 <main class="main-ficha">
 
-    <h1>{{nombre}}</h1>
-    <h2>{{especie}}</h2>
+    <!-- Hero: foto principal + tarjeta de datos -->
+    <div class="ficha-hero">
 
-    <aside class="main_aside">
-        <figure>
-            <img src="{{foto1}}" alt="Foto 1">
-        </figure>
-    </aside>
+        <!-- Foto principal -->
+        <div class="ficha-foto-principal">
+            <span class="ficha-badge-especie">{{especie}}</span>
+            <img src="{{foto1}}" alt="Foto de {{nombre}}">
+        </div>
 
-    <div class="datos_derecha">
-        <p>Raza: {{raza}}</p>
-        <p>Edad: {{edad}} años</p>
-        <p>Tiempo esperando una familia: {{meses}} meses</p>
-        <p>Sexo: {{sexo}}</p>
-        <p>Peso: {{peso}} kg</p>
+        <!-- Tarjeta de datos -->
+        <div class="ficha-datos-card">
+            <h1 class="ficha-nombre">{{nombre}}</h1>
+            <p class="ficha-especie">{{raza}}</p>
+
+            <div class="ficha-separador"></div>
+
+            <div class="ficha-datos-lista">
+                <div class="ficha-dato">
+                    <span class="ficha-dato-label">Edad</span>
+                    <span class="ficha-dato-valor">{{edad}} años</span>
+                </div>
+                <div class="ficha-dato">
+                    <span class="ficha-dato-label">Sexo</span>
+                    <span class="ficha-dato-valor">{{sexo}}</span>
+                </div>
+                <div class="ficha-dato">
+                    <span class="ficha-dato-label">Peso</span>
+                    <span class="ficha-dato-valor">{{peso}} kg</span>
+                </div>
+                <div class="ficha-dato">
+                    <span class="ficha-dato-label">Especie</span>
+                    <span class="ficha-dato-valor">{{especie}}</span>
+                </div>
+            </div>
+
+            <div class="ficha-espera-badge">
+                <span class="espera-icono">⏳</span>
+                <span class="espera-texto">
+                    Lleva <span class="espera-meses">{{meses}} meses</span> esperando<br>a su familia ideal
+                </span>
+            </div>
+
+            <a href="adopcion.html" class="btn-adoptar">
+                Quiero adoptarlo
+            </a>
+        </div>
+
     </div>
 
-    <p class="descripcion">
-        {{descripcion}}
-    </p>
-    <div class="fila">
-        <div class="foto1">
-            <img src="{{foto1}}" alt="Foto 1">
+    <!-- Descripción -->
+    <div class="ficha-descripcion-bloque">
+        <p class="ficha-descripcion-titulo">Sobre {{nombre}}</p>
+        <p class="ficha-descripcion-texto">{{descripcion}}</p>
+    </div>
+
+    <!-- Galería -->
+    <p class="ficha-galeria-titulo">Más fotos</p>
+    <div class="ficha-galeria">
+        <div class="ficha-galeria-item">
+            <img src="{{foto1}}" alt="Foto 1 de {{nombre}}">
         </div>
-        <div class="foto1">
-            <img src="{{foto2}}" alt="Foto 2">
+        <div class="ficha-galeria-item">
+            <img src="{{foto2}}" alt="Foto 2 de {{nombre}}">
         </div>
-        <div class="foto1">
-            <img src="{{foto3}}" alt="Foto 3">
+        <div class="ficha-galeria-item">
+            <img src="{{foto3}}" alt="Foto 3 de {{nombre}}">
+        </div>
+        <div class="ficha-galeria-item">
+            <img src="{{foto4}}" alt="Foto 4 de {{nombre}}">
         </div>
     </div>
-    <div class="fila">
-        <div class="foto1">
-            <img src="{{foto4}}" alt="Foto 4">
-        </div>
-    </div>
-    <div class="contenedor_boton">
-        <a href="adopcion.html" class="enlace-nav">
-            <input type="button" value="Quiero Adoptarlo">
-        </a>
-    </div>
+
 </main>

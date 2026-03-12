@@ -3,82 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Perfil</title>
+    <title>Mi Perfil — Huellas Felices</title>
     <link rel="stylesheet" href="assets/css/estilos.css">
     <link rel="stylesheet" href="assets/css/pages/acceso.css">
     <script src="assets/js/xlu-include-file.js"></script>
     <script src="assets/js/auth.js"></script>
-    <style>
-        body {
-            text-align: center;
-        }
-        table {
-            margin: 0 auto; text-align: left;
-        }
-        td {
-            font: bold 20px verdana, sans-serif;
-        }
-        textarea{
-            font: normal 15px verdana, sans-serif;
-            margin: 20px;
-            vertical-align: middle;
-            resize: none;
-        }
-    </style>
 </head>
 <body>
-<header id = "header"></header>
-<nav class="main_menu">
-    <ul>
-        <li><a href="reiniciarContrasena.html" class="enlace-nav">Reinicializar Contraseña</a></li>
-        <li>Datos</li>
-        <li><a href="adoptados.html" class="enlace-nav">Adoptados</a></li>
-    </ul>
-</nav>
-<table>
-    <tr>
-        <td>Nombre:</td>
-        <td><textarea id="nombre" name="nombre" rows="1" cols="30"></textarea></td>
-    </tr>
-    <tr>
-        <td>Apellidos:</td>
-        <td><textarea id="apellidos" name="apellidos" rows="1" cols="30"></textarea></td>
-    </tr>
-    <tr>
-        <td>Fecha de Nacimiento:</td>
-        <td><input type="date" id="fecha_nacimiento" name="fecha_nacimiento" style="font-size: 15px; margin-left: 20px;"></td>
-    </tr>
-    <tr>
-        <td>DNI:</td>
-        <td><textarea id="dni" name="dni" rows="1" cols="30"></textarea></td>
-    </tr>
-    <tr>
-        <td>Dirección:</td>
-        <td><textarea id="direccion" name="direccion" rows="1" cols="30"></textarea></td>
-    </tr>
-    <tr>
-        <td>Teléfono:</td>
-        <td><textarea id="telefono" name="telefono" rows="1" cols="30"></textarea></td>
-    </tr>
-    <tr>
-        <td>Correo:</td>
-        <td><input type="email" id="correo" name="correo" style="font-size: 14px; margin:20px; width: 280px;"></td>
-    </tr>
-    <tr>
-        <td>Nº de adopciones:</td>
-        <td><textarea id="n_adopciones" name="n_adopciones" rows="1" cols="30"></textarea></td>
-    </tr>
-</table>
-<br><input type="button" value="Actualizar" style="font-size: 20px; padding:  15px 30px;" ></br>
-<footer id = "footer"></footer>
+
+<header id="header"></header>
+
+<main class="pagina-acceso">
+
+    <!-- Panel izquierdo decorativo -->
+    <div class="acceso-panel-izq">
+        <p class="panel-tag">Tu espacio personal</p>
+        <h1 class="panel-titulo">Tu perfil,<br>tu <em>historia</em></h1>
+        <p class="panel-descripcion">
+            Mantén tus datos actualizados para que podamos agilizar cualquier proceso de adopción y mantenerte informado.
+        </p>
+        <div class="panel-mascotas">
+            <div class="mascota-chip"><span>🐾</span> Mis datos</div>
+            <div class="mascota-chip"><span>❤️</span> Adopciones</div>
+        </div>
+    </div>
+
+    <!-- Panel derecho con formulario -->
+    <div class="acceso-panel-der">
+        <div class="acceso-card acceso-card--wide">
+
+            <!-- Tabs de perfil -->
+            <nav class="acceso-tabs">
+                <a href="reiniciarContrasena.html" class="acceso-tab">Contraseña</a>
+                <span class="acceso-tab activo">Mis Datos</span>
+                <a href="adoptados.html" class="acceso-tab">Adoptados</a>
+            </nav>
+
+            <h2 class="acceso-titulo">Mis datos</h2>
+            <p class="acceso-subtitulo">Revisa y actualiza tu información personal cuando lo necesites.</p>
+
+            <div class="campos-grid">
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="nombre">Nombre</label>
+                    <div class="campo-wrapper">
+                        <input class="campo-input" type="text" id="nombre" name="nombre">
+                    </div>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="apellidos">Apellidos</label>
+                    <div class="campo-wrapper">
+                        <input class="campo-input" type="text" id="apellidos" name="apellidos">
+                    </div>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="fecha_nacimiento">Fecha de Nacimiento</label>
+                    <div class="campo-wrapper">
+                        <input class="campo-input" type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+                    </div>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="dni">DNI</label>
+                    <div class="campo-wrapper">
+                        <input class="campo-input" type="text" id="dni" name="dni">
+                    </div>
+                </div>
+
+                <div class="campo-grupo campo-grupo--full">
+                    <label class="campo-label" for="direccion">Dirección</label>
+                    <div class="campo-wrapper">
+                        <input class="campo-input" type="text" id="direccion" name="direccion">
+                    </div>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="telefono">Teléfono</label>
+                    <div class="campo-wrapper">
+                        <input class="campo-input" type="tel" id="telefono" name="telefono">
+                    </div>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="correo">Correo electrónico</label>
+                    <div class="campo-wrapper">
+                        <input class="campo-input" type="email" id="correo" name="correo">
+                    </div>
+                </div>
+
+                <div class="campo-grupo campo-grupo--full">
+                    <label class="campo-label" for="n_adopciones">Nº de adopciones</label>
+                    <div class="campo-wrapper">
+                        <input class="campo-input" type="text" id="n_adopciones" name="n_adopciones" readonly
+                               style="opacity: 0.7; cursor: default;">
+                    </div>
+                </div>
+
+            </div>
+
+            <button type="button" id="btn_actualizar" class="btn-acceso-principal">
+                Guardar cambios
+            </button>
+
+        </div>
+    </div>
+
+</main>
+
+<footer id="footer"></footer>
 
 <script>
     xLuIncludeFile();
-    document.addEventListener('DOMContentLoaded', (event) => {
+    document.addEventListener('DOMContentLoaded', () => {
         loadHTMLAndExecuteScripts('#header', 'components/_header.html');
         loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
     });
     cargarDatosGuardados();
 </script>
+
 </body>
 </html>

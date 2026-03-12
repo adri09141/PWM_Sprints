@@ -1,46 +1,443 @@
-/* --- ESTILOS CENTRADOS EN EL FICHERO [SOBRENOSOTROS] --- */
-/* Estilos para los títulos de esta página */
-h1 {
-    font: bold 40px verdana, sans-serif;
-    margin: 20px 20px 0 20px;
+:root {
+    --crema:       #F7F3EE;
+    --arena:       #EDE3D4;
+    --terracota:   #C0674A;
+    --terracota-l: #D98B72;
+    --musgo:       #4A6741;
+    --musgo-l:     #6B8F66;
+    --marron:      #5C3D2E;
+    --texto:       #2E2218;
+    --gris-suave:  #8A7F76;
+    --blanco:      #FFFFFF;
+    --radio:       18px;
+    --sombra:      0 8px 40px rgba(92,61,46,0.10);
+    --sombra-sm:   0 2px 12px rgba(92,61,46,0.08);
 }
 
-h2 {
-    font: bold 20px verdana, sans-serif;
-    margin: 0 20px 20px 20px;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--crema);
+    color: var(--texto);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
 }
 
-/* --- ESTRUCTURA DE FOTOS Y TEXTOS --- */
+em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--terracota);
+}
+
+/* ── HERO ───────────────────────────────────────────────── */
+.hero-sobre {
+    position: relative;
+    background: linear-gradient(135deg, var(--marron) 0%, #3A2518 100%);
+    color: var(--crema);
+    text-align: center;
+    padding: 90px 24px 80px;
+    overflow: hidden;
+}
+
+.hero-sobre::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--terracota-l);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+}
+
+.hero-sobre h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 8vw, 90px);
+    font-weight: 700;
+    line-height: 1.05;
+    margin: 0 0 20px;
+    color: var(--crema);
+    letter-spacing: -1px;
+}
+
+.hero-sobre h1 em {
+    color: var(--terracota-l);
+}
+
+.hero-tagline {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(247,243,238,0.75);
+    max-width: 480px;
+    margin: 0 auto 32px;
+}
+
+.hero-paw {
+    font-size: 36px;
+    opacity: 0.6;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* ── ETIQUETA DE SECCIÓN ────────────────────────────────── */
+.seccion-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracota);
+    margin-bottom: 10px;
+}
+
+/* ── QUIÉNES SOMOS ──────────────────────────────────────── */
+.quienes-somos {
+    padding: 80px 5vw;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.quienes-somos > .seccion-label {
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.contenedor-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.foto1 {
+    position: relative;
+}
 
 .foto1 img {
-    flex-shrink: 0;
-    width: 600px;
+    width: 100%;
     height: auto;
+    border-radius: var(--radio);
+    display: block;
+    box-shadow: var(--sombra);
+    object-fit: cover;
 }
 
-.datos_derecha {
-    font: 15px verdana, sans-serif;
-    line-height: 1.6;
-    max-width: 1200px;
-    margin-top: 0;
+.foto1-deco {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 120px;
+    height: 120px;
+    background: var(--arena);
+    border-radius: 50%;
+    z-index: -1;
 }
-.contenedor-info {
+
+.datos_derecha h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--marron);
+    margin-bottom: 24px;
+}
+
+.datos_derecha p {
+    font-size: 15.5px;
+    color: #4A3728;
+    margin-bottom: 16px;
+    line-height: 1.75;
+}
+
+.datos_derecha p strong {
+    color: var(--terracota);
+}
+
+.destacado {
+    background: var(--arena);
+    border-left: 4px solid var(--terracota);
+    padding: 16px 20px;
+    border-radius: 0 var(--radio) var(--radio) 0;
+    font-style: italic;
+    font-size: 15px !important;
+}
+
+.tags-mision {
     display: flex;
-    align-items: flex-start;
-    gap: 40px;              /* Espacio perfecto entre la foto y el texto */
-    margin: 20px 40px;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
 }
-.foto2 {
-    /* clear: both; asegura que esta foto se vaya abajo del todo y no se monte con los textos de arriba */
-    clear: both;
-    display: block;
+
+.tags-mision span {
+    background: var(--crema);
+    border: 1.5px solid var(--arena);
+    color: var(--marron);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 7px 16px;
+    border-radius: 100px;
+    box-shadow: var(--sombra-sm);
+    transition: all 0.2s;
+}
+
+.tags-mision span:hover {
+    background: var(--terracota);
+    color: white;
+    border-color: var(--terracota);
+}
+
+/* ── CONTADOR ───────────────────────────────────────────── */
+.animalesAdoptados {
+    background: linear-gradient(135deg, var(--musgo) 0%, #2E4229 100%);
+    padding: 80px 24px;
     text-align: center;
-    margin: 20px auto; /* Centrada con un poco de aire arriba y abajo */
+    position: relative;
+    overflow: hidden;
+}
+
+.animalesAdoptados::before {
+    content: '🐾';
+    position: absolute;
+    font-size: 200px;
+    opacity: 0.05;
+    top: -30px;
+    left: -30px;
+    pointer-events: none;
+}
+
+.animalesAdoptados::after {
+    content: '🐾';
+    position: absolute;
+    font-size: 200px;
+    opacity: 0.05;
+    bottom: -30px;
+    right: -30px;
+    pointer-events: none;
+}
+
+.contador-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.etiqueta-contador {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.animalesAdoptados h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 24px;
+}
+
+.animalesAdoptados h2 em {
+    color: #A8D49E;
+}
+
+.subtexto-contador {
+    color: rgba(255,255,255,0.65);
+    font-size: 15px;
+    margin-top: 16px;
+}
+
+/* ── DONACIONES ─────────────────────────────────────────── */
+.donaciones {
+    padding: 80px 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.donaciones-card {
+    background: var(--blanco);
+    border-radius: calc(var(--radio) * 2);
+    padding: 60px 70px;
+    max-width: 640px;
+    text-align: center;
+    box-shadow: var(--sombra);
+    border: 1px solid var(--arena);
+}
+
+.donaciones-icono {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.donaciones-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 700;
+    color: var(--marron);
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.donaciones-card p {
+    color: var(--gris-suave);
+    font-size: 15px;
+    margin-bottom: 32px;
+}
+
+.iban-box {
+    background: var(--crema);
+    border: 1.5px dashed var(--terracota);
+    border-radius: var(--radio);
+    padding: 20px 30px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.iban-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--terracota);
+    font-weight: 500;
+}
+
+.iban-numero {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--marron);
+    letter-spacing: 1px;
+}
+
+/* ── GALERÍA CENTRAL ────────────────────────────────────── */
+.galeria-central {
+    background: var(--arena);
+    padding: 60px 5vw;
+    text-align: center;
+}
+
+.foto2 img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: calc(var(--radio) * 2);
+    box-shadow: var(--sombra);
+    display: inline-block;
+}
+
+/* ── UBICACIÓN + CONTACTO ───────────────────────────────── */
+.ubicacion-contacto {
+    padding: 80px 5vw;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.ubicacion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.ubicacion-texto h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 700;
+    color: var(--marron);
+    line-height: 1.15;
+    margin-bottom: 36px;
+}
+
+.contacto-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contacto-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: var(--blanco);
+    border-radius: var(--radio);
+    padding: 18px 22px;
+    box-shadow: var(--sombra-sm);
+    border: 1px solid var(--arena);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.contacto-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra);
+}
+
+.contacto-icon {
+    font-size: 26px;
+    flex-shrink: 0;
+}
+
+.contacto-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.contacto-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gris-suave);
+    font-weight: 500;
+}
+
+.contacto-valor {
+    font-size: 15px;
+    color: var(--marron);
+    font-weight: 500;
 }
 
 .foto3 {
-    clear: both;
+    border-radius: calc(var(--radio) * 2);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+.foto3 iframe {
     display: block;
-    width: 600px;
-    margin: 0 auto;
+    border-radius: calc(var(--radio) * 2);
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .contenedor-info,
+    .ubicacion-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .donaciones-card {
+        padding: 40px 28px;
+    }
+
+    .quienes-somos,
+    .ubicacion-contacto {
+        padding: 60px 24px;
+    }
 }

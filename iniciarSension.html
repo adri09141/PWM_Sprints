@@ -8,53 +8,83 @@
   <link rel="stylesheet" href="assets/css/pages/acceso.css">
   <script src="assets/js/xlu-include-file.js"></script>
   <script src="assets/js/auth.js"></script>
-  <title>Iniciar Sesión</title>
+  <title>Iniciar Sesión — Huellas Felices</title>
 </head>
 
-<body style="text-align: center;">
+<body>
 
-  <header id = "header"></header>
+<header id="header"></header>
 
-  <h1>Iniciar Sesión</h1>
+<main class="pagina-acceso">
 
-  <nav class="main_menu">
-    <ul>
-      <li>Iniciar Sesión</li>
-      <li><a href="crearCuenta.html" class="enlace-nav">Crear Cuenta</a></li>
-    </ul>
-  </nav>
+  <!-- Panel izquierdo decorativo -->
+  <div class="acceso-panel-izq">
+    <p class="panel-tag">Bienvenido de nuevo</p>
+    <h1 class="panel-titulo">Cada adopción<br>es un <em>nuevo inicio</em></h1>
+    <p class="panel-descripcion">
+      Accede a tu cuenta para ver el estado de tus solicitudes, guardar tus favoritos y seguir el proceso de adopción.
+    </p>
+    <div class="panel-mascotas">
+      <div class="mascota-chip"><span>🐕</span> Perros</div>
+      <div class="mascota-chip"><span>🐈</span> Gatos</div>
+      <div class="mascota-chip"><span>🐾</span> Más</div>
+    </div>
+  </div>
 
-  <form id = "loginForm">
-    <table class="tabla-acceso">
-      <tr>
-        <td>Correo:</td>
-        <td><input type="email" id="correo" name="correo" required placeholder="ejemplo@gmail.com"
-            style="font-size: 14px; margin:20px; width: 280px;"></td>
-      </tr>
-      <tr>
-        <td>Contraseña:</td>
-        <td><input type="password" id="contrasena" name="contrasena" required minlength="4"
-            style="width: 280px; font-size: 14px; margin: 20px;">
-          <button type="button" id="btn_ver_contrasena" style="cursor: pointer; padding: 5px;">Ver</button>
-        </td>
-      </tr>
-      <div id="error"style="color: red; display: none; margin-left: 20px; margin-top: 5px; font-size: 14px;"></div>
-    </table>
+  <!-- Panel derecho con formulario -->
+  <div class="acceso-panel-der">
+    <div class="acceso-card">
 
-    <br>
+      <!-- Tabs -->
+      <nav class="acceso-tabs">
+        <span class="acceso-tab activo">Iniciar Sesión</span>
+        <a href="crearCuenta.html" class="acceso-tab">Crear Cuenta</a>
+      </nav>
 
-    <button type="submit" style="font-size: 20px; padding: 15px 30px;" id = "confirmar" class="botonPrincipal">Confirmar</button>
-  </form>
+      <h2 class="acceso-titulo">Hola de nuevo</h2>
+      <p class="acceso-subtitulo">Introduce tus datos para acceder a tu cuenta.</p>
 
-  <footer id = "footer"></footer>
+      <form id="loginForm">
 
-  <script>
-    xLuIncludeFile();
-    document.addEventListener('DOMContentLoaded', (event) => {
-      loadHTMLAndExecuteScripts('#header', 'components/_header.html');
-      loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
-    });
-  </script>
+        <div class="campo-grupo">
+          <label class="campo-label" for="correo">Correo electrónico</label>
+          <div class="campo-wrapper">
+            <input class="campo-input" type="email" id="correo" name="correo"
+                   required placeholder="ejemplo@gmail.com">
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label class="campo-label" for="contrasena">Contraseña</label>
+          <div class="campo-wrapper">
+            <input class="campo-input" type="password" id="contrasena" name="contrasena"
+                   required minlength="4" placeholder="Mínimo 4 caracteres">
+            <button type="button" id="btn_ver_contrasena" class="btn-ver-pass">Ver</button>
+          </div>
+        </div>
+
+        <div id="error" class="acceso-error"></div>
+
+        <button type="submit" id="confirmar" class="btn-acceso-principal">
+          Entrar
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+
+<footer id="footer"></footer>
+
+<script>
+  xLuIncludeFile();
+  document.addEventListener('DOMContentLoaded', () => {
+    loadHTMLAndExecuteScripts('#header', 'components/_header.html');
+    loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
+  });
+</script>
+
 </body>
-
 </html>
