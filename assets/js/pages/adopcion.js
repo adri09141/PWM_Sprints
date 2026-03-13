@@ -19,8 +19,12 @@ if (!usuarioMemoria) { alert("Debe iniciar sesión"); }
 if (formAdopcion && usuarioMemoria) {
     formAdopcion.addEventListener('submit', function(e) {
         e.preventDefault();
+        if(textarea.value.trim().length < 50) {
+            alert("Queremos conocerte mejor. Escribe al menos 50 caracteres.");
+            return;
+        }
         let btnEnviar = document.getElementById('enviar');
-        btnEnviar.textContent = "Enviando... ✅";
+        btnEnviar.textContent = "¡Solicitud Enviada! ✅";
         btnEnviar.disabled = true;
         setTimeout(() => {
             window.location.href = "index.html";
