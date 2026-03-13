@@ -1,3 +1,13 @@
+/* --- ELIMINAR EL MARGEN (COLAPSO DE MÁRGENES) --- */
+main::before {
+    content: "";
+    display: table;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
 /* Organización de los recuadros (Grid animales y reseñas) */
 
 .grid-contenedor {

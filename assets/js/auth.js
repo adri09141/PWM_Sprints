@@ -68,27 +68,9 @@ async function hacerRegistro(evento) {
     {
         return;
     }
-    if (!fechaInput) {
-        error_fecha.style.display = 'block';
-        error_fecha.textContent = "Por favor, introduzca su fecha de nacimiento.";
-        return; // El 'return' hace que la función se detenga aquí y no registre a nadie
-    }
-
-    let fechaActual = new Date();
-    fechaActual.setHours(0, 0, 0, 0);
-    let fechaLimpia = new Date(fechaInput);
-
-    let fechaMayorEdad = new Date(fechaLimpia);
-    fechaMayorEdad.setFullYear(fechaMayorEdad.getFullYear() + 18);
-
-    if (fechaLimpia > fechaActual) {
-        error_fecha.style.display = 'block';
-        error_fecha.textContent = "La fecha introducida no es válida.";
-        return; // Detenemos el registro
-    } else if (fechaMayorEdad > fechaActual) {
-        error_fecha.style.display = 'block';
-        error_fecha.textContent = "Debe ser mayor de 18 años para poder registrarse.";
-        return; // Detenemos el registro
+    if (verificarFecha(fechaInput))
+    {
+        return;
     }
 
     // --- PASO 2: SI PASÓ LAS PRUEBAS, GUARDAMOS ---
@@ -172,7 +154,6 @@ function cargarDatosGuardados()
 
     // Si no hay nadie logueado, cortamos la función aquí para que no dé errores
     if (!usuarioMemoria) return;
-
     fetch('assets/json/data.json')
     .then(res => res.json())
     .then(data => {
@@ -187,7 +168,6 @@ function cargarDatosGuardados()
             document.getElementById('telefono').value = misDatosCompletos.telefono || "";
             document.getElementById('n_adopciones').value = misDatosCompletos.n_adopciones || "0";
         }else {
-            // PLAN B: Es un usuario nuevo (TÚ). No está en el JSON, así que usamos lo de la memoria.
             document.getElementById('nombre').value = usuarioMemoria.nombre || "";
             document.getElementById('correo').value = usuarioMemoria.correo || "";
             document.getElementById('apellidos').value = usuarioMemoria.apellidos || "";
@@ -198,6 +178,130 @@ function cargarDatosGuardados()
             document.getElementById('n_adopciones').value = usuarioMemoria.n_adopciones || "0";
         }
     })
+
+}
+function prepararBotonActualizar() {
+    let formPerfil = document.getElementById('formulario_perfil');
+    let btnAct = document.getElementById('btn_actualizar');
+
+    if(!btnAct) { return; }
+    if(!formPerfil) { return; }
+    formPerfil.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+
+        // --- FASE 1: IDENTIFICACIÓN DEL USUARIO ---
+        let usuarioMemoria = JSON.parse(localStorage.getItem('usuarioLogueado'));
+        if (!usuarioMemoria) return;
+
+        let usuariosNuevos = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+
+        // Buscamos en qué cajón exacto está nuestro usuario
+        let posicion = usuariosNuevos.findIndex(u => u.correo === usuarioMemoria.correo);
+        if(posicion === -1) { return; }
+
+        // --- FASE 2: RECOPILACIÓN DE DATOS DEL FORMULARIO ---
+        let nombre = document.getElementById('nombre').value;
+        let correo = document.getElementById('correo').value;
+        let apellidos = document.getElementById('apellidos').value;
+        let fechaNacimiento = document.getElementById('fecha_nacimiento').value;
+        let dni = document.getElementById('dni').value;
+        let direccion = document.getElementById('direccion').value;
+        let telefono = document.getElementById('telefono').value;
+
+        let error_telefono = document.getElementById('error_telefono');
+        if(error_telefono)
+        {
+            error_telefono.style.display = 'none';
+        }
+        if(telefono.length !== 9 || !isDigit(telefono))
+        {
+            if(error_telefono)
+            {
+                error_telefono.style.display = 'block';
+                error_telefono.textContent = "El teléfono no es válido.";
+            }
+            return;
+        }
+        if (verificarFecha(fechaNacimiento))
+        {
+            return;
+        }
+        // --- FASE 3: ACTUALIZAR EN BASE DE DATOS GENERAL ---
+        usuariosNuevos[posicion].nombre = nombre;
+        usuariosNuevos[posicion].correo = correo;
+        usuariosNuevos[posicion].apellidos = apellidos;
+        usuariosNuevos[posicion].fecha_nacimiento = fechaNacimiento;
+        usuariosNuevos[posicion].dni = dni;
+        usuariosNuevos[posicion].direccion = direccion;
+        usuariosNuevos[posicion].telefono = telefono;
+
+        localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosNuevos));
+
+        // --- FASE 4: ACTUALIZAR SESIÓN ACTIVA ---
+        usuarioMemoria.nombre = nombre;
+        usuarioMemoria.correo = correo;
+        usuarioMemoria.apellidos = apellidos;
+        usuarioMemoria.fecha_nacimiento = fechaNacimiento;
+        usuarioMemoria.dni = dni;
+        usuarioMemoria.direccion = direccion;
+        usuarioMemoria.telefono = telefono;
+
+        localStorage.setItem('usuarioLogueado', JSON.stringify(usuarioMemoria));
+
+        // --- FASE 5: FEEDBACK VISUAL Y REDIRECCIÓN ---
+        btnAct.style.backgroundColor = '#4CAF50';
+        btnAct.style.color = 'white';
+        btnAct.textContent = "¡Datos Actualizados! ✅";
+        btnAct.disabled = true;
+
+        setTimeout(() => {
+            // Recargamos la página del perfil para que se vean los cambios reflejados
+            window.location.href = "perfil.html";
+        }, 1000);
+    });
+}
+/** FUNCIONES EXTRAS */
+function verificarFecha(fechaNacimiento) {
+    let error_fecha = document.getElementById('error_fecha');
+
+    // Limpiamos el error por si acaso
+    if (error_fecha) error_fecha.style.display = 'none';
+
+    // Si no hay fecha, también es un error
+    if (!fechaNacimiento) {
+        if(error_fecha) {
+            error_fecha.style.display = 'block';
+            error_fecha.textContent = "Por favor, introduzca su fecha de nacimiento.";
+        }
+        return true; // Devuelve TRUE (Hay error)
+    }
+
+    let fechaActual = new Date();
+    fechaActual.setHours(0, 0, 0, 0);
+    let fechaLimpia = new Date(fechaNacimiento);
+
+    let fechaMayorEdad = new Date(fechaLimpia);
+    fechaMayorEdad.setFullYear(fechaMayorEdad.getFullYear() + 18);
+
+    if (fechaLimpia > fechaActual) {
+        if(error_fecha) {
+            error_fecha.style.display = 'block';
+            error_fecha.textContent = "La fecha introducida no es válida.";
+        }
+        return true; // Devuelve TRUE (Hay error)
+    } else if (fechaMayorEdad > fechaActual) {
+        if(error_fecha) {
+            error_fecha.style.display = 'block';
+            error_fecha.textContent = "Debe ser mayor de 18 años.";
+        }
+        return true; // Devuelve TRUE (Hay error)
+    }
+
+    return false; // Devuelve FALSE (Todo está perfecto)
+}
+function isDigit(texto) {
+    // Comprueba si el texto contiene ÚNICAMENTE números del 0 al 9
+    return /^\d+$/.test(texto);
 }
 // --- ARRANQUE GENERAL ---
 // Cuando la página cargue, conectamos los botones con sus funciones
@@ -215,9 +319,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     let inputContrasena = document.getElementById('contrasena');
     let btnVerPass = document.getElementById('btn_ver_contrasena');
-    if(inputContrasena && btnVerPass)
-    {
-        btnVerPass.addEventListener('click', function() {
+    if(inputContrasena && btnVerPass) {
+        btnVerPass.addEventListener('click', function () {
             // Si está en modo contraseña (oculta)...
             if (inputContrasena.type === "password") {
                 inputContrasena.type = "text"; // La hacemos visible
@@ -229,6 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    prepararBotonActualizar();
     // Comprobamos la sesión en todas las páginas
     revisarSesion();
 });
