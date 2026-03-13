@@ -54,14 +54,16 @@ function hacerLogin(evento) {
 }
 
 // 2. FUNCIÓN PARA REGISTRARSE
-function hacerRegistro(evento) {
+async function hacerRegistro(evento) {
     // Evitamos que recargue la página
     evento.preventDefault();
 
     // --- PASO 1: VALIDAMOS LA FECHA PRIMERO ---
     let error_fecha = document.getElementById('error_fecha');
     let cajaFisicaFecha = document.getElementById('fecha_nacimiento');
+    let error_correo = document.getElementById('error_correo');
     let fechaInput = cajaFisicaFecha.value;
+
     if(verificaContrasena())
     {
         return;
@@ -100,12 +102,24 @@ function hacerRegistro(evento) {
     let dni = document.getElementById('dni').value;
     let direccion = document.getElementById('direccion').value;
     let telefono = document.getElementById('telefono').value;
-    // Guardamos los datos simulando que ya entró
-    let nuevoUsuario = { nombre: nombre, correo: correo, contrasena: contrasena, apellidos: apellidos, fecha_nacimiento : fechaNacimiento, dni: dni,direccion: direccion, telefono: telefono}
-    localStorage.setItem('usuarioLogueado', JSON.stringify(nuevoUsuario));
 
+    // Guardamos los datos simulando que ya entró pero antes verificamos que no exista
+    let nuevoUsuario = { nombre: nombre, correo: correo, contrasena: contrasena, apellidos: apellidos, fecha_nacimiento : fechaNacimiento, dni: dni,direccion: direccion, telefono: telefono}
     let usuariosNuevos = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+    let res = await fetch('assets/json/data.json');
+    let data = await res.json();
+
+    let todosLosUsuarios = data.usuarios.concat(usuariosNuevos);
+    let usuarioPorCorreo = todosLosUsuarios.find(u => u.correo === correo);
+
+    if(usuarioPorCorreo)
+    {
+        error_correo.style.display = 'block';
+        error_correo.textContent = "El correo ya existe!.";
+        return;
+    }
     usuariosNuevos.push(nuevoUsuario);
+    localStorage.setItem('usuarioLogueado', JSON.stringify(nuevoUsuario));
     localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosNuevos));
     // --- PASO 3: REDIRIGIMOS ---
     let btnCrear = document.getElementById('crear');
