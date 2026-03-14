@@ -261,6 +261,9 @@ function prepararBotonActualizar() {
     });
 }
 /** FUNCIONES EXTRAS */
+function verificarRegistro() {
+    return localStorage.getItem('usuarioLogueado') !== null;
+}
 function verificarFecha(fechaNacimiento) {
     let error_fecha = document.getElementById('error_fecha');
 

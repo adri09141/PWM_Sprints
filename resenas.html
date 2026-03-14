@@ -7,12 +7,13 @@
   <link rel="stylesheet" href="assets/css/estilos.css">
     <link rel="stylesheet" href="assets/css/components/tarjeta-resena.css">
   <script src="assets/js/xlu-include-file.js"></script>
+  <script src="assets/js/auth.js"></script>
 </head>
 
 <body>
   <header id="header"></header>
   <h2 style="text-align: center; font-family: 'Bebas Neue', sans-serif; font-size: 30px;">Lo que dicen nuestros adoptantes</h2>
-
+  <a href="anadirResena.html" id="btn_anadir_resena" class="acceso-tab">Añadir Reseña</a>
 
   <div class="grupo-tarjetas-resenas">
 
@@ -27,6 +28,17 @@
       loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
       cargarContenidoDinamico();
     });
+    let btn_anadir_resena = document.getElementById('btn_anadir_resena');
+    if(btn_anadir_resena)
+    {
+      btn_anadir_resena.addEventListener('click', (event) => {
+        if (!verificarRegistro()) {
+          event.preventDefault();
+          alert("¡Hola! Para contar tu historia, primero debes iniciar sesión. 🐾");
+          window.location.href = "iniciarSension.html";
+        }
+      })
+    }
   </script>
 </body>
 

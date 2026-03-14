@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Reseña — Huellas Felices</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="assets/css/pages/acceso.css">
+    <script src="assets/js/xlu-include-file.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/pages/resena.js"></script>
+</head>
+<body>
+
+<header id="header"></header>
+
+<main class="pagina-acceso">
+
+    <div class="acceso-panel-izq">
+        <p class="panel-tag">Tu espacio personal</p>
+        <h1 class="panel-titulo">Tu perfil,<br>tu <em>historia</em></h1>
+        <p class="panel-descripcion">
+            Mantén tus datos actualizados para que podamos agilizar cualquier proceso de adopción y mantenerte informado.
+        </p>
+        <div class="panel-mascotas">
+            <div class="mascota-chip"><span>🐾</span> Mis datos</div>
+            <div class="mascota-chip"><span>❤️</span> Adopciones</div>
+        </div>
+    </div>
+
+    <div class="acceso-panel-der">
+        <div class="acceso-card acceso-card--wide">
+
+            <h2 class="acceso-titulo">Añadir Reseña</h2>
+
+            <form id="formulario_resena">
+
+                <div class="campos-grid">
+
+                    <div class="campo-grupo">
+                        <label class="campo-label" for="nombre">Nombre</label>
+                        <div class="campo-wrapper">
+                            <input class="campo-input" type="text" id="nombre" name="nombre" required placeholder="Tu nombre" readonly style="opacity: 0.7; cursor: default;">
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-label" for="apellidos">Apellidos</label>
+                        <div class="campo-wrapper">
+                            <input class="campo-input" type="text" id="apellidos" name="apellidos" required placeholder="Tus apellidos" readonly style="opacity: 0.7; cursor: default;">
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo campo-grupo--full">
+                        <label class="campo-label" for="correo">Correo electrónico</label>
+                        <div class="campo-wrapper">
+                            <input class="campo-input" type="email" id="correo" name="correo" readonly style="opacity: 0.7; cursor: default;">
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-label" for="nombre_mascota">Nombre de tu peludo</label>
+                        <div class="campo-wrapper">
+                            <input class="campo-input" type="text" id="nombre_mascota" name="nombre_mascota" required placeholder="Ej: Toby">
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-label" for="valoracion">Valoración</label>
+                        <div class="campo-wrapper">
+                            <select class="campo-input" id="valoracion" name="valoracion" required>
+                                <option value="" disabled selected>Elige una puntuación...</option>
+                                <option value="5">⭐⭐⭐⭐⭐ (5/5) ¡Increíble!</option>
+                                <option value="4">⭐⭐⭐⭐ (4/5) Muy buena</option>
+                                <option value="3">⭐⭐⭐ (3/5) Buena</option>
+                                <option value="2">⭐⭐ (2/5) Regular</option>
+                                <option value="1">⭐ (1/5) Mala</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo campo-grupo--full">
+                        <label class="campo-label" for="titulo_resena">Titular de tu reseña</label>
+                        <div class="campo-wrapper">
+                            <input class="campo-input" type="text" id="titulo_resena" name="titulo_resena" required maxlength="40" placeholder="Ej: ¡La mejor decisión de mi vida!">
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo campo-grupo--full">
+                        <label class="campo-label" for="descripcion_resena">Resumen de tu historia</label>
+                        <div class="campo-wrapper">
+                            <textarea class="campo-input" id="descripcion_resena" name="descripcion_resena" rows="3" required maxlength="150" placeholder="Ej: Desde que llegó a casa, todo son risas. Se ha adaptado genial a la familia..." style="resize: vertical; padding: 15px; font-family: inherit;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo campo-grupo--full">
+                        <label class="campo-label" for="foto_mascota">Sube una foto de tu amigo</label>
+                        <div class="campo-wrapper">
+                            <input class="campo-input" type="file" id="foto_mascota" name="foto_mascota" accept="image/png, image/jpeg" required>
+                        </div>
+                    </div>
+
+                    <div class="campo-grupo campo-grupo--full" style="margin-top: 15px;">
+                        <button type="submit" id="btn_resena" class="btn-acceso-principal" style="width: 100%;">
+                            Enviar mi historia a revisión
+                        </button>
+                    </div>
+
+                </div> </form>
+
+        </div>
+    </div>
+
+</main>
+
+<footer id="footer"></footer>
+
+<script>
+    xLuIncludeFile();
+    document.addEventListener('DOMContentLoaded', () => {
+        loadHTMLAndExecuteScripts('#header', 'components/_header.html');
+        loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
+        cargarDatosGuardadosEnEspecifico();
+        prepararGuardadoResena();
+    });
+
+</script>
+
+</body>
+</html>
