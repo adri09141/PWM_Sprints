@@ -18,20 +18,11 @@ function hacerLogin(evento) {
             // 1. Primero buscamos si el correo existe (independientemente de la contraseña)
             let usuarioPorCorreo = todosLosUsuarios.find(u => u.correo === correo);
 
-            // Si no encontramos el correo...
-            if (!usuarioPorCorreo) {
+            // 2. Si no encontramos el correo o si existe, comprobamos si la contraseña coincide
+            if (!usuarioPorCorreo || usuarioPorCorreo.contrasena !== contrasena) {
                 if(btnError) {
                     btnError.style.display = 'block';
-                    btnError.textContent = "El correo introducido no está registrado.";
-                }
-                return; // Cortamos
-            }
-
-            // 2. Si el correo existe, comprobamos si la contraseña coincide
-            if (usuarioPorCorreo.contrasena !== contrasena) {
-                if(btnError) {
-                    btnError.style.display = 'block';
-                    btnError.textContent = "La contraseña es incorrecta.";
+                    btnError.textContent = "Correo o contraseña inválidos.";
                 }
                 return; // Cortamos
             }
