@@ -4,30 +4,10 @@ main::before {
     display: table;
 }
 
-/* ── Reset y base para RWD ── */
-html {
-    box-sizing: border-box;
-}
-
-*, *::before, *::after {
-    box-sizing: inherit;
-}
-
 body, html {
     margin: 0;
     padding: 0;
 }
-
-body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
-img, video, svg, canvas {
-    max-width: 100%;
-    height: auto;
-}
-
 /* Organización de los recuadros (Grid animales y reseñas) */
 
 .grid-contenedor {
@@ -57,27 +37,4 @@ img, video, svg, canvas {
     margin: 25px auto 10px auto;
     position: relative;
     text-align: center;
-}
-
-/* ── Responsive Global ── */
-@media (max-width: 1024px) {
-    .grid-contenedor {
-        gap: 30px;
-        padding: 15px;
-    }
-    .titulo-apartado {
-        font-size: 42px;
-    }
-}
-
-@media (max-width: 768px) {
-    .grid-contenedor {
-        gap: 20px;
-        padding: 10px;
-        width: 95%;
-    }
-    .titulo-apartado {
-        font-size: 34px;
-        margin-top: 15px;
-    }
 }
