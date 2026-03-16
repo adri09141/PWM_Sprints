@@ -306,6 +306,28 @@ function isDigit(texto) {
     // Comprueba si el texto contiene ÚNICAMENTE números del 0 al 9
     return /^\d+$/.test(texto);
 }
+function borrarCuenta(){
+    let btnBorrarCuenta = document.getElementById('btn_borrar_cuenta');
+    if(btnBorrarCuenta){
+        btnBorrarCuenta.addEventListener('click', function (evento) {
+            evento.preventDefault();
+
+            let usuarioMemoria = JSON.parse(localStorage.getItem('usuarioLogueado'));
+            if (!usuarioMemoria) return;
+
+            let usuariosNuevos = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+
+            let posicion = usuariosNuevos.findIndex(u => u.correo === usuarioMemoria.correo);
+            if(posicion === -1) { return; }
+
+            localStorage.removeItem('usuarioLogueado');
+            window.location.href = 'index.html';
+
+            usuariosNuevos.splice(posicion, 1);
+            localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosNuevos));
+        })
+    }
+}
 // --- ARRANQUE GENERAL ---
 // Cuando la página cargue, conectamos los botones con sus funciones
 document.addEventListener('DOMContentLoaded', () => {

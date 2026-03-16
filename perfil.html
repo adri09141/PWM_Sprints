@@ -105,8 +105,11 @@
                 <button type="submit" id="btn_actualizar" class="btn-acceso-principal">
                     Guardar cambios
                 </button>
-
             </form>
+
+            <button type='button' id="btn_borrar_cuenta" class="btn-acceso-principal">
+                Eliminar cuenta
+            </button>
 
         </div>
     </div>
@@ -122,6 +125,7 @@
         loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
     });
     cargarDatosGuardados();
+    borrarCuenta();
 </script>
 
 </body>
