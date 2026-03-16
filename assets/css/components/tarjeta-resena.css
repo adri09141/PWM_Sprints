@@ -141,3 +141,26 @@
 .tarjeta-resena:nth-child(4) { animation-delay: 0.35s; }
 .tarjeta-resena:nth-child(5) { animation-delay: 0.45s; }
 .tarjeta-resena:nth-child(6) { animation-delay: 0.55s; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .grupo-tarjetas-resenas {
+        padding: 28px 0;
+        gap: 22px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .grupo-tarjetas-resenas {
+        padding: 20px 0;
+        gap: 18px;
+        justify-content: center;
+    }
+    .tarjeta-resena {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        min-height: 400px;
+    }
+}

@@ -276,7 +276,7 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
     .pagina-acceso { flex-direction: column; }
     .acceso-panel-izq {
         width: 100%;
@@ -287,10 +287,6 @@
     .acceso-panel-der { padding: 48px 32px; }
 }
 
-@media (max-width: 480px) {
-    .acceso-panel-der { padding: 32px 20px; }
-    .acceso-card { max-width: 100%; }
-}
 /* ── Extensiones para crearCuenta ── */
 
 /* Card más ancha para el formulario de registro */
@@ -310,7 +306,9 @@
     grid-column: 1 / -1;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    .acceso-panel-der { padding: 32px 20px; }
+    .acceso-card { max-width: 100%; }
     .campos-grid {
         grid-template-columns: 1fr;
     }

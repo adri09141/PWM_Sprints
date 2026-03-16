@@ -143,3 +143,12 @@
     margin-top: 32px;
     text-transform: uppercase;
 }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .caja-numero {
+        width: 45px;
+        height: 65px;
+        font-size: 2.5rem;
+    }
+}

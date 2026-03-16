@@ -125,6 +125,7 @@
     height: 2.8em;
     padding-right: 3.3em;
     cursor: pointer;
+    max-width: 100%;
 }
 
 .boton-ver-mas .icon {
@@ -158,4 +159,20 @@
 
 .boton-ver-mas:active .icon {
     transform: scale(0.95);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .botonRegitrarse, 
+    .botonCatalogo {
+        width: auto;
+        max-width: 320px;
+        text-align: center;
+    }
+
+    .boton-ver-mas {
+        width: auto;
+        max-width: 320px;
+        justify-content: center;
+    }
 }

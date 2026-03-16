@@ -238,13 +238,13 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
     .pagina-adopcion { flex-direction: column; }
     .adopcion-panel-izq { width: 100%; padding: 48px 32px 40px; min-height: auto; }
     .adopcion-panel-izq::after { display: none; }
     .adopcion-panel-der { padding: 48px 32px; }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .adopcion-panel-der { padding: 32px 20px; }
 }
