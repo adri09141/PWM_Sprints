@@ -141,9 +141,13 @@ body { background-color: #F5EFE6; font-family: 'DM Sans', sans-serif; }
 .adoptados-vacio a:hover { border-color:#C8956C; }
 
 /* Responsive */
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
   .pagina-adoptados { flex-direction: column; }
   .adoptados-panel-izq { width:100%;padding:48px 32px 40px;min-height:auto; }
   .adoptados-panel-izq::after { display:none; }
   .adoptados-panel-der { padding:40px 24px; }
+}
+
+@media (max-width: 768px) {
+  .adoptados-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
 }

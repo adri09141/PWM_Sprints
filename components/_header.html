@@ -7,12 +7,18 @@
             </a>
         </div>
 
-        <nav class="header-nav">
+        <button class="header-burger" type="button" aria-label="Abrir menú" aria-controls="headerMenu" aria-expanded="false">
+            <span class="header-burger__bars" aria-hidden="true"></span>
+        </button>
+
+        <nav class="header-nav" id="headerMenu">
             <a href="index.html" class="enlace-nav">Inicio</a>
             <a href="catalogo.html" class="enlace-nav">Quiero adoptar</a>
             <a href="sobreNosotros.html" class="enlace-nav">Sobre nosotros</a>
             <a href="resenas.html" class="enlace-nav">Finales felices</a>
         </nav>
+
+        <div id="headerPerfilSlot"></div>
 
         <div class="header-perfil">
             <a href="iniciarSension.html" id="enlacePerfilHeader">
@@ -25,32 +31,4 @@
 
     </div>
 </header>
-<script>
-    (function () {
-        const user = JSON.parse(localStorage.getItem('usuarioLogueado'));
-        if (user) {
-            const enlacePerfil = document.getElementById('enlacePerfilHeader');
-            if (enlacePerfil) {
-                enlacePerfil.href = 'perfil.html';
-                document.getElementById('textoPerfilHeader').textContent = user.nombre;
-            }
-            const btnSalir = document.getElementById('enlaceLogout');
-            if (btnSalir) {
-                btnSalir.style.display = 'inline-block';
-                btnSalir.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    localStorage.removeItem('usuarioLogueado');
-                    window.location.href = 'index.html';
-                });
-            }
-        }
-
-        // Marcar enlace activo según la página actual
-        const pagina = window.location.pathname.split('/').pop() || 'index.html';
-        document.querySelectorAll('.enlace-nav').forEach(a => {
-            if (a.getAttribute('href') === pagina) {
-                a.classList.add('activo');
-            }
-        });
-    })();
-</script>
+<script src="assets/js/components/header.js"></script>

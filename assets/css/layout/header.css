@@ -75,6 +75,45 @@
     justify-content: center;
 }
 
+/* ── Hamburguesa (solo móvil) ── */
+.header-burger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(200, 149, 108, 0.25);
+    background: rgba(250, 247, 242, 0.9);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.header-burger__bars {
+    width: 18px;
+    height: 2px;
+    background: #2C1A0E;
+    border-radius: 2px;
+    position: relative;
+    display: block;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.header-burger__bars::before,
+.header-burger__bars::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    background: #2C1A0E;
+    border-radius: 2px;
+    transition: transform 0.2s ease, top 0.2s ease, opacity 0.2s ease;
+}
+
+.header-burger__bars::before { top: -6px; }
+.header-burger__bars::after  { top: 6px; }
+
 .enlace-nav {
     font-family: 'DM Sans', sans-serif;
     font-size: 15px;
@@ -168,7 +207,7 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
     .contenedor-header {
         padding: 0 24px;
         height: 64px;
@@ -179,17 +218,79 @@
     }
 
     .enlace-nav {
-        font-size: 12px;
+        font-size: 13px;
         padding: 7px 11px;
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+    .contenedor-header {
+        height: auto;
+        padding: 10px 16px;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .header-burger {
+        display: inline-flex;
+        order: 2;
+    }
+
     .header-nav {
         display: none;
+        order: 3;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 6px;
+        padding: 10px 0 6px;
+    }
+
+    .enlace-nav {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    /* Perfil y logout dentro del menú hamburguesa */
+    #headerPerfilSlot {
+        display: none;
+    }
+
+    .header-nav .header-perfil {
+        width: 100%;
+        padding-top: 10px;
+        margin-top: 6px;
+        border-top: 1px solid rgba(200, 149, 108, 0.18);
+        justify-content: space-between;
+    }
+
+    .header-nav .header-perfil a#enlacePerfilHeader {
+        flex: 1;
     }
 
     .header-logo::after {
         font-size: 17px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header.menu-open .header-nav {
+        display: flex;
+    }
+
+    .main-header.menu-open .header-burger__bars {
+        background: transparent;
+    }
+
+    .main-header.menu-open .header-burger__bars::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    .main-header.menu-open .header-burger__bars::after {
+        top: 0;
+        transform: rotate(-45deg);
     }
 }

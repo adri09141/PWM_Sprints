@@ -190,3 +190,25 @@
 .contenedor:nth-child(6) {
     animation-delay: 0.40s;
 }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .grupo-tarjetas {
+        gap: 22px;
+        padding: 16px;
+    }
+    .contenedor {
+        width: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .grupo-tarjetas {
+        gap: 18px;
+        padding: 12px;
+    }
+    .contenedor {
+        width: 100%;
+        max-width: 400px;
+    }
+}

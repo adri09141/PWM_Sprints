@@ -215,7 +215,7 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .contenedor-footer {
         grid-template-columns: 1fr 1fr;
         gap: 40px 0;
@@ -224,7 +224,7 @@
     .footer-section { padding-right: 24px; }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 768px) {
     .contenedor-footer {
         grid-template-columns: 1fr;
         gap: 36px;

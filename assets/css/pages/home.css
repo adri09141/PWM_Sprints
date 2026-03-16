@@ -1,9 +1,14 @@
 /* Sección home */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .seccionPrincipal {
     background-image: url('https://images.pexels.com/photos/97082/weimaraner-puppy-dog-snout-97082.jpeg');
     background-size: cover;
     background-position: center;
-
     padding: 100px 10%;
     text-align: left;
     display: flex;
@@ -31,4 +36,24 @@
 .seccionPrincipal p {
     color: #FFFFFF;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .seccionPrincipal { padding: 80px 8%; min-height: 350px; }
+    .seccionPrincipal h1 { font-size: 2.5rem; }
+}
+
+@media (max-width: 768px) {
+    .seccionPrincipal {
+        padding: 60px 20px;
+        align-items: center;
+        text-align: center;
+    }
+    .seccionPrincipal h1 { font-size: 2rem; }
+    .botonesSeccionPrincipal {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
 }

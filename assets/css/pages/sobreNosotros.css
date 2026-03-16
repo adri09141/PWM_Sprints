@@ -425,7 +425,7 @@ em {
 }
 
 /* ── RESPONSIVE ─────────────────────────────────────────── */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     .contenedor-info,
     .ubicacion-grid {
         grid-template-columns: 1fr;
@@ -440,4 +440,10 @@ em {
     .ubicacion-contacto {
         padding: 60px 24px;
     }
+}
+
+@media (max-width: 768px) {
+    .hero-sobre h1 { font-size: clamp(36px, 10vw, 48px); }
+    .hero-sobre { padding: 60px 20px 50px; }
+    .foto1-deco { display: none; }
 }

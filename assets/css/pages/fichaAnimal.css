@@ -269,7 +269,7 @@ body {
 }
 
 /* ── Responsive ── */
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
     .ficha-hero {
         grid-template-columns: 1fr;
     }
@@ -281,7 +281,7 @@ body {
     }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 768px) {
     .ficha-galeria {
         grid-template-columns: repeat(2, 1fr);
     }
