@@ -1,13 +1,22 @@
-/* --- ELIMINAR EL MARGEN (COLAPSO DE MÁRGENES) --- */
+/* --- 1. RESETEO UNIVERSAL DE TAMAÑOS (Adiós scroll horizontal) --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* --- 2. RESETEO DEL BODY Y BLOQUEO DEL EJE X --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Esto corta de raíz cualquier elemento rebelde que intente salirse por la derecha */
+}
+
+/* --- ELIMINAR EL MARGEN FANTASMA (COLAPSO DE MÁRGENES) --- */
 main::before {
     content: "";
     display: table;
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
-}
 /* Organización de los recuadros (Grid animales y reseñas) */
 
 .grid-contenedor {
