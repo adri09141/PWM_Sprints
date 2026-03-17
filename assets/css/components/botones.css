@@ -30,79 +30,61 @@
 
 .botonRegitrarse {
     position: relative;
-    display: inline-block;
-    background: linear-gradient(to bottom, #FF692E, #FFDA8A);
-    color: white;
-    font-family: "Segoe UI", sans-serif;
-    font-weight: bold;
-    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #C8956C 0%, #B5785A 100%);
+    color: #FAF7F2;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.04em;
     border: none;
-    border-radius: 30px;
-    padding: 14px 28px;
+    border-radius: 8px;
+    padding: 14px 32px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    animation: button-shimmer 2s infinite;
-    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 20px rgba(200, 149, 108, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    animation: none;
 }
 
 .botonRegitrarse:hover {
-    background: linear-gradient(to bottom, #FF8A5C, #FFE0B8);
-    animation: button-particles 1s ease-in-out infinite;
     transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(200, 149, 108, 0.55);
+    filter: brightness(1.05);
+    animation: none;
 }
 
 .botonRegitrarse:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(0) scale(0.98);
 }
 
 .botonCatalogo {
     position: relative;
-    display: inline-block;
-    background: linear-gradient(to bottom, #4D50B3, #ADAEDC);
-    color: white;
-    font-family: "Segoe UI", sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    padding: 14px 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #F5F0E8;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    border: 1.5px solid rgba(245, 240, 232, 0.35);
+    border-radius: 8px;
+    padding: 14px 32px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    animation: button-shimmer 2s infinite;
-    transition: all 0.3s ease-in-out;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    animation: none;
 }
 
 .botonCatalogo:hover {
-    background: linear-gradient(to bottom, #4D7DB3, #ADBBDC);
-    animation: button-particles 1s ease-in-out infinite;
-    transform: translateY(-2px);
+    border-color: rgba(200, 149, 108, 0.7);
+    background: rgba(200, 149, 108, 0.1);
+    color: #C8956C;
+    animation: none;
 }
 
-.botonCatalogo:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes button-shimmer {
-    0% {
-        background-position: left top;
-    }
-
-    100% {
-        background-position: right bottom;
-    }
-}
-
-@keyframes button-particles {
-    0% {
-        background-position: left top;
-    }
-
-    100% {
-        background-position: right bottom;
-    }
-}
 
 /* From Uiverse.io by adamgiebl */
 .boton-ver-mas {
@@ -165,7 +147,7 @@
 @media (max-width: 768px) {
     .botonRegitrarse, 
     .botonCatalogo {
-        width: auto;
+        width: 100%;
         max-width: 320px;
         text-align: center;
     }
