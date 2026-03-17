@@ -19,11 +19,12 @@
     display: block;
     color: inherit;
     border-radius: 12px;
+    width: 300px;
+    flex-shrink: 0;
 }
 
 /* --- TARJETA PRINCIPAL --- */
 .contenedor {
-    width: 300px;
     background: #FAF7F2;
     border-radius: 12px;
     overflow: hidden;
@@ -231,10 +232,11 @@
 /* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
     .grupo-tarjetas { gap: 22px; padding: 16px; }
-    .contenedor { width: 280px; }
+    .tarjeta-link { width: 280px; }
 }
 
 @media (max-width: 768px) {
     .grupo-tarjetas { gap: 18px; padding: 12px; }
-    .contenedor { width: 100%; max-width: 400px; }
+    .tarjeta-link { width: 100%; max-width: 400px; }
+    .contenedor { width: 100%; }
 }
