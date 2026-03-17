@@ -4,32 +4,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo de Animales</title>
+  <title>Catálogo de Animales — Huellas Felices</title>
   <link rel="stylesheet" href="assets/css/estilos.css">
   <link rel="stylesheet" href="assets/css/components/tarjeta-animal.css">
-    </head>
+  <link rel="stylesheet" href="assets/css/pages/catalogo.css">
+</head>
 
 <body>
-  <header id="header"></header>
-  <h1 class="titulo-apartado">Listado de Adopción</h1>
+<header id="header"></header>
+
+<!-- Hero -->
+<section class="catalogo-hero">
+  <div class="hero-texto">
+    <span class="hero-tag">Encuentra a tu compañero</span>
+    <h1 class="hero-titulo">Cada uno espera<br>un hogar como el <em>tuyo</em></h1>
+    <p class="hero-descripcion">
+      Todos merecen una segunda oportunidad. Explora nuestro catálogo y encuentra al compañero perfecto para tu vida.
+    </p>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-num" id="statTotal">—</span>
+      <span class="hero-stat-label">Disponibles hoy</span>
+    </div>
+  </div>
+</section>
+
+<!-- Tarjetas -->
+<div class="catalogo-seccion">
+  <div class="catalogo-seccion-header">
+    <span class="catalogo-seccion-titulo">En adopción</span>
+    <div class="catalogo-seccion-linea"></div>
+  </div>
   <div class="grupo-tarjetas">
     <section class="grid-contenedor" id="tarjetaAnimal"></section>
   </div>
-  <footer id="footer"></footer>
-  <script src="assets/js/xlu-include-file.js"></script>
+</div>
 
-  <script>
-    xLuIncludeFile();
-  </script>
+<footer id="footer"></footer>
 
-
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      loadHTMLAndExecuteScripts('#header', 'components/_header.html');
-      loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
-      cargarContenidoDinamico();
-    });
-  </script>
+<script src="assets/js/xlu-include-file.js"></script>
+<script>xLuIncludeFile();</script>
+<script src="assets/js/pages/catalogo.js"></script>
 </body>
 
 </html>

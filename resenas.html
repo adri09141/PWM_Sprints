@@ -4,46 +4,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reseñas de Adoptantes</title>
+  <title>Reseñas de Adoptantes — Huellas Felices</title>
   <link rel="stylesheet" href="assets/css/estilos.css">
   <link rel="stylesheet" href="assets/css/components/botones.css">
-    <link rel="stylesheet" href="assets/css/components/tarjeta-resena.css">
+  <link rel="stylesheet" href="assets/css/components/tarjeta-resena.css">
+  <link rel="stylesheet" href="assets/css/pages/resenas.css">
   <script src="assets/js/xlu-include-file.js"></script>
   <script src="assets/js/auth.js"></script>
 </head>
 
 <body>
-  <header id="header"></header>
-  <h2 class="titulo-apartado">Lo que dicen nuestros adoptantes</h2>
-  <a href="anadirResena.html" class="enlace-nav">
-    <button class="boton-ver-mas"> Añadir Reseña</button>
-  </a>
+<header id="header"></header>
+
+<!-- Hero superior -->
+<section class="resenas-hero">
+  <div class="hero-texto">
+    <span class="hero-tag">Comunidad Huellas Felices</span>
+    <h1 class="hero-titulo">Historias que<br><em>cambian vidas</em></h1>
+    <p class="hero-descripcion">
+      Cada adopción esconde una historia única. Aquí, nuestras familias comparten su experiencia y el amor que encontraron.
+    </p>
+  </div>
+  <div class="hero-accion">
+    <a href="anadirResena.html" class="btn-anadir-resena" id="btn_anadir_resena">
+      <span class="btn-icono">✦</span> Contar mi historia
+    </a>
+    <span class="hero-nota">Inicia sesión para compartir</span>
+  </div>
+</section>
+
+<!-- Reseñas -->
+<div class="resenas-seccion">
+  <div class="resenas-seccion-header">
+    <span class="resenas-seccion-titulo">Testimonios</span>
+    <div class="resenas-seccion-linea"></div>
+  </div>
 
   <div class="grupo-tarjetas-resenas">
-
     <section class="grid-contenedor" id="tarjetaResena"></section>
   </div>
-  <footer id="footer"></footer>
-  <script>xLuIncludeFile();</script>
+</div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      loadHTMLAndExecuteScripts('#header', 'components/_header.html');
-      loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
-      cargarContenidoDinamico();
-    });
-    let btn_anadir_resena = document.getElementById('btn_anadir_resena');
-    if(btn_anadir_resena)
-    {
-      btn_anadir_resena.addEventListener('click', (event) => {
-        if (!verificarRegistro()) {
-          event.preventDefault();
-          alert("¡Hola! Para contar tu historia, primero debes iniciar sesión. 🐾");
-          window.location.href = "iniciarSension.html";
-        }
-      })
-    }
-  </script>
+<footer id="footer"></footer>
+
+<script>xLuIncludeFile();</script>
+<script src="assets/js/pages/resenas.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,161 @@
+/* resenas.css */
+
+/* ══ Hero de la página ══ */
+.resenas-hero {
+  background-color: #1A1A2E;
+  background-image:
+          radial-gradient(ellipse 70% 80% at 60% 50%, rgba(200,149,108,0.1) 0%, transparent 65%),
+          radial-gradient(ellipse 50% 60% at 10% 80%, rgba(123,158,135,0.08) 0%, transparent 60%);
+  padding: 72px 60px 80px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* Línea decorativa inferior */
+.resenas-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #C8956C 30%, #7B9E87 70%, transparent);
+  opacity: 0.6;
+}
+
+/* Círculo decorativo de fondo */
+.resenas-hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  border: 60px solid rgba(200,149,108,0.05);
+  pointer-events: none;
+}
+
+.hero-texto { flex: 1; max-width: 580px; }
+
+.hero-tag {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #C8956C;
+  margin-bottom: 18px;
+  font-weight: 400;
+  display: block;
+}
+
+.hero-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 700;
+  color: #F5F0E8;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px 0;
+}
+
+.hero-titulo em {
+  font-style: italic;
+  color: #C8956C;
+}
+
+.hero-descripcion {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(245,240,232,0.5);
+  max-width: 420px;
+}
+
+/* Botón añadir reseña */
+.hero-accion {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.btn-anadir-resena {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #FAF7F2;
+  background: linear-gradient(135deg, #C8956C 0%, #B5785A 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  box-shadow: 0 4px 16px rgba(200,149,108,0.4);
+}
+
+.btn-anadir-resena:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200,149,108,0.5);
+  filter: brightness(1.06);
+}
+
+.btn-anadir-resena .btn-icono { font-size: 16px; }
+
+.hero-nota {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(245,240,232,0.25);
+  letter-spacing: 0.03em;
+}
+
+/* ══ Sección de reseñas ══ */
+.resenas-seccion {
+  padding: 64px 60px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.resenas-seccion-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.resenas-seccion-titulo {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(92,64,51,0.45);
+}
+
+.resenas-seccion-linea {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(200,149,108,0.25), transparent);
+  margin-left: 20px;
+}
+
+/* ══ Responsive ══ */
+@media (max-width: 860px) {
+  .resenas-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 52px 32px 60px;
+  }
+  .hero-accion { align-items: flex-start; }
+  .resenas-seccion { padding: 48px 24px 60px; }
+}
+
+@media (max-width: 560px) {
+  .resenas-hero { padding: 40px 20px 52px; }
+}
+

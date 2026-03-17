@@ -1,26 +1,22 @@
-<article class="contenedor">
-    <div class="foto-catalogo">
-        <span class="badge-especie">{{especie}}</span>
-        <img src="{{foto1}}" alt="Foto de {{nombre}}">
-    </div>
+<a href="fichaAnimal.html?id={{id}}" class="tarjeta-link">
+    <article class="contenedor">
+        <div class="foto-catalogo">
+            <span class="badge-especie">{{especie}}</span>
+            <img src="{{foto1}}" alt="Foto de {{nombre}}">
+        </div>
 
-    <div class="cuerpo-tarjeta">
-        <h2 class="titulo">{{nombre}}</h2>
+        <div class="cuerpo-tarjeta">
+            <h2 class="titulo">{{nombre}}</h2>
 
-        <div class="separador"></div>
+            <div class="separador"></div>
 
-        <div class="info-catalogo">
-            <div class="datos-catalogo">
-                <p>🐾 <span>{{especie}}</span></p>
-                <p>🎂 <span>{{edad}}</span></p>
-            </div>
-
-            <div class="contenedor-boton">
-                <a href="fichaAnimal.html?id={{id}}">
-                    <button class="boton-adopcion">Adoptarme ♥</button>
-                </a>
+            <div class="info-catalogo">
+                <div class="datos-catalogo">
+                    <p>🐾 <span>{{especie}}</span></p>
+                    <p>🎂 <span>{{edad}}</span></p>
+                </div>
+                <div class="tarjeta-arrow">→</div>
             </div>
         </div>
-    </div>
-
-</article>
+    </article>
+</a>
