@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-
+    // BLOQUE: CAMBIO DE CONTRASEÑA (Página de Perfil)
     const btnConfirmar = document.getElementById('btn_confirmar');
+    // Solo ejecutamos esto si estamos en la página que tiene el botón de confirmar
     if (btnConfirmar) {
         btnConfirmar.addEventListener('click', function() {
+            // --- 1. CAPTURA DE DATOS Y ELEMENTOS ---
             let passActual = document.getElementById('contrasena_actual').value;
             let pass1 = document.getElementById('contrasena').value;
             let pass2 = document.getElementById('contrasena_nueva2').value;
@@ -10,52 +12,56 @@ document.addEventListener('DOMContentLoaded', function() {
             let errorGeneral = document.getElementById('mensaje_error');
             let errorActual = document.getElementById('mensaje_error2');
 
-            // Limpiar errores previos
+            // --- 2. LIMPIEZA DE ERRORES PREVIOS ---
             if (errorGeneral) {
                 errorGeneral.style.display = 'none';
                 errorGeneral.style.color = 'red';
             }
             if (errorActual) errorActual.style.display = 'none';
-
+            // --- 3. VERIFICACIÓN DE SESIÓN (Seguridad) ---
             let usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
-
             if (!usuario) {
                 window.location.href = "iniciarSension.html";
                 return;
             }
 
-            // Validaciones
+            // --- 4. BATERÍA DE VALIDACIONES ---
+
+            // A) Que no haya dejado campos en blanco
             if (passActual === "" || pass1 === "" || pass2 === "") {
                 errorGeneral.style.display = 'block';
                 errorGeneral.textContent = "Por favor, complete todos los campos obligatorios.";
                 return;
             }
+            // B) Que la nueva no sea igual a la vieja (¡Hay que cambiarla de verdad!)
             if(passActual === pass1)
             {
                 errorGeneral.style.display = 'block';
                 errorGeneral.textContent = "No puede ser la misma de antes.";
                 return;
             }
+            // C) Que las dos contraseñas nuevas coincidan
             if (pass1 !== pass2) {
                 errorGeneral.style.display = 'block';
                 errorGeneral.textContent = "Las contraseñas nuevas no coinciden. Revíselas e inténtelo de nuevo.";
                 return;
             }
-
+            // D) Que la contraseña actual introducida sea la verdadera (la que está en memoria)
             if (passActual !== usuario.contrasena) {
                 errorActual.style.display = 'block';
                 errorActual.textContent = "La contraseña actual introducida no es válida.";
                 return;
             }
-
+            // E) Validación de robustez (llamando a tu otra función)
             if (verificaContrasena()) {
                 return;
             }
 
-            // Actualizar datos en memoria
+            // --- 5. ACTUALIZAR DATOS EN MEMORIA ---
+            // Actualizamos la sesión activa
             usuario.contrasena = pass1;
             localStorage.setItem('usuarioLogueado', JSON.stringify(usuario));
-
+            // Buscamos al usuario en la "base de datos" general y lo actualizamos ahí también
             let usuariosRegistrados = JSON.parse(localStorage.getItem('usuariosRegistrados'));
             let index = usuariosRegistrados.findIndex(u => u.correo === usuario.correo);
 
@@ -64,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosRegistrados));
             }
 
-            // Feedback visual y redirección
+            // --- 6. FEEDBACK VISUAL Y REDIRECCIÓN ---
             btnConfirmar.style.backgroundColor = '#4CAF50';
             btnConfirmar.style.color = 'white';
             btnConfirmar.value = "¡Actualizada! ✅";

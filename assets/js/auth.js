@@ -1,4 +1,6 @@
-// 1. FUNCIÓN PARA INICIAR SESIÓN
+/**
+ * Procesa el inicio de sesión comparando datos del JSON y LocalStorage.
+ */
 function hacerLogin(evento) {
     evento.preventDefault();
 
@@ -44,7 +46,9 @@ function hacerLogin(evento) {
         });
 }
 
-// 2. FUNCIÓN PARA REGISTRARSE
+/**
+ * Valida y registra un nuevo usuario en el LocalStorage.
+ */
 async function hacerRegistro(evento) {
     // Evitamos que recargue la página
     evento.preventDefault();
@@ -106,7 +110,9 @@ async function hacerRegistro(evento) {
         window.location.href = "index.html";
     }, 1000);
 }
-// 3. FUNCIÓN PARA CAMBIAR LOS BOTONES SI ESTÁ LOGUEADO
+/**
+ * Modifica visualmente los botones de la interfaz si hay un usuario logueado.
+ */
 function revisarSesion() {
     let usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
 
@@ -137,7 +143,9 @@ function  verificaContrasena() {
     error_contrasena.style.display = 'none';
     return false;
 }
-// 4. FUNCIÓN PARA CARGAR DATOS
+/**
+ * Rellena los inputs del perfil con los datos del usuario actual.
+ */
 function cargarDatosGuardados()
 {
     // 1. Primero, leemos el "sello" de la memoria para saber quién somos
@@ -171,6 +179,9 @@ function cargarDatosGuardados()
     })
 
 }
+/**
+ * Prepara el listener para actualizar los datos del usuario desde el perfil.
+ */
 function prepararBotonActualizar() {
     let formPerfil = document.getElementById('formulario_perfil');
     let btnAct = document.getElementById('btn_actualizar');
@@ -323,16 +334,17 @@ function borrarCuenta(){
 // Cuando la página cargue, conectamos los botones con sus funciones
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Conectamos el Login
+    // Formulario Login
     let formLogin = document.getElementById('loginForm');
     if (formLogin) {
         formLogin.addEventListener('submit', hacerLogin);
     }
-    // Conectamos el Registro (Ojo, he puesto el ID que tienes en tu HTML)
+    // Formulario Registro
     let formRegistro = document.getElementById('formulario_registro');
     if (formRegistro) {
         formRegistro.addEventListener('submit', hacerRegistro);
     }
+    // Ver/Ocultar Contraseña
     let inputContrasena = document.getElementById('contrasena');
     let btnVerPass = document.getElementById('btn_ver_contrasena');
     if(inputContrasena && btnVerPass) {
