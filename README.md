@@ -50,7 +50,7 @@ A continuación se detallan los requisitos que cumple la aplicación:
 | `reiniciarContraseña` | *Login/Registro*      | Página donde el usuario puede recuperar o restablecer su contraseña mediante su correo electrónico. |
 | `crearCuenta`         | *Login/Registro*      | Página donde el usuario puede registrarse creando una nueva cuenta con sus datos personales.        |
 | `adoptados`           | *Adoptados*           | Página donde podrás ver tus mascotas adoptadas y gestionar su desadopción si lo deseas.             |        
-
+| `anadirResena`        | *Reseña*              | Página donde puede añadir tu reseña.                                                                |   
 
 ---
 
@@ -65,10 +65,5 @@ Lista de fragmentos de código o plantillas reutilizables identificadas:
 | `_fichaAnimal.html`         | `fichaAnimal.html`            |
 | `_tarjeReseñas.html`        | `index.html` `reseñas.html`   |
 | `_tarjeAdoptado.html`       | `adoptados.html`              |
+| `_contador.html`            | `index.html`                  |
 
----
-## Otros Aspectos a Considerar en la Evaluación
-* **Tareas implementadas con JavaScript:** Se desarrolló un sistema de renderizado dinámico que funciona como un motor de plantillas. A través de JS, damos vida a los templates (como el header o las tarjetas de animales) buscando etiquetas específicas `{{ }}` y rellenándolas dinámicamente con los datos, evitando así la duplicidad de código.
-* **Organización de las hojas de estilo:** Hemos optado por una arquitectura CSS modular. Como se puede observar en el repositorio, hemos separado los estilos en diferentes archivos según la sección o componente (por ejemplo, `estilos-acceso.css`, `estilos-fichaAnimal.css`, `estilos-sobreNosotros.css`, etc.) para facilitar su mantenimiento.
-* **Aspectos de Look & Feel:** Se ha priorizado un diseño limpio, intuitivo y responsive, enfocado en destacar la parte visual (fotos y vídeos) para fomentar la adopción.
----
