@@ -37,20 +37,20 @@ A continuación se detallan los requisitos que cumple la aplicación:
 ## Listado de Páginas HTML y Mockups
 **Página de inicio de la aplicación web:** `index.html`
 
-| Archivo HTML          | Mockup que implementa | Descripción / Notas                                                                                 |
-|:----------------------|:----------------------|:----------------------------------------------------------------------------------------------------|
-| `index.html`          | *Pagina principal*    | Página principal de aterrizaje.                                                                     |
-| `catalogo.html`       | *Catalogo*            | Donde se ven los diferentes animales disponibles.                                                   |
-| `fichaAnimal.html`    | *Ficha animal*        | Donde se ve toda la información de un animal                                                        |
-| `reseñas.html`        | *Finales Felices*     | Aqui se verá las reseñas de los usuarios que adoptaron                                              |
-| `sobreNosotros.html`  | *Sobre nosotros*      | Página donde abarca toda la informacion de nuestra fundación                                        |
-| `perfil.html`         | *Perfil*              | Página donde se ve la informacion del perfil de cada usuario                                        |
-| `adopcion.html`       | *Adopción*            | Página que pregunta al usuario su motivo para querer adopatar el animal que quiere                  |
-| `iniciarSension`      | *Login/Registro*      | Página donde el usuario inicia sesión ingresando su correo electrónico y contraseña.                |
-| `reiniciarContraseña` | *Login/Registro*      | Página donde el usuario puede recuperar o restablecer su contraseña mediante su correo electrónico. |
-| `crearCuenta`         | *Login/Registro*      | Página donde el usuario puede registrarse creando una nueva cuenta con sus datos personales.        |
-| `adoptados`           | *Adoptados*           | Página donde podrás ver tus mascotas adoptadas y gestionar su desadopción si lo deseas.             |        
-| `anadirResena`        | *Reseña*              | Página donde puede añadir tu reseña.                                                                |   
+| Archivo HTML          | Mockup que implementa  | Descripción / Notas                                                                                 |
+|:----------------------|:-----------------------|:----------------------------------------------------------------------------------------------------|
+| `index.html`          | *Pagina principal*     | Página principal de aterrizaje.                                                                     |
+| `catalogo.html`       | *Catalogo*             | Donde se ven los diferentes animales disponibles.                                                   |
+| `fichaAnimal.html`    | *Ficha animal*         | Donde se ve toda la información de un animal                                                        |
+| `reseñas.html`        | *Finales Felices*      | Aqui se verá las reseñas de los usuarios que adoptaron                                              |
+| `sobreNosotros.html`  | *Sobre nosotros*       | Página donde abarca toda la informacion de nuestra fundación                                        |
+| `perfil.html`         | *Perfil*               | Página donde se ve la informacion del perfil de cada usuario                                        |
+| `adopcion.html`       | *Adopción*             | Página que pregunta al usuario su motivo para querer adopatar el animal que quiere                  |
+| `iniciarSension`      | *Iniciar Sesion*       | Página donde el usuario inicia sesión ingresando su correo electrónico y contraseña.                |
+| `reiniciarContraseña` | *Reiniciar Contraseña* | Página donde el usuario puede recuperar o restablecer su contraseña mediante su correo electrónico. |
+| `crearCuenta`         | *Crear Cuenta*         | Página donde el usuario puede registrarse creando una nueva cuenta con sus datos personales.        |
+| `adoptados`           | *Adoptados*            | Página donde podrás ver tus mascotas adoptadas y gestionar su desadopción si lo deseas.             |        
+| `anadirResena`        | *Añadir Reseña*        | Página donde puede añadir tu reseña.                                                                |   
 
 ---
 
