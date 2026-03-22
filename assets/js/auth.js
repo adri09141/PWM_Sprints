@@ -113,7 +113,7 @@ async function hacerRegistro(evento) {
 /**
  * Modifica visualmente los botones de la interfaz si hay un usuario logueado.
  */
-function revisarSesion() {
+function adaptarInterfazSesion() {
     let usuario = JSON.parse(localStorage.getItem('usuarioLogueado'));
 
     // Si hay alguien guardado en la memoria...
@@ -123,7 +123,7 @@ function revisarSesion() {
 
         if (btnRegistro) {
             // Le cambiamos el texto y el enlace
-            btnRegistro.textContent = `¡Hola, ${usuario.nombre}!`;
+            btnRegistro.textContent = `Espacio de ${usuario.nombre}`;
             btnRegistro.parentElement.href = 'perfil.html';
         }
     }
@@ -262,7 +262,29 @@ function prepararBotonActualizar() {
         }, 1000);
     });
 }
-/** FUNCIONES EXTRAS */
+function borrarCuenta(){
+    let btnBorrarCuenta = document.getElementById('btn_borrar_cuenta');
+    if(btnBorrarCuenta){
+        btnBorrarCuenta.addEventListener('click', function (evento) {
+            evento.preventDefault();
+
+            let usuarioMemoria = JSON.parse(localStorage.getItem('usuarioLogueado'));
+            if (!usuarioMemoria) return;
+
+            let usuariosNuevos = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+
+            let posicion = usuariosNuevos.findIndex(u => u.correo === usuarioMemoria.correo);
+            if(posicion === -1) { return; }
+
+            localStorage.removeItem('usuarioLogueado');
+            window.location.href = 'index.html';
+
+            usuariosNuevos.splice(posicion, 1);
+            localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosNuevos));
+        })
+    }
+}
+/** FUNCIONES EXTRAS retornan {true/false} */
 function verificarRegistro() {
     return localStorage.getItem('usuarioLogueado') !== null;
 }
@@ -308,28 +330,7 @@ function isDigit(texto) {
     // Comprueba si el texto contiene ÚNICAMENTE números del 0 al 9
     return /^\d+$/.test(texto);
 }
-function borrarCuenta(){
-    let btnBorrarCuenta = document.getElementById('btn_borrar_cuenta');
-    if(btnBorrarCuenta){
-        btnBorrarCuenta.addEventListener('click', function (evento) {
-            evento.preventDefault();
 
-            let usuarioMemoria = JSON.parse(localStorage.getItem('usuarioLogueado'));
-            if (!usuarioMemoria) return;
-
-            let usuariosNuevos = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
-
-            let posicion = usuariosNuevos.findIndex(u => u.correo === usuarioMemoria.correo);
-            if(posicion === -1) { return; }
-
-            localStorage.removeItem('usuarioLogueado');
-            window.location.href = 'index.html';
-
-            usuariosNuevos.splice(posicion, 1);
-            localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosNuevos));
-        })
-    }
-}
 // --- ARRANQUE GENERAL ---
 // Cuando la página cargue, conectamos los botones con sus funciones
 document.addEventListener('DOMContentLoaded', () => {
@@ -362,5 +363,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     prepararBotonActualizar();
     // Comprobamos la sesión en todas las páginas
-    revisarSesion();
+    adaptarInterfazSesion();
 });
