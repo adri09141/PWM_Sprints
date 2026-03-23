@@ -59,20 +59,38 @@ async function hacerRegistro(evento) {
     let error_correo = document.getElementById('error_correo');
     let fechaInput = cajaFisicaFecha.value;
 
-    if(verificaContrasena())
-    {
-        return;
-    }
-    if (verificarFecha(fechaInput))
-    {
-        return;
+    if (error_correo) {
+        error_correo.style.display = 'none';
     }
 
+    let hayErrorContrasena = verificaContrasena();
+    let hayErrorFecha = verificarFecha(fechaInput);
+
+    let hayErrorCorreo = false;
+    let usuariosNuevos = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
+    let res = await fetch('assets/json/data.json');
+    let data = await res.json();
+    let todosLosUsuarios = data.usuarios.concat(usuariosNuevos);
+    let correo = document.getElementById('correo').value;
+    let usuarioPorCorreo = todosLosUsuarios.find(u => u.correo === correo);
+    if(usuarioPorCorreo)
+    {
+        if(error_correo)
+        {
+            error_correo.style.display = 'block';
+            error_correo.textContent = "El correo ya existe!.";
+
+        }
+        hayErrorCorreo = true;
+    }
+    // Si alguna de las dos validaciones dio error (true), detenemos el registro
+    if (hayErrorContrasena || hayErrorFecha || hayErrorCorreo) {
+        return;
+    }
     // --- PASO 2: SI PASÓ LAS PRUEBAS, GUARDAMOS ---
     // Escondemos el error por si estaba visible
     error_fecha.style.display = 'none';
     let nombre = document.getElementById('nombre').value;
-    let correo = document.getElementById('correo').value;
     let contrasena = document.getElementById('contrasena').value;
     let apellidos = document.getElementById('apellidos').value;
     let fechaNacimiento = document.getElementById('fecha_nacimiento').value;
@@ -82,19 +100,6 @@ async function hacerRegistro(evento) {
 
     // Guardamos los datos simulando que ya entró pero antes verificamos que no exista
     let nuevoUsuario = { nombre: nombre, correo: correo, contrasena: contrasena, apellidos: apellidos, fecha_nacimiento : fechaNacimiento, dni: dni,direccion: direccion, telefono: telefono}
-    let usuariosNuevos = JSON.parse(localStorage.getItem('usuariosRegistrados')) || [];
-    let res = await fetch('assets/json/data.json');
-    let data = await res.json();
-
-    let todosLosUsuarios = data.usuarios.concat(usuariosNuevos);
-    let usuarioPorCorreo = todosLosUsuarios.find(u => u.correo === correo);
-
-    if(usuarioPorCorreo)
-    {
-        error_correo.style.display = 'block';
-        error_correo.textContent = "El correo ya existe!.";
-        return;
-    }
     usuariosNuevos.push(nuevoUsuario);
     localStorage.setItem('usuarioLogueado', JSON.stringify(nuevoUsuario));
     localStorage.setItem('usuariosRegistrados', JSON.stringify(usuariosNuevos));
@@ -211,10 +216,12 @@ function prepararBotonActualizar() {
         let telefono = document.getElementById('telefono').value;
 
         let error_telefono = document.getElementById('error_telefono');
+        let hayErrorTelefono = false;
         if(error_telefono)
         {
             error_telefono.style.display = 'none';
         }
+        // Comprobamos el teléfono
         if(telefono.length !== 9 || !isDigit(telefono))
         {
             if(error_telefono)
@@ -222,10 +229,12 @@ function prepararBotonActualizar() {
                 error_telefono.style.display = 'block';
                 error_telefono.textContent = "El teléfono no es válido.";
             }
-            return;
+            hayErrorTelefono = true; // Guardamos que hubo error
         }
-        if (verificarFecha(fechaNacimiento))
-        {
+        // Comprobamos la fecha
+        let hayErrorFecha = verificarFecha(fechaNacimiento);
+        // Si alguna de las dos falló, detenemos la actualización
+        if (hayErrorTelefono || hayErrorFecha) {
             return;
         }
         // --- FASE 3: ACTUALIZAR EN BASE DE DATOS GENERAL ---
