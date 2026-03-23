@@ -1,0 +1,88 @@
+/* ── Ajustes generales para elementos nuevos ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* El textarea (Resumen de tu historia) */
+#descripcion_resena {
+    resize: vertical; /* Permite al usuario hacerlo más alto, pero no más ancho */
+    min-height: 100px;
+    max-height: 300px;
+    line-height: 1.5;
+}
+
+/* El desplegable de valoración (Select) */
+#valoracion {
+    cursor: pointer;
+    /* Para que la flechita del select se vea bien en todos los navegadores */
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5rem; /* Espacio para que el texto no pise la flecha */
+}
+
+/* El input para subir la foto */
+#foto_mascota {
+    padding: 10px; /* Un poco menos de padding porque los inputs file son raros */
+    background-color: transparent;
+    border: 1.5px dashed rgba(200,149,108,0.4); /* Borde punteado para que parezca una zona de subida */
+    cursor: pointer;
+}
+
+#foto_mascota:hover {
+    background-color: rgba(200,149,108,0.05);
+}
+
+/* Para darle estilo al botón interior del input file (el botón feo gris por defecto) */
+#foto_mascota::file-selector-button {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #C8956C;
+    background-color: rgba(200,149,108,0.1);
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    margin-right: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#foto_mascota::file-selector-button:hover {
+    background-color: rgba(200,149,108,0.2);
+}
+
+/* =========================================================================
+   RESPONSIVE: Tablet y Móvil
+========================================================================= */
+
+/* Tablet (Hereda el salto a 1 columna del acceso.css, aquí solo retocamos detalles) */
+@media (max-width: 768px) {
+    /* Si necesitas ajustar algo intermedio, iría aquí */
+}
+
+/* Móvil Pequeño */
+@media (max-width: 480px) {
+    /* El textarea necesita respirar un poco en pantallas pequeñas */
+    #descripcion_resena {
+        font-size: 13px; /* Letra un pelín más pequeña */
+        padding: 12px;
+    }
+
+    /* El select de valoración suele verse cortado en móviles si el texto es muy largo */
+    #valoracion {
+        font-size: 13px;
+        padding-left: 10px;
+    }
+
+    /* El botón de enviar historia */
+    #btn_resena {
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    /* Ajuste para que el input file no se desborde si el nombre del archivo es muy largo */
+    #foto_mascota {
+        font-size: 12px;
+    }
+}

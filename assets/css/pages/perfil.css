@@ -1,0 +1,79 @@
+/* =========================================================================
+   perfil.css - Ajustes específicos para la página de Mi Perfil
+========================================================================= */
+
+/* ── Ajustes generales ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* 1. Entradas bloqueadas (Solo lectura como Correo y Nº Adopciones) */
+/* Le damos un fondo distinto y un cursor de "prohibido" para que sea obvio que no se puede editar */
+.campo-input[readonly] {
+    background-color: rgba(200,149,108,0.05);
+    color: rgba(44,26,14,0.6);
+    border-color: rgba(200,149,108,0.15);
+    cursor: not-allowed !important;
+    opacity: 1 !important; /* Reseteamos la opacidad en línea de tu HTML para controlarlo desde aquí */
+}
+
+/* 2. Solución para los mensajes de error */
+/* Como metiste el div de error DENTRO de la caja del input, forzamos que se vaya a la línea de abajo */
+.campo-wrapper {
+    flex-wrap: wrap;
+}
+
+.campo-wrapper .acceso-error {
+    width: 100%;
+    margin-top: 8px !important;
+    background-color: rgba(192, 87, 74, 0.1);
+    padding: 8px 12px;
+    border-radius: 6px;
+    border-left: 3px solid #C0574A;
+    font-weight: 500;
+}
+
+/* 3. Estilo del botón destructivo (Eliminar Cuenta) */
+/* Lo hacemos parecer un botón "secundario" y rojo para advertir del peligro */
+#btn_borrar_cuenta {
+    background: transparent;
+    border: 1.5px solid #C0574A;
+    color: #C0574A;
+    box-shadow: none;
+    margin-top: 24px;
+}
+
+#btn_borrar_cuenta:hover {
+    background: rgba(192, 87, 74, 0.05);
+    box-shadow: 0 4px 12px rgba(192, 87, 74, 0.15);
+    transform: translateY(-2px);
+}
+
+/* =========================================================================
+   RESPONSIVE: Tablet y Móvil
+========================================================================= */
+
+/* Móvil Pequeño */
+@media (max-width: 480px) {
+    /* Ajustamos las pestañas para que quepan las 3 sin montarse */
+    .acceso-tabs {
+        justify-content: space-between;
+    }
+
+    .acceso-tab {
+        padding: 10px 10px 12px;
+        font-size: 12px;
+        letter-spacing: 0; /* Quitamos espacio entre letras para ganar hueco */
+    }
+
+    /* Ajustamos el tamaño de letra de los inputs para no cortar textos largos */
+    .campo-input {
+        font-size: 13px;
+        padding: 12px 14px;
+    }
+
+    /* Achicamos los botones */
+    #btn_actualizar,
+    #btn_borrar_cuenta {
+        padding: 12px;
+        font-size: 13px;
+    }
+}

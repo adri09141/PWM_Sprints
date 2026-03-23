@@ -1,0 +1,92 @@
+/* =========================================================================
+   reiniciarContrasena.css - Ajustes específicos para el Cambio de Contraseña
+========================================================================= */
+
+/* ── Ajustes generales ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* 1. Proteger las contraseñas del botón "Ver" */
+/* Como aquí tienes TRES inputs de contraseña y dos tienen botón "Ver",
+   le aplicamos el padding derecho a todos por seguridad */
+#contrasena_actual,
+#contrasena,
+#contrasena_nueva2 {
+    padding-right: 55px;
+}
+
+/* 2. Solución para los mensajes de error en línea */
+/* Para que los div de error bajen a la siguiente línea y no deformen la caja */
+.campo-wrapper {
+    flex-wrap: wrap;
+}
+
+/* Diseño elegante para los 3 posibles mensajes de error */
+#mensaje_error,
+#mensaje_error2,
+#error_contrasena {
+    width: 100%;
+    margin-top: 8px !important;
+    background-color: rgba(192, 87, 74, 0.1); /* Fondo rojo suave */
+    padding: 8px 12px;
+    border-radius: 6px;
+    border-left: 3px solid #C0574A;
+    color: #C0574A;
+    font-weight: 500;
+}
+
+/* =========================================================================
+   RESPONSIVE: Tablet y Móvil
+========================================================================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+    /* Achicamos el texto explicativo de las reglas de la contraseña */
+    #contrasena::placeholder {
+        font-size: 12px;
+    }
+}
+
+/* Móvil Pequeño */
+@media (max-width: 480px) {
+    /* 1. Ajuste de las 3 pestañas (como hicimos en perfil.css) */
+    .acceso-tabs {
+        justify-content: space-between;
+    }
+
+    .acceso-tab {
+        padding: 10px 10px 12px;
+        font-size: 12px;
+        letter-spacing: 0;
+    }
+
+    /* 2. Ajuste de inputs y botones de "Ver" */
+    .campo-input {
+        font-size: 13px;
+        padding: 12px 14px;
+    }
+
+    .btn-ver-pass {
+        font-size: 10px;
+        right: 8px;
+        padding: 4px;
+    }
+
+    /* 3. Truncar los textos largos de ejemplo */
+    #contrasena::placeholder,
+    #contrasena_nueva2::placeholder {
+        font-size: 11px;
+        text-overflow: ellipsis;
+    }
+
+    /* 4. Ajuste del botón principal y errores */
+    #btn_confirmar {
+        padding: 12px;
+        font-size: 13px;
+        margin-top: 15px;
+    }
+
+    .acceso-error {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+}

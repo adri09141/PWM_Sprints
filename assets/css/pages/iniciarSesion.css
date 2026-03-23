@@ -1,0 +1,70 @@
+/* =========================================================================
+   iniciarSesion.css - Ajustes específicos para el Login
+========================================================================= */
+
+/* ── Ajustes generales ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Protegemos el input de contraseña para que el texto no se monte sobre el botón "Ver" */
+#contrasena {
+    padding-right: 55px;
+}
+
+/* Diseño refinado para el mensaje de error ("Correo o contraseña inválidos") */
+.acceso-error {
+    margin-top: 8px !important;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    background-color: rgba(192, 87, 74, 0.1); /* Fondo rojo suave */
+    padding: 8px 12px;
+    border-radius: 6px;
+    border-left: 3px solid #C0574A;
+    color: #C0574A;
+}
+
+/* =========================================================================
+   RESPONSIVE: Tablet y Móvil
+========================================================================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+    /* Achicamos un poco el placeholder kilométrico de la contraseña */
+    #contrasena::placeholder {
+        font-size: 12px;
+    }
+}
+
+/* Móvil Pequeño */
+@media (max-width: 480px) {
+    /* Ajustamos el tamaño de los inputs para ganar espacio */
+    .campo-input {
+        font-size: 13px;
+        padding: 12px 14px;
+    }
+
+    /* Ajustamos el botón de "Ver" la contraseña */
+    .btn-ver-pass {
+        font-size: 10px;
+        right: 8px;
+        padding: 4px;
+    }
+
+    /* Si la pantalla es muy pequeña, truncamos el placeholder con puntos suspensivos */
+    #contrasena::placeholder {
+        font-size: 11px;
+        text-overflow: ellipsis;
+    }
+
+    /* Reducimos un poco el padding del botón principal */
+    #confirmar {
+        padding: 12px;
+        font-size: 13px;
+        margin-top: 15px;
+    }
+
+    /* Ajuste para que el mensaje de error no se coma toda la pantalla en móvil */
+    .acceso-error {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+}

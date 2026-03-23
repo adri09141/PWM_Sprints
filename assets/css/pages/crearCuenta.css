@@ -1,0 +1,79 @@
+/* =========================================================================
+   crearCuenta.css - Ajustes específicos para los elementos de Registro
+========================================================================= */
+
+/* ── Ajustes generales para elementos nuevos ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Ajuste para el campo de Fecha de Nacimiento */
+#fecha_nacimiento {
+    font-family: 'DM Sans', sans-serif; /* A veces los navegadores le quitan tu fuente a las fechas */
+    cursor: pointer;
+    color: #2C1A0E;
+}
+
+/* ¡Súper importante!
+   Como tienes un botón "Ver" posicionado en absoluto a la derecha,
+   le damos padding derecho a la contraseña para que el texto que escriba el usuario
+   nunca se meta por debajo del botón y se vuelva ilegible.
+*/
+#contrasena {
+    padding-right: 55px;
+}
+
+/* Ajuste fino para que los mensajes de error destaquen bien pero sin empujar todo feo */
+.acceso-error {
+    margin-top: 8px !important; /* Usamos important por si tienes margin-top en línea en el HTML */
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    background-color: rgba(192, 87, 74, 0.1); /* Un fondito rojo muy suave para que resalte más */
+    padding: 8px 12px;
+    border-radius: 6px;
+    border-left: 3px solid #C0574A;
+}
+
+/* =========================================================================
+   RESPONSIVE: Tablet y Móvil
+========================================================================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+    /* El texto de ejemplo de la contraseña es muy largo, en tablet lo achicamos */
+    #contrasena::placeholder {
+        font-size: 12px;
+    }
+}
+
+/* Móvil Pequeño */
+@media (max-width: 480px) {
+    /* Reducimos un pelín el texto de todos los inputs para que no se corten los nombres/apellidos largos */
+    .campo-input {
+        font-size: 13px;
+        padding: 12px 14px;
+    }
+
+    /* El input de fecha en iOS a veces se ve raro, esto lo centra y ajusta */
+    #fecha_nacimiento {
+        font-size: 13px;
+    }
+
+    /* El botón de "Ver" la contraseña lo hacemos más compacto */
+    .btn-ver-pass {
+        font-size: 10px;
+        right: 8px;
+        padding: 4px;
+    }
+
+    /* En pantallas muy pequeñas, el placeholder larguísimo de la contraseña se lo cambiamos ocultando lo que sobra */
+    #contrasena::placeholder {
+        font-size: 11px;
+        text-overflow: ellipsis;
+    }
+
+    /* Ajuste del botón principal de Crear Cuenta */
+    #crear {
+        padding: 12px;
+        font-size: 13px;
+        margin-top: 15px; /* Un poco más de aire con el último input */
+    }
+}
