@@ -15,8 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 1. CARGA DE COMPONENTES BÁSICOS ---
   loadHTMLAndExecuteScripts('#header', 'components/_header.html');
   loadHTMLAndExecuteScripts('#footer', 'components/_footer.html');
-  // --- 2. CARGA DE CONTENIDO DINÁMICO ---
-  cargarContenidoDinamico();
+  // --- 2. CARGA DE CONTENIDO DINÁMICO CON FILTRO---
+  const filtro = document.getElementById('filtro');
+
+  if (filtro) {
+    cargarContenidoDinamico();
+    filtro.addEventListener('change', (event) => {
+      const target = event.target.value;
+      cargarContenidoDinamico(null, target);
+    })
+  }
   // --- 3. CONFIGURACIÓN DEL VIGILANTE (MUTATION OBSERVER) ---
   const container = document.getElementById('tarjetaAnimal');
   if (!container) return;// Si no estamos en la página del catálogo, cortamos aquí

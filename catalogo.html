@@ -36,6 +36,21 @@
     <span class="catalogo-seccion-titulo">En adopción</span>
     <div class="catalogo-seccion-linea"></div>
   </div>
+
+  <form id="boton_filtro">
+    <div class="campo-grupo">
+      <label class="campo-label" for="boton_filtro">Filtro</label>
+      <div class="campo-wrapper">
+        <select class="campo-input" id="filtro" name="filtro" required>
+          <option value="Todos" selected>Todos los animales</option>
+          <option value="Perro">Perro</option>
+          <option value="Gato">Gato</option>
+          <option value="Conejo">Conejo</option>
+        </select>
+      </div>
+    </div>
+  </form>
+
   <div class="grupo-tarjetas">
     <section class="grid-contenedor" id="tarjetaAnimal"></section>
   </div>

@@ -91,8 +91,9 @@ function executeScripts(container) {
  * Lee la base de datos JSON y crea dinámicamente las tarjetas de animales,
  * reseñas y el contador en la página.
  * @param {number|null} limite - Cantidad máxima de elementos a mostrar (útil para la página de inicio)
+ * @param {string} especieFiltrada - Especie de animales a mostrar (útil para el filtro la página del catálogo)
  */
-function cargarContenidoDinamico(limite = null) {
+function cargarContenidoDinamico(limite = null, especieFiltrada = "Todos") {
     fetch('assets/json/data.json')
         .then(response => response.json())
         .then(data => {
@@ -102,7 +103,7 @@ function cargarContenidoDinamico(limite = null) {
 
             // Si hay límite, cortamos el array. Si no (null), usamos data.reseñas tal cual.
             const listaResenas = limite ? data.reseñas.slice(0, limite) : data.reseñas;
-            const listaAnimales = limite ? data.animales.slice(0, limite) : data.animales;
+            let listaAnimales = limite ? data.animales.slice(0, limite) : data.animales;
 
             if (tarjeteResena) {
                 listaResenas.forEach(item => {
@@ -123,6 +124,10 @@ function cargarContenidoDinamico(limite = null) {
                 });
             }
             if (tarjetaAnimal) {
+                tarjetaAnimal.innerHTML = '';
+                if (especieFiltrada !== "Todos") {
+                    listaAnimales = listaAnimales.filter(animal => animal.especie === especieFiltrada);
+                }
                 listaAnimales.forEach(item => {
                     let div = document.createElement('div');
                     div.setAttribute('xlu-include-file', 'components/_tarjetaAnimal.html');
