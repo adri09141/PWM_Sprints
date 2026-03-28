@@ -56,7 +56,7 @@ function prepararGuardadoResena() {
             resenas.push(nuevoResena);
             localStorage.setItem('reseñasNuevasPorRevisar', JSON.stringify(resenas));
             /// --- 6. FEEDBACK AL USUARIO Y REDIRECCIÓN ---
-            alert("¡Historia guardada con éxito, jefe!");
+            alert("Su historia ha sido guardada con éxito y se encuentra pendiente de validación por nuestro equipo.");
             window.location.href = "index.html";
         });
     }

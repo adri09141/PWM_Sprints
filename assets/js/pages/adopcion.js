@@ -17,7 +17,7 @@ textarea.addEventListener('input', () => {
 const formAdopcion = document.getElementById('formulario_adopcion');
 let usuarioMemoria = JSON.parse(localStorage.getItem('usuarioLogueado'));
 // Si intenta entrar a adoptar sin cuenta, lo mandamos al login
-if (!usuarioMemoria) { alert("Debe iniciar sesión"); }
+if (!usuarioMemoria) { alert("Por favor, inicie sesión para poder continuar."); }
 // --- 4. ENVÍO DEL FORMULARIO DE ADOPCIÓN ---
 if (formAdopcion && usuarioMemoria) {
     formAdopcion.addEventListener('submit', function(e) {
