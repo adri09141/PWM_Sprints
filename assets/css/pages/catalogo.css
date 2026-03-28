@@ -1,5 +1,79 @@
 /* catalogo.css */
+/* ══ Filtro de Catálogo ══ */
+#boton_filtro {
+  margin-bottom: 30px; /* Separación con las tarjetas */
+  display: flex;
+  justify-content: flex-end; /* Para alinearlo a la derecha, si lo quieres a la izquierda pon flex-start */
+}
 
+.campo-grupo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: rgba(200, 149, 108, 0.05); /* Fondo muy sutil */
+  padding: 8px 16px;
+  border-radius: 30px;
+  border: 1px solid rgba(200, 149, 108, 0.2);
+  transition: all 0.3s ease;
+}
+
+.campo-grupo:hover {
+  background-color: rgba(200, 149, 108, 0.1);
+  border-color: rgba(200, 149, 108, 0.4);
+}
+
+.campo-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #5C4033; /* Marrón oscuro del texto */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.campo-wrapper {
+  position: relative;
+}
+
+/* El truco para esconder la flecha fea por defecto del navegador */
+.campo-wrapper::after {
+  content: '▼';
+  font-size: 10px;
+  color: #C8956C;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Para que puedas hacer clic a través de la flecha */
+}
+
+.campo-input {
+  appearance: none; /* Esconde el diseño por defecto del select */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 15px;
+  color: #5C4033;
+  padding: 8px 40px 8px 10px; /* Espacio extra a la derecha para la flecha */
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+}
+
+/* Estilo para las opciones cuando se abre el menú */
+.campo-input option {
+  background-color: #F5F0E8; /* Fondo clarito */
+  color: #5C4033;
+}
+
+/* Ajuste responsive para el filtro */
+@media (max-width: 860px) {
+  #boton_filtro {
+    justify-content: flex-start; /* En móvil suele quedar mejor a la izquierda */
+  }
+}
 /* ══ Hero ══ */
 .catalogo-hero {
   background-color: #1A1A2E;
