@@ -28,7 +28,8 @@ A continuación se detallan los requisitos que cumple la aplicación:
 ---
 
 ## Mockups y Storyboard
-* **Nombre del archivo (Mockups):** `mockups.pdf`
+* **Nombre del archivo (Mockups_Antiguos):** `mockups_Sprint0.pdf`
+* **Nombre del archivo (Mockups_Nuevos):** `mockups_Sprint1.pdf`
 * **Nombre del archivo (Storyboard):** `storyboard.pdf`
 * **Ubicación:** `/docs`
 
