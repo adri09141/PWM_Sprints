@@ -1,0 +1,220 @@
+/* catalogo.css */
+/* ══ Filtro de Catálogo ══ */
+#boton_filtro {
+  margin-bottom: 30px; /* Separación con las tarjetas */
+  display: flex;
+  justify-content: flex-end; /* Para alinearlo a la derecha, si lo quieres a la izquierda pon flex-start */
+}
+
+.campo-grupo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: rgba(200, 149, 108, 0.05); /* Fondo muy sutil */
+  padding: 8px 16px;
+  border-radius: 30px;
+  border: 1px solid rgba(200, 149, 108, 0.2);
+  transition: all 0.3s ease;
+}
+
+.campo-grupo:hover {
+  background-color: rgba(200, 149, 108, 0.1);
+  border-color: rgba(200, 149, 108, 0.4);
+}
+
+.campo-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #5C4033; /* Marrón oscuro del texto */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.campo-wrapper {
+  position: relative;
+}
+
+/* El truco para esconder la flecha fea por defecto del navegador */
+.campo-wrapper::after {
+  content: '▼';
+  font-size: 10px;
+  color: #C8956C;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Para que puedas hacer clic a través de la flecha */
+}
+
+.campo-input {
+  appearance: none; /* Esconde el diseño por defecto del select */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: 15px;
+  color: #5C4033;
+  padding: 8px 40px 8px 10px; /* Espacio extra a la derecha para la flecha */
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+}
+
+/* Estilo para las opciones cuando se abre el menú */
+.campo-input option {
+  background-color: #F5F0E8; /* Fondo clarito */
+  color: #5C4033;
+}
+
+/* Ajuste responsive para el filtro */
+@media (max-width: 860px) {
+  #boton_filtro {
+    justify-content: flex-start; /* En móvil suele quedar mejor a la izquierda */
+  }
+}
+/* ══ Hero ══ */
+.catalogo-hero {
+  background-color: #1A1A2E;
+  background-image:
+    radial-gradient(ellipse 65% 70% at 65% 40%, rgba(200,149,108,0.12) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 55% at 5% 90%, rgba(123,158,135,0.08) 0%, transparent 60%);
+  padding: 68px 60px 76px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.catalogo-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #C8956C 30%, #7B9E87 70%, transparent);
+  opacity: 0.6;
+}
+
+.catalogo-hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 450px; height: 450px;
+  border-radius: 50%;
+  border: 70px solid rgba(200,149,108,0.04);
+  pointer-events: none;
+}
+
+.hero-texto { flex: 1; max-width: 620px; }
+
+.hero-tag {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #C8956C;
+  margin-bottom: 18px;
+  font-weight: 400;
+  display: block;
+}
+
+.hero-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 4.5vw, 54px);
+  font-weight: 700;
+  color: #F5F0E8;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px 0;
+}
+
+.hero-titulo em { font-style: italic; color: #C8956C; }
+
+.hero-descripcion {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(245,240,232,0.5);
+  max-width: 440px;
+}
+
+/* Stat chips en el hero */
+.hero-stats {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #C8956C;
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.3);
+}
+
+/* ══ Sección de tarjetas ══ */
+.catalogo-seccion {
+  padding: 56px 60px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.catalogo-seccion-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 36px;
+}
+
+.catalogo-seccion-titulo {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(92,64,51,0.45);
+  white-space: nowrap;
+}
+
+.catalogo-seccion-linea {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(200,149,108,0.25), transparent);
+  margin-left: 20px;
+}
+
+/* ══ Responsive ══ */
+@media (max-width: 860px) {
+  .catalogo-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 52px 32px 60px;
+  }
+  .hero-stats { align-items: flex-start; flex-direction: row; gap: 32px; }
+  .hero-stat { align-items: flex-start; }
+  .catalogo-seccion { padding: 40px 24px 60px; }
+}
+
+@media (max-width: 480px) {
+  .catalogo-hero { padding: 40px 20px 52px; }
+}
+

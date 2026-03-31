@@ -1,0 +1,86 @@
+<main>
+
+  <!-- ── HERO ── -->
+  <section class="seccionPrincipal">
+    <div class="hero-contenido">
+      <div class="hero-badge">Refugio de animales · Huellas y Hogar</div>
+      <h1>Dale una <em>segunda oportunidad</em> a quien más lo merece</h1>
+      <p class="hero-tagline">
+        Cada animal que rescatamos tiene una historia. Encuentra a tu compañero perfecto
+        y juntos escribid la mejor parte de ella.
+      </p>
+      <div class="botonesSeccionPrincipal">
+        <a href="crearCuenta.html">
+          <button class="botonRegitrarse">Registrarse</button>
+        </a>
+        <a href="catalogo.html">
+          <button class="botonCatalogo">Ver catálogo</button>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span class="hero-scroll-line"></span>
+      Descubre más
+    </div>
+  </section>
+
+  <!-- ── ANIMALES ── -->
+  <div class="muestra-catalogo">
+    <div class="seccion-header">
+      <div class="seccion-label">Nuestros animales</div>
+      <h2 class="titulo-apartado">Encuentra tu <em>compañero</em></h2>
+      <p class="seccion-subtitulo">Todos rescatados, todos con ganas de un hogar lleno de amor.</p>
+    </div>
+    <div class="grupo-tarjetas">
+
+      @for (item of animales(); track item.id) {
+        <app-tarjeta-animal [animal]="item"></app-tarjeta-animal>
+      }
+
+    </div>
+    <div class="ver-mas-wrapper">
+      <a href="catalogo.html">
+        <button class="boton-ver-mas">
+          Ver todos
+          <div class="icon">
+            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
+            </svg>
+          </div>
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── CONTADOR ── -->
+  <section class="animalesAdoptados">
+    <p class="etiqueta-contador">Desde nuestros inicios</p>
+    <h2>Vidas salvadas</h2>
+    <div id="contenedorContador"></div>
+    <p class="subtexto-contador">animales adoptados y contando 🐾</p>
+  </section>
+
+  <!-- ── RESEÑAS ── -->
+  <div class="muestra-reseñas">
+    <div class="seccion-header">
+      <div class="seccion-label">Testimonios</div>
+      <h2 class="titulo-apartado">Lo que dicen nuestras <em>familias</em></h2>
+      <p class="seccion-subtitulo">Historias reales de personas que encontraron un amigo para toda la vida.</p>
+    </div>
+    <section class="grid-contenedor" id="tarjetaResena"></section>
+    <div class="ver-mas-wrapper">
+      <a href="resenas.html">
+        <button class="boton-ver-mas">
+          Ver todas
+          <div class="icon">
+            <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
+            </svg>
+          </div>
+        </button>
+      </a>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,24 @@
+<a class="tarjeta-link" href="#">
+  <article class="contenedor">
+
+    <div class="foto-catalogo">
+      <span class="badge-especie">{{ animal.id }}</span>
+      <img [src]="animal.foto1" alt="Foto de {{ animal.nombre }}">
+    </div>
+
+    <div class="cuerpo-tarjeta">
+      <h2 class="titulo">{{ animal.nombre }}</h2>
+
+      <div class="separador"></div>
+
+      <div class="info-catalogo">
+        <div class="datos-catalogo">
+          <p>🐾 <span>{{ animal.especie }}</span></p>
+          <p>🎂 <span>{{ animal.edad }} años</span></p>
+        </div>
+        <div class="tarjeta-arrow">→</div>
+      </div>
+    </div>
+
+  </article>
+</a>

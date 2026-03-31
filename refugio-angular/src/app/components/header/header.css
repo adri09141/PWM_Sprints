@@ -1,0 +1,296 @@
+#header-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+
+.main-header {
+  width: 100%;
+  background-color: #FAF7F2;
+  border-bottom: 1px solid rgba(200, 149, 108, 0.18);
+  /* Sombra cálida sutil */
+  box-shadow: 0 2px 24px rgba(80, 40, 10, 0.07);
+  /* Animación de entrada */
+  animation: headerEntrada 0.5s ease both;
+}
+
+@keyframes headerEntrada {
+  from { opacity: 0; transform: translateY(-100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.contenedor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 52px;
+  height: 72px;
+  max-width: 1300px;
+  margin: 0 auto;
+  gap: 32px;
+}
+
+/* ── Brand / Logo ── */
+.header-brand {
+  flex-shrink: 0;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.header-logo img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.header-logo:hover img {
+  transform: rotate(-6deg) scale(1.05);
+}
+
+/* Nombre de la marca junto al logo */
+.header-logo::after {
+  content: 'Huellas Felices';
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #2C1A0E;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* ── Navegación ── */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+
+/* ── Hamburguesa (solo móvil) ── */
+.header-burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(200, 149, 108, 0.25);
+  background: rgba(250, 247, 242, 0.9);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.header-burger__bars {
+  width: 18px;
+  height: 2px;
+  background: #2C1A0E;
+  border-radius: 2px;
+  position: relative;
+  display: block;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.header-burger__bars::before,
+.header-burger__bars::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background: #2C1A0E;
+  border-radius: 2px;
+  transition: transform 0.2s ease, top 0.2s ease, opacity 0.2s ease;
+}
+
+.header-burger__bars::before { top: -6px; }
+.header-burger__bars::after  { top: 6px; }
+
+.enlace-nav {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #5C4033;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 100px;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.enlace-nav:hover {
+  color: #2C1A0E;
+  background-color: rgba(200, 149, 108, 0.1);
+}
+
+/* Enlace activo */
+.enlace-nav.activo {
+  color: #C8956C;
+  font-weight: 500;
+}
+
+/* ── Perfil ── */
+.header-perfil {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-perfil a#enlacePerfilHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 6px 16px 6px 6px;
+  border-radius: 100px;
+  border: 1px solid rgba(200, 149, 108, 0.3);
+  background-color: transparent;
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.header-perfil a#enlacePerfilHeader:hover {
+  background-color: rgba(200, 149, 108, 0.08);
+  border-color: rgba(200, 149, 108, 0.55);
+  box-shadow: 0 2px 12px rgba(200, 149, 108, 0.15);
+}
+
+.header-perfil a#enlacePerfilHeader img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(200, 149, 108, 0.3);
+}
+
+.header-perfil .perfil {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2C1A0E;
+}
+
+/* Botón Salir */
+.header-perfil #enlaceLogout {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #701705;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 100px;
+  transition: color 0.2s, background-color 0.2s;
+  margin-left: 0 !important;
+}
+
+.header-perfil #enlaceLogout:hover {
+  color: #F00000;
+  background-color: #FF8A8A;
+}
+
+/* ── Línea decorativa inferior (acento) ── */
+.main-header::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #C8956C 40%, #7B9E87 70%, transparent 100%);
+  opacity: 0.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .contenedor-header {
+    padding: 0 24px;
+    height: 64px;
+  }
+
+  .header-nav {
+    gap: 0;
+  }
+
+  .enlace-nav {
+    font-size: 13px;
+    padding: 7px 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contenedor-header {
+    height: auto;
+    padding: 10px 16px;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .header-burger {
+    display: inline-flex;
+    order: 2;
+  }
+
+  .header-nav {
+    display: none;
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 6px;
+    padding: 10px 0 6px;
+  }
+
+  .enlace-nav {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  /* Perfil y logout dentro del menú hamburguesa */
+  #headerPerfilSlot {
+    display: none;
+  }
+
+  .header-nav .header-perfil {
+    width: 100%;
+    padding-top: 10px;
+    margin-top: 6px;
+    border-top: 1px solid rgba(200, 149, 108, 0.18);
+    justify-content: space-between;
+  }
+
+  .header-nav .header-perfil a#enlacePerfilHeader {
+    flex: 1;
+  }
+
+  .header-logo::after {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-header.menu-open .header-nav {
+    display: flex;
+  }
+
+  .main-header.menu-open .header-burger__bars {
+    background: transparent;
+  }
+
+  .main-header.menu-open .header-burger__bars::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .main-header.menu-open .header-burger__bars::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+}

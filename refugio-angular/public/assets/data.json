@@ -1,0 +1,198 @@
+{
+  "contador": 1382,
+  "animales": [
+    {
+      "id": 1,
+      "nombre": "Firulais",
+      "especie": "Perro",
+      "raza": "Pug",
+      "edad": 2,
+      "meses": 18,
+      "sexo": "M",
+      "peso": 8.5,
+      "descripcion": "Firulais es un perro muy tranquilo y cariñoso. Le encanta pasear a ritmo suave, jugar con pelotas pequeñas y dormir largas siestas al lado de sus dueños. Está acostumbrado a vivir en piso, por lo que se adapta perfectamente a espacios pequeños. Es sociable con otros perros y muy bueno con niños. Ideal para familias o personas que busquen un compañero fiel y relajado.",
+      "foto1": "assets/img/animal_id_1/Foto1.png",
+      "foto2": "assets/img/animal_id_1/Foto2.png",
+      "foto3": "assets/img/animal_id_1/Foto3.png",
+      "foto4": "assets/img/animal_id_1/Foto4.png"
+    },
+    {
+      "id": 2,
+      "nombre": "Luna",
+      "especie": "Gato",
+      "raza": "Siamés",
+      "edad": 1,
+      "meses": 6,
+      "sexo": "F",
+      "peso": 3.2,
+      "descripcion": "Luna es una gata muy curiosa e independiente, pero también disfruta de los momentos de cariño. Le encanta observar el exterior desde la ventana y perseguir juguetes por la casa. Es limpia, elegante y muy inteligente. Se adapta rápidamente a nuevos entornos y sería perfecta tanto para una persona sola como para una familia tranquila.",
+      "foto1": "assets/img/animal_id_2/Foto1.png",
+      "foto2": "assets/img/animal_id_2/Foto2.png",
+      "foto3": "assets/img/animal_id_2/Foto3.png",
+      "foto4": "assets/img/animal_id_2/Foto4.png"
+    },
+    {
+      "id": 3,
+      "nombre": "Rocky",
+      "especie": "Perro",
+      "raza": "Mestizo",
+      "edad": 4,
+      "meses": 30,
+      "sexo": "F",
+      "peso": 22.0,
+      "descripcion": "Rocky es un perro lleno de energía y vitalidad. Necesita actividad diaria como paseos largos o salir a correr, ya que disfruta mucho del ejercicio. Es muy cariñoso y protector con los niños, y le encanta formar parte de la familia. Aunque al principio puede mostrarse un poco tímido, en cuanto gana confianza demuestra ser extremadamente leal y juguetón.",
+      "foto1": "assets/img/animal_id_3/Foto1.png",
+      "foto2": "assets/img/animal_id_3/Foto2.png",
+      "foto3": "assets/img/animal_id_3/Foto3.png",
+      "foto4": "assets/img/animal_id_3/Foto4.png"
+    },
+    {
+      "id": 4,
+      "nombre": "Tambor",
+      "especie": "Conejo",
+      "raza": "Belier",
+      "edad": 1,
+      "meses": 4,
+      "sexo": "M",
+      "peso": 1.5,
+      "descripcion": "Tambor es un conejo muy dócil y tranquilo, perfecto como primera mascota. Disfruta explorando espacios seguros y le encantan las zanahorias y verduras frescas. Es sociable, se deja acariciar con facilidad y puede convivir en ambientes familiares sin problema. Con los cuidados adecuados, se convertirá en un compañero adorable y muy especial.",
+      "foto1": "assets/img/animal_id_4/Foto1.png",
+      "foto2": "assets/img/animal_id_4/Foto2.png",
+      "foto3": "assets/img/animal_id_4/Foto3.png",
+      "foto4": "assets/img/animal_id_4/Foto4.png"
+    },
+    {
+      "id": 5,
+      "nombre": "Max",
+      "especie": "Perro",
+      "raza": "Pastor alemán",
+      "edad": 3,
+      "meses": 24,
+      "sexo": "M",
+      "peso": 30.5,
+      "descripcion": "Max es un perro muy inteligente, obediente y protector. Aprende órdenes con facilidad y disfruta tener tareas o juegos que estimulen su mente. Es ideal para casas con jardín o personas activas que puedan dedicarle tiempo. Muy leal a su familia y excelente guardián sin ser agresivo. Busca un hogar donde pueda sentirse parte importante del día a día.",
+      "foto1": "assets/img/animal_id_5/Foto1.png",
+      "foto2": "assets/img/animal_id_5/Foto2.png",
+      "foto3": "assets/img/animal_id_5/Foto3.png",
+      "foto4": "assets/img/animal_id_5/Foto4.png"
+    },
+    {
+      "id": 6,
+      "nombre": "Nala",
+      "especie": "Gato",
+      "raza": "Persa",
+      "edad": 2,
+      "meses": 12,
+      "sexo": "F",
+      "peso": 4.1,
+      "descripcion": "Nala es una gata tranquila, elegante y muy cariñosa. Disfruta de ambientes calmados y de largas sesiones de cepillado, algo importante para mantener su hermoso pelaje. Es ideal para personas que busquen una mascota afectuosa pero independiente. Se adapta bien a pisos y le encanta descansar en lugares cómodos y soleados.",
+      "foto1": "assets/img/animal_id_6/Foto1.png",
+      "foto2": "assets/img/animal_id_6/Foto2.png",
+      "foto3": "assets/img/animal_id_6/Foto3.png",
+      "foto4": "assets/img/animal_id_6/Foto4.png"
+    },
+    {
+      "id": 7,
+      "nombre": "Simba",
+      "especie": "Perro",
+      "raza": "Labrador",
+      "edad": 5,
+      "meses": 40,
+      "sexo": "M",
+      "peso": 28.0,
+      "descripcion": "Simba es un perro extremadamente sociable y juguetón. Se lleva muy bien con otros perros y adora interactuar con personas de todas las edades. Le encantan los juegos de agua y traer la pelota. Es ideal para familias activas que quieran un compañero fiel para excursiones y actividades al aire libre. Lleva bastante tiempo esperando un hogar definitivo donde pueda dar todo su cariño.",
+      "foto1": "assets/img/animal_id_7/Foto1.png",
+      "foto2": "assets/img/animal_id_7/Foto2.png",
+      "foto3": "assets/img/animal_id_7/Foto3.png",
+      "foto4": "assets/img/animal_id_7/Foto4.png"
+    }
+  ],
+  "reseñas": [
+    {
+      "id": 1,
+      "idUsuario": 1,
+      "nombreAnimal": "Copo",
+      "titulo": "Un pequeño ángel",
+      "reseña": "Hace unos meses que lo adoptamos y está muy contento todos los días, nos alegra cada mañana.",
+      "fecha": "2023-10-15",
+      "foto": "assets/img/resenas/Foto1.png"
+    },
+    {
+      "id": 2,
+      "idUsuario": 3,
+      "nombreAnimal": "Thor",
+      "titulo": "El mejor compañero",
+      "reseña": "Al principio era tímido, pero ahora es el rey de la casa. El proceso de adopción fue excelente.",
+      "fecha": "2024-01-20",
+      "foto": "assets/img/resenas/Foto2.png"
+    },
+    {
+      "id": 3,
+      "idUsuario": 2,
+      "nombreAnimal": "Luna",
+      "titulo": "Una compañera perfecta",
+      "reseña": "Es muy limpia y tranquila. Se adaptó rápido a nuestro hogar.",
+      "fecha": "2024-03-02",
+      "foto": "assets/img/resenas/Foto3.png"
+    },
+    {
+      "id": 4,
+      "idUsuario": 1,
+      "nombreAnimal": "Max",
+      "titulo": "Protector y fiel",
+      "reseña": "Desde que llegó, nos sentimos más seguros. Es muy obediente.",
+      "fecha": "2024-05-18",
+      "foto": "assets/img/resenas/Foto4.png"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Pepe",
+      "apellido": "Lopez",
+      "fechaNacimiento": "2000-05-10",
+      "dni": "42269874G",
+      "direccion": "Las Palmas, Calle Lechuga n1 4B",
+      "telefono": "642658569",
+      "correo": "pepelpz13@gmail.com",
+      "contraseña": "lopez1234",
+      "numeroAdopciones": 2
+    },
+    {
+      "id": 2,
+      "nombre": "Jose",
+      "apellido": "Garcia",
+      "fechaNacimiento": "2001-10-10",
+      "dni": "455214444G",
+      "direccion": "Maspalomas, Calle Brazil n4 5A",
+      "telefono": "600124596",
+      "correo": "joseabc2001@gmail.com",
+      "contraseña": "0000",
+      "numeroAdopciones": 1
+    },
+    {
+      "id": 3,
+      "nombre": "Maria",
+      "apellido": "Garcia",
+      "fechaNacimiento": "1995-12-12",
+      "dni": "12345678Z",
+      "direccion": "Telde, Calle Sol n10",
+      "telefono": "611223344",
+      "correo": "maria.garcia@email.com",
+      "contraseña": "maria123",
+      "numeroAdopciones": 1
+    },
+    {
+      "id": 4,
+      "nombre": "Lucia",
+      "apellido": "Martinez",
+      "fechaNacimiento": "1998-07-21",
+      "dni": "87654321X",
+      "direccion": "Arucas, Calle Palmeras n7",
+      "telefono": "622334455",
+      "correo": "lucia.martinez@email.com",
+      "contraseña": "lucia2024",
+      "numeroAdopciones": 0
+    }
+  ]
+}
