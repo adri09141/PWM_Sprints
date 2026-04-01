@@ -1,1 +1,114 @@
-<p>sobre-nosotros works!</p>
+
+<!-- HERO SECTION -->
+<section class="hero-sobre">
+  <div class="hero-badge">Nuestra historia</div>
+  <h1>Sobre <em>Nosotros</em></h1>
+  <p class="hero-tagline">Cada animal merece ser amado. Nosotros estamos aquí para asegurarlo.</p>
+  <div class="hero-paw">🐾</div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section class="quienes-somos">
+  <div class="seccion-label">Quiénes Somos</div>
+  <div class="contenedor-info">
+    <div class="foto1">
+      <img src="assets/img/sobre_nosotros/Foto1.png" alt="Foto 1">
+      <div class="foto1-deco"></div>
+    </div>
+    <div class="datos_derecha">
+      <h2>Una historia que <em>empezó en un garaje</em></h2>
+      <p>
+        <strong>"Huellas y Hogar"</strong> nació en el año 2015 con un objetivo muy claro: dar voz a los que no la tienen.
+        Lo que comenzó como un pequeño grupo de tres amigos rescatando gatos en un garaje, se ha convertido hoy en
+        un refugio que gestiona más de 200 adopciones al año.
+      </p>
+      <p>
+        Nuestro equipo está formado por veterinarios, educadores caninos y, sobre todo, voluntarios apasionados
+        que dedican sus fines de semana a pasear, limpiar y dar cariño a nuestros peludos.
+      </p>
+      <p class="destacado">
+        Creemos firmemente que cada animal merece una segunda oportunidad, sin importar su edad, raza o pasado.
+      </p>
+      <div class="tags-mision">
+        <span>🐕 Rescate</span>
+        <span>🏥 Veterinaria</span>
+        <span>❤️ Adopción</span>
+        <span>🤝 Voluntariado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTADOR -->
+<section class="animalesAdoptados">
+  <div class="contador-inner">
+    <p class="etiqueta-contador">Desde nuestros inicios</p>
+    <h2>Vidas <em>salvadas</em></h2>
+    <div id="contenedorContador">
+      @for(item of contador(); track item.id)
+      {
+        <app-contador [contador]="item"></app-contador>
+      }
+    </div>
+    <p class="subtexto-contador">animales adoptados y contando 🐾</p>
+  </div>
+</section>
+
+<!-- DONACIONES -->
+<section class="donaciones">
+  <div class="donaciones-card">
+    <div class="donaciones-icono">🐾</div>
+    <h2>Ayúdanos a seguir <em>salvando vidas</em></h2>
+    <p>Somos una entidad sin ánimo de lucro. Tu aportación cubre vacunas y alimento.</p>
+    <div class="iban-box">
+      <span class="iban-label">IBAN</span>
+      <span class="iban-numero">ES99 1234 5678 9012 3456</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOTO 2 -->
+<section class="galeria-central">
+  <div class="foto2">
+    <img src="/assets/img/sobre_nosotros/Foto2.png" alt="Foto 2">
+  </div>
+</section>
+
+<!-- MAPA + CONTACTO -->
+<section class="ubicacion-contacto">
+  <div class="ubicacion-grid">
+    <div class="ubicacion-texto">
+      <div class="seccion-label">Visítanos</div>
+      <h2>Dónde <em>encontrarnos</em></h2>
+      <div class="contacto-lista">
+        <div class="contacto-item">
+          <span class="contacto-icon">📞</span>
+          <div>
+            <span class="contacto-label">Teléfono</span>
+            <span class="contacto-valor">012 345 678</span>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <span class="contacto-icon">✉️</span>
+          <div>
+            <span class="contacto-label">Email</span>
+            <span class="contacto-valor">adopciones soporte{{ '@' }}huellasfelices.com</span>
+          </div>
+        </div>
+        <div class="contacto-item">
+          <span class="contacto-icon">🕐</span>
+          <div>
+            <span class="contacto-label">Horario</span>
+            <span class="contacto-valor">Lunes a Viernes · 10:00 – 18:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foto3">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2781.7066102592858!2d-15.432433947467013!3d28.105111817316565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1ses!2ses!4v1773674917873!5m2!1ses!2ses"
+        width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>

@@ -1,1 +1,35 @@
-<p>finales-felices works!</p>
+<header id="header"></header>
+
+<!-- Hero superior -->
+<section class="resenas-hero">
+  <div class="hero-texto">
+    <span class="hero-tag">Comunidad Huellas Felices</span>
+    <h1 class="hero-titulo">Historias que<br><em>cambian vidas</em></h1>
+    <p class="hero-descripcion">
+      Cada adopción esconde una historia única. Aquí, nuestras familias comparten su experiencia y el amor que encontraron.
+    </p>
+  </div>
+  <div class="hero-accion">
+    <a href="anadirResena.html" class="btn-anadir-resena" id="btn_anadir_resena">
+      <span class="btn-icono">✦</span> Contar mi historia
+    </a>
+    <span class="hero-nota">Inicia sesión para compartir</span>
+  </div>
+</section>
+
+<!-- Reseñas -->
+<div class="resenas-seccion">
+  <div class="resenas-seccion-header">
+    <span class="resenas-seccion-titulo">Testimonios</span>
+    <div class="grid-contenedor">
+      @for(item of resenas(); track item.id)
+      {
+        <app-tarjeta-resena [resenas]="item"></app-tarjeta-resena>
+      }
+    </div>
+  </div>
+
+  <div class="grupo-tarjetas-resenas">
+    <section class="grid-contenedor" id="tarjetaResena"></section>
+  </div>
+</div>

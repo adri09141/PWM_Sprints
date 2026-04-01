@@ -1,0 +1,404 @@
+/* =========================================================================
+   crearCuenta.css - Ajustes específicos para los elementos de Registro
+========================================================================= */
+
+/* ── Ajustes generales para elementos nuevos ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Ajuste para el campo de Fecha de Nacimiento */
+#fecha_nacimiento {
+  font-family: 'DM Sans', sans-serif; /* A veces los navegadores le quitan tu fuente a las fechas */
+  cursor: pointer;
+  color: #2C1A0E;
+}
+
+/* ¡Súper importante!
+   Como tienes un botón "Ver" posicionado en absoluto a la derecha,
+   le damos padding derecho a la contraseña para que el texto que escriba el usuario
+   nunca se meta por debajo del botón y se vuelva ilegible.
+*/
+#contrasena {
+  padding-right: 55px;
+}
+
+/* Ajuste fino para que los mensajes de error destaquen bien pero sin empujar todo feo */
+.acceso-error {
+  margin-top: 8px !important; /* Usamos important por si tienes margin-top en línea en el HTML */
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background-color: rgba(192, 87, 74, 0.1); /* Un fondito rojo muy suave para que resalte más */
+  padding: 8px 12px;
+  border-radius: 6px;
+  border-left: 3px solid #C0574A;
+}
+
+/* =========================================================================
+   RESPONSIVE: Tablet y Móvil
+========================================================================= */
+
+/* Tablet */
+@media (max-width: 768px) {
+  /* El texto de ejemplo de la contraseña es muy largo, en tablet lo achicamos */
+  #contrasena::placeholder {
+    font-size: 12px;
+  }
+}
+
+/* Móvil Pequeño */
+@media (max-width: 480px) {
+  /* Reducimos un pelín el texto de todos los inputs para que no se corten los nombres/apellidos largos */
+  .campo-input {
+    font-size: 13px;
+    padding: 12px 14px;
+  }
+
+  /* El input de fecha en iOS a veces se ve raro, esto lo centra y ajusta */
+  #fecha_nacimiento {
+    font-size: 13px;
+  }
+
+  /* El botón de "Ver" la contraseña lo hacemos más compacto */
+  .btn-ver-pass {
+    font-size: 10px;
+    right: 8px;
+    padding: 4px;
+  }
+
+  /* En pantallas muy pequeñas, el placeholder larguísimo de la contraseña se lo cambiamos ocultando lo que sobra */
+  #contrasena::placeholder {
+    font-size: 11px;
+    text-overflow: ellipsis;
+  }
+
+  /* Ajuste del botón principal de Crear Cuenta */
+  #crear {
+    padding: 12px;
+    font-size: 13px;
+    margin-top: 15px; /* Un poco más de aire con el último input */
+  }
+}
+
+
+
+
+
+
+.pagina-acceso {
+  min-height: calc(100vh - 72px); /* descontando el header */
+  display: flex;
+  font-family: 'DM Sans', sans-serif;
+  background-color: #FAF7F2;
+}
+
+/* ── Panel izquierdo decorativo ── */
+.acceso-panel-izq {
+  width: 42%;
+  flex-shrink: 0;
+  background-color: #1A1A2E;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 30% 20%, rgba(200,149,108,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 70% 80%, rgba(123,158,135,0.1) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 52px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea decorativa lateral derecha */
+.acceso-panel-izq::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(to bottom, transparent, #C8956C 30%, #7B9E87 70%, transparent);
+  opacity: 0.5;
+}
+
+/* Patrón de puntos decorativo */
+.acceso-panel-izq::before {
+  content: '';
+  position: absolute;
+  bottom: -60px; right: -60px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  border: 40px solid rgba(200,149,108,0.06);
+  pointer-events: none;
+}
+
+.panel-tag {
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #C8956C;
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+.panel-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 700;
+  color: #F5F0E8;
+  line-height: 1.15;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.02em;
+}
+
+.panel-titulo em {
+  font-style: italic;
+  color: #C8956C;
+}
+
+.panel-descripcion {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(245,240,232,0.55);
+  max-width: 300px;
+  margin: 0 0 48px 0;
+}
+
+/* Mascotas decorativas en el panel */
+.panel-mascotas {
+  display: flex;
+  gap: 14px;
+}
+
+.mascota-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(200,149,108,0.2);
+  border-radius: 100px;
+  font-size: 12px;
+  color: rgba(245,240,232,0.5);
+  font-weight: 300;
+}
+
+.mascota-chip span { font-size: 16px; }
+
+/* ── Panel derecho — Formulario ── */
+.acceso-panel-der {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 52px;
+}
+
+.acceso-card {
+  width: 100%;
+  max-width: 420px;
+  animation: cardEntrada 0.5s ease both 0.15s;
+}
+
+@keyframes cardEntrada {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Tabs ── */
+.acceso-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 40px;
+  border-bottom: 1.5px solid rgba(200,149,108,0.2);
+}
+
+.acceso-tab {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(92,64,51,0.45);
+  text-decoration: none;
+  padding: 10px 20px 14px;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1.5px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  display: inline-block;
+}
+
+.acceso-tab:hover { color: #5C4033; }
+
+.acceso-tab.activo {
+  color: #C8956C;
+  font-weight: 500;
+  border-bottom-color: #C8956C;
+}
+
+/* ── Título del formulario ── */
+.acceso-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #2C1A0E;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.01em;
+}
+
+.acceso-subtitulo {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(92,64,51,0.6);
+  margin: 0 0 36px 0;
+  line-height: 1.5;
+}
+
+/* ── Campos ── */
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.campo-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(92,64,51,0.6);
+}
+
+.campo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.campo-input {
+  width: 100%;
+  padding: 13px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #2C1A0E;
+  background-color: #F5F0E8;
+  border: 1.5px solid rgba(200,149,108,0.2);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.campo-input::placeholder { color: rgba(92,64,51,0.35); }
+
+.campo-input:focus {
+  border-color: #C8956C;
+  background-color: #FAF7F2;
+  box-shadow: 0 0 0 4px rgba(200,149,108,0.1);
+}
+
+/* Botón "Ver contraseña" */
+.btn-ver-pass {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  color: rgba(200,149,108,0.7);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+
+.btn-ver-pass:hover { color: #C8956C; }
+
+/* ── Mensaje de error ── */
+.acceso-error {
+  font-size: 12px;
+  color: #C0574A;
+  margin: -12px 0 16px 0;
+  display: none;
+  animation: errorShake 0.3s ease;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-6px); }
+  75%       { transform: translateX(6px); }
+}
+
+/* ── Botón principal ── */
+.btn-acceso-principal {
+  width: 100%;
+  padding: 15px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #FAF7F2;
+  background: linear-gradient(135deg, #C8956C 0%, #B5785A 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  box-shadow: 0 4px 16px rgba(200,149,108,0.35);
+}
+
+.btn-acceso-principal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(200,149,108,0.45);
+  filter: brightness(1.05);
+}
+
+.btn-acceso-principal:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(200,149,108,0.25);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .pagina-acceso { flex-direction: column; }
+  .acceso-panel-izq {
+    width: 100%;
+    padding: 48px 32px 40px;
+    min-height: auto;
+  }
+  .acceso-panel-izq::after { display: none; }
+  .acceso-panel-der { padding: 48px 32px; }
+}
+
+/* ── Extensiones para crearCuenta ── */
+
+/* Card más ancha para el formulario de registro */
+.acceso-card--wide {
+  max-width: 560px;
+}
+
+/* Grid de 2 columnas para los campos del registro */
+.campos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+}
+
+/* Campos que ocupan las 2 columnas */
+.campo-grupo--full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+  .acceso-panel-der { padding: 32px 20px; }
+  .acceso-card { max-width: 100%; }
+  .campos-grid {
+    grid-template-columns: 1fr;
+  }
+  .campo-grupo--full {
+    grid-column: auto;
+  }
+}
+
