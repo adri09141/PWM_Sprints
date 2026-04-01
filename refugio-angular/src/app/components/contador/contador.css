@@ -1,0 +1,154 @@
+
+/* ── Sección vidas salvadas (Contador) ── */
+.animalesAdoptados {
+  background-color: #1A1A2E;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200, 149, 108, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 100%, rgba(123, 158, 135, 0.08) 0%, transparent 60%);
+  padding: 70px 20px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Línea decorativa superior */
+.animalesAdoptados::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #C8956C, transparent);
+}
+
+/* Etiqueta superior */
+.animalesAdoptados .etiqueta-contador {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #C8956C;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+/* Título principal */
+.animalesAdoptados h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(28px, 5vw, 48px);
+  letter-spacing: 0.06em;
+  color: #F5F0E8;
+  margin: 0 0 48px 0;
+  line-height: 1;
+}
+
+/* Contenedor de dígitos */
+.contenedor-contador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+/* Cada caja de dígito */
+.caja-numero {
+  position: relative;
+  width: 72px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  color: #F5F0E8;
+  letter-spacing: 0.02em;
+
+  background: linear-gradient(160deg, #2A2A42 0%, #1E1E34 100%);
+  border: 1px solid rgba(200, 149, 108, 0.18);
+  border-radius: 8px;
+
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.04) inset,
+    0 -2px 0 rgba(0,0,0,0.3) inset,
+    0 8px 24px rgba(0, 0, 0, 0.4);
+
+  cursor: default;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Línea central tipo flip clock */
+.caja-numero::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+/* Reflejo superior */
+.caja-numero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 45%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.04), transparent);
+  border-radius: 8px 8px 0 0;
+  pointer-events: none;
+}
+
+/* Hover: flotación con glow */
+.caja-numero:hover {
+  border-color: rgba(200, 149, 108, 0.55);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.04) inset,
+    0 -2px 0 rgba(0,0,0,0.3) inset,
+    0 0 20px rgba(200, 149, 108, 0.2),
+    0 16px 32px rgba(0, 0, 0, 0.5);
+  animation: flotar 0.6s ease-in-out;
+}
+
+@keyframes flotar {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-12px); }
+  60%  { transform: translateY(-6px); }
+  80%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* Animación de entrada escalonada */
+@keyframes aparecerDigito {
+  from { opacity: 0; transform: translateY(20px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.caja-numero:nth-child(1) { animation: aparecerDigito 0.5s ease both 0.1s; }
+.caja-numero:nth-child(2) { animation: aparecerDigito 0.5s ease both 0.2s; }
+.caja-numero:nth-child(3) { animation: aparecerDigito 0.5s ease both 0.3s; }
+.caja-numero:nth-child(4) { animation: aparecerDigito 0.5s ease both 0.4s; }
+.caja-numero:nth-child(5) { animation: aparecerDigito 0.5s ease both 0.5s; }
+
+/* Subtexto bajo el contador */
+.animalesAdoptados .subtexto-contador {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(245, 240, 232, 0.4);
+  letter-spacing: 0.08em;
+  margin-top: 32px;
+  text-transform: uppercase;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .caja-numero {
+    width: 45px;
+    height: 65px;
+    font-size: 2.5rem;
+  }
+}

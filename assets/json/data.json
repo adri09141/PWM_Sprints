@@ -113,7 +113,7 @@
       "idUsuario": 1,
       "nombreAnimal": "Copo",
       "titulo": "Un pequeño ángel",
-      "reseña": "Hace unos meses que lo adoptamos y está muy contento todos los días, nos alegra cada mañana.",
+      "resena": "Hace unos meses que lo adoptamos y está muy contento todos los días, nos alegra cada mañana.",
       "fecha": "2023-10-15",
       "foto": "./img/resenas/Foto1.png"
     },
@@ -122,7 +122,7 @@
       "idUsuario": 3,
       "nombreAnimal": "Thor",
       "titulo": "El mejor compañero",
-      "reseña": "Al principio era tímido, pero ahora es el rey de la casa. El proceso de adopción fue excelente.",
+      "resena": "Al principio era tímido, pero ahora es el rey de la casa. El proceso de adopción fue excelente.",
       "fecha": "2024-01-20",
       "foto": "./img/resenas/Foto2.png"
     },
@@ -131,7 +131,7 @@
       "idUsuario": 2,
       "nombreAnimal": "Luna",
       "titulo": "Una compañera perfecta",
-      "reseña": "Es muy limpia y tranquila. Se adaptó rápido a nuestro hogar.",
+      "resena": "Es muy limpia y tranquila. Se adaptó rápido a nuestro hogar.",
       "fecha": "2024-03-02",
       "foto": "./img/resenas/Foto3.png"
     },
@@ -140,7 +140,7 @@
       "idUsuario": 1,
       "nombreAnimal": "Max",
       "titulo": "Protector y fiel",
-      "reseña": "Desde que llegó, nos sentimos más seguros. Es muy obediente.",
+      "resena": "Desde que llegó, nos sentimos más seguros. Es muy obediente.",
       "fecha": "2024-05-18",
       "foto": "./img/resenas/Foto4.png"
     }

@@ -36,6 +36,10 @@
   </form>
 
   <div class="grupo-tarjetas">
-    <section class="grid-contenedor" id="tarjetaAnimal"></section>
+    <section class="grid-contenedor" id="tarjetaAnimal">
+      @for (item of animales(); track item.id) {
+        <app-tarjeta-animal [animal]="item"></app-tarjeta-animal>
+      }
+    </section>
   </div>
 </div>

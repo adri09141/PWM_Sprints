@@ -10,10 +10,10 @@
         y juntos escribid la mejor parte de ella.
       </p>
       <div class="botonesSeccionPrincipal">
-        <a href="crearCuenta.html">
+        <a routerLink="/crearCuenta">
           <button class="botonRegitrarse">Registrarse</button>
         </a>
-        <a href="catalogo.html">
+        <a routerLink="/catalogo">
           <button class="botonCatalogo">Ver catálogo</button>
         </a>
       </div>
@@ -39,7 +39,7 @@
 
     </div>
     <div class="ver-mas-wrapper">
-      <a href="catalogo.html">
+      <a routerLink="/catalogo">
         <button class="boton-ver-mas">
           Ver todos
           <div class="icon">
@@ -57,7 +57,12 @@
   <section class="animalesAdoptados">
     <p class="etiqueta-contador">Desde nuestros inicios</p>
     <h2>Vidas salvadas</h2>
-    <div id="contenedorContador"></div>
+    <div id="contenedorContador">
+      @for(item of contador(); track item.id)
+      {
+        <app-contador [contador]="item"></app-contador>
+      }
+    </div>
     <p class="subtexto-contador">animales adoptados y contando 🐾</p>
   </section>
 
@@ -68,9 +73,14 @@
       <h2 class="titulo-apartado">Lo que dicen nuestras <em>familias</em></h2>
       <p class="seccion-subtitulo">Historias reales de personas que encontraron un amigo para toda la vida.</p>
     </div>
-    <section class="grid-contenedor" id="tarjetaResena"></section>
+    <div class="grupo-tarjetas">
+      @for(item of resenas(); track item.id)
+      {
+        <app-tarjeta-resena [resenas]="item"></app-tarjeta-resena>
+      }
+    </div>
     <div class="ver-mas-wrapper">
-      <a href="resenas.html">
+      <a routerLink="/resenas">
         <button class="boton-ver-mas">
           Ver todas
           <div class="icon">

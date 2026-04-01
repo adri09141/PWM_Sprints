@@ -1,16 +1,13 @@
 import {Component, OnInit, signal} from '@angular/core';
-import {TarjetaAnimal} from '../../components/tarjeta-animal/tarjeta-animal';
 
 @Component({
-  selector: 'app-catalogo',
+  selector: 'app-finales-felices',
   standalone: true,
-  imports: [
-    TarjetaAnimal
-  ],
-  templateUrl: './catalogo.html',
-  styleUrl: './catalogo.css',
+  imports: [],
+  templateUrl: './finales-felices.html',
+  styleUrl: './finales-felices.css',
 })
-export class Catalogo implements OnInit {
+export class FinalesFelices implements OnInit {
   animales = signal<any[]>([]);
   ngOnInit() {
     fetch('/assets/data.json')
