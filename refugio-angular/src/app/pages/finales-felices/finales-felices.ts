@@ -1,11 +1,11 @@
 import {Component, OnInit, signal} from '@angular/core';
 import {TarjetaResena} from '../../components/tarjeta-resena/tarjeta-resena';
-
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-finales-felices',
   standalone: true,
   imports: [
-    TarjetaResena
+    TarjetaResena, RouterLink
   ],
   templateUrl: './finales-felices.html',
   styleUrl: './finales-felices.css',

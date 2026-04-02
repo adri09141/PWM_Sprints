@@ -5,6 +5,7 @@ import {SobreNosotros} from './pages/sobre-nosotros/sobre-nosotros';
 import {FinalesFelices} from './pages/finales-felices/finales-felices';
 import {CrearCuenta} from './pages/crear-cuenta/crear-cuenta';
 import {IniciarSesion} from './pages/iniciar-sesion/iniciar-sesion';
+import {AnadirResena} from './pages/anadir-resena/anadir-resena';
 export const routes: Routes = [
   { path: '', component: Inicio },
   { path: 'catalogo', component: Catalogo },
@@ -12,5 +13,6 @@ export const routes: Routes = [
   {path: 'sobreNosotros', component: SobreNosotros},
   {path: 'crearCuenta', component: CrearCuenta},
   {path: 'IniciarSesion', component: IniciarSesion},
+  {path: 'AnadirResena', component: AnadirResena}
 
 ];

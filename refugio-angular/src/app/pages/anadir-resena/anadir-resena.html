@@ -1,0 +1,98 @@
+<main class="pagina-acceso">
+
+  <div class="acceso-panel-izq">
+    <p class="panel-tag">Tu experiencia</p>
+    <h1 class="panel-titulo">Cuenta al mundo,<br>tu <em>aventura</em></h1>
+    <p class="panel-descripcion">
+      Cuéntale al mundo cómo ha sido tu experiencia con tu nuevo compañero de vida.
+    </p>
+    <div class="panel-mascotas">
+      <div class="mascota-chip"><span>🐾</span> Tu experiencia</div>
+      <div class="mascota-chip"><span>❤️</span> Nuevo familiar</div>
+    </div>
+  </div>
+
+  <div class="acceso-panel-der">
+    <div class="acceso-card acceso-card--wide">
+
+      <h2 class="acceso-titulo" routerLink="/AnadirResena">Añadir Reseña</h2>
+
+      <form id="formulario_resena">
+
+        <div class="campos-grid">
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="nombre">Nombre</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="text" id="nombre" name="nombre" required placeholder="Tu nombre" readonly style="opacity: 0.7; cursor: default;">
+            </div>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="apellidos">Apellidos</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="text" id="apellidos" name="apellidos" required placeholder="Tus apellidos" readonly style="opacity: 0.7; cursor: default;">
+            </div>
+          </div>
+
+          <div class="campo-grupo campo-grupo--full">
+            <label class="campo-label" for="correo">Correo electrónico</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="email" id="correo" name="correo" readonly style="opacity: 0.7; cursor: default;">
+            </div>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="nombre_mascota">Nombre de tu peludo</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="text" id="nombre_mascota" name="nombre_mascota" required placeholder="Ej: Toby">
+            </div>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="valoracion">Valoración</label>
+            <div class="campo-wrapper">
+              <select class="campo-input" id="valoracion" name="valoracion" required>
+                <option value="" disabled selected>Elige una puntuación...</option>
+                <option value="5">⭐⭐⭐⭐⭐ (5/5) ¡Increíble!</option>
+                <option value="4">⭐⭐⭐⭐ (4/5) Muy buena</option>
+                <option value="3">⭐⭐⭐ (3/5) Buena</option>
+                <option value="2">⭐⭐ (2/5) Regular</option>
+                <option value="1">⭐ (1/5) Mala</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="campo-grupo campo-grupo--full">
+            <label class="campo-label" for="titulo_resena">Titular de tu reseña</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="text" id="titulo_resena" name="titulo_resena" required maxlength="40" placeholder="Ej: ¡La mejor decisión de mi vida!">
+            </div>
+          </div>
+
+          <div class="campo-grupo campo-grupo--full">
+            <label class="campo-label" for="descripcion_resena">Resumen de tu historia</label>
+            <div class="campo-wrapper">
+              <textarea class="campo-input" id="descripcion_resena" name="descripcion_resena" rows="3" required maxlength="150" placeholder="Ej: Desde que llegó a casa, todo son risas. Se ha adaptado genial a la familia..." style="resize: vertical; padding: 15px; font-family: inherit;"></textarea>
+            </div>
+          </div>
+
+          <div class="campo-grupo campo-grupo--full">
+            <label class="campo-label" for="foto_mascota">Sube una foto de tu amigo</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="file" id="foto_mascota" name="foto_mascota" accept="image/png, image/jpeg" required>
+            </div>
+          </div>
+
+          <div class="campo-grupo campo-grupo--full" style="margin-top: 15px;">
+            <button type="submit" id="btn_resena" class="btn-acceso-principal" style="width: 100%;">
+              Enviar mi historia a revisión
+            </button>
+          </div>
+
+        </div> </form>
+
+    </div>
+  </div>
+
+</main>
