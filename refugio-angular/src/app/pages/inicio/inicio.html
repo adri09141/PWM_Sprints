@@ -58,7 +58,7 @@
     <p class="etiqueta-contador">Desde nuestros inicios</p>
     <h2>Vidas salvadas</h2>
     <div id="contenedorContador">
-      @for(item of contador(); track item.id)
+      @for(item of contador(); track $index)
       {
         <app-contador [contador]="item"></app-contador>
       }

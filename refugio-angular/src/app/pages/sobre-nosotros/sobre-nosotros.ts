@@ -1,5 +1,9 @@
-import {Component, signal} from '@angular/core';
-import {Contador} from '../../components/contador/contador';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+
+import { Contador } from '../../components/contador/contador';
+import { ContadorItem } from '../../models/data.model';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-sobre-nosotros',
@@ -11,13 +15,7 @@ import {Contador} from '../../components/contador/contador';
   styleUrl: './sobre-nosotros.css',
 })
 export class SobreNosotros {
-  contador = signal<any[]>([]);
-  ngOnInit() {
-    fetch('/assets/data.json')
-      .then(respuesta => respuesta.json())
-      .then(datos => {
-        this.contador.set(datos.contador);
-      })
-      .catch(error => console.error("Error al cargar JSON:", error));
-  }
+  private readonly dataService = inject(DataService);
+
+  contador = toSignal(this.dataService.getContador(), { initialValue: [] as ContadorItem[] });
 }

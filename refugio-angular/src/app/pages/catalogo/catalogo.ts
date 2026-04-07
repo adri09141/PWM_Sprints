@@ -1,5 +1,9 @@
-import {Component, OnInit, signal} from '@angular/core';
-import {TarjetaAnimal} from '../../components/tarjeta-animal/tarjeta-animal';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+
+import { TarjetaAnimal } from '../../components/tarjeta-animal/tarjeta-animal';
+import { Animal } from '../../models/data.model';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -10,14 +14,8 @@ import {TarjetaAnimal} from '../../components/tarjeta-animal/tarjeta-animal';
   templateUrl: './catalogo.html',
   styleUrl: './catalogo.css',
 })
-export class Catalogo implements OnInit {
-  animales = signal<any[]>([]);
-  ngOnInit() {
-    fetch('/assets/data.json')
-      .then(respuesta => respuesta.json())
-      .then(datos => {
-        this.animales.set(datos.animales);
-      })
-      .catch(error => console.error("Error al cargar JSON:", error));
-  }
+export class Catalogo {
+  private readonly dataService = inject(DataService);
+
+  animales = toSignal(this.dataService.getAnimales(), { initialValue: [] as Animal[] });
 }

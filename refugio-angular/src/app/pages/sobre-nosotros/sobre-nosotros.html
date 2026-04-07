@@ -12,7 +12,7 @@
   <div class="seccion-label">Quiénes Somos</div>
   <div class="contenedor-info">
     <div class="foto1">
-      <img src="assets/img/sobre_nosotros/Foto1.png" alt="Foto 1">
+      <img src="/assets/img/sobre_nosotros/Foto1.png" alt="Foto 1">
       <div class="foto1-deco"></div>
     </div>
     <div class="datos_derecha">
@@ -45,7 +45,7 @@
     <p class="etiqueta-contador">Desde nuestros inicios</p>
     <h2>Vidas <em>salvadas</em></h2>
     <div id="contenedorContador">
-      @for(item of contador(); track item.id)
+      @for(item of contador(); track $index)
       {
         <app-contador [contador]="item"></app-contador>
       }
