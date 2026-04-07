@@ -1,0 +1,61 @@
+<main class="pagina-adopcion">
+
+  <!-- Panel izquierdo -->
+  <div class="adopcion-panel-izq">
+    <p class="panel-tag">Proceso de adopción</p>
+    <h1 class="panel-titulo">Un hogar para<br>toda la <em>vida</em></h1>
+    <p class="panel-descripcion">
+      Cuéntanos por qué quieres adoptar. Tu respuesta nos ayuda a encontrar la mejor familia para cada animal.
+    </p>
+    <div class="panel-pasos">
+      <div class="panel-paso">
+        <div class="paso-num">1</div>
+        <div class="paso-texto">
+          <strong>Envía tu solicitud</strong>
+          Cuéntanos tu motivación
+        </div>
+      </div>
+      <div class="panel-paso">
+        <div class="paso-num">2</div>
+        <div class="paso-texto">
+          <strong>Revisamos tu caso</strong>
+          Nuestro equipo te contacta
+        </div>
+      </div>
+      <div class="panel-paso">
+        <div class="paso-num">3</div>
+        <div class="paso-texto">
+          <strong>¡Bienvenido a casa!</strong>
+          Tu nuevo amigo te espera
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel derecho -->
+  <div class="adopcion-panel-der">
+    <div class="adopcion-card">
+
+      <h2 class="adopcion-titulo">Tu solicitud</h2>
+      <p class="adopcion-subtitulo">Sé sincero y detallado. Cada historia importa.</p>
+
+      <form id="formulario_adopcion">
+        <div class="textarea-header">
+          <label class="campo-label" for="mensaje">¿Por qué quieres adoptar?</label>
+          <span class="char-count" id="charCount">0 caracteres</span>
+        </div>
+        <textarea
+          class="adopcion-textarea"
+          id="mensaje"
+          name="mensaje"
+          placeholder="Cuéntanos sobre tu hogar, tu estilo de vida, por qué te has enamorado de este animal y qué tipo de vida le ofrecerías..."></textarea>
+
+        <button type="submit" class="btn-enviar" id="enviar">
+          Enviar solicitud
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+</main>
