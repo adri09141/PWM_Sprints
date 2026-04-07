@@ -4,15 +4,15 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { of } from 'rxjs';
 
-import { FichaAnimal } from './ficha-animal';
+import { FichaAnimalPage } from './ficha-animal';
 
-describe('FichaAnimal', () => {
-  let component: FichaAnimal;
-  let fixture: ComponentFixture<FichaAnimal>;
+describe('FichaAnimalPage', () => {
+  let component: FichaAnimalPage;
+  let fixture: ComponentFixture<FichaAnimalPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FichaAnimal],
+      imports: [FichaAnimalPage],
       providers: [
         provideHttpClient(),
         provideHttpClientTesting(),
@@ -25,12 +25,12 @@ describe('FichaAnimal', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FichaAnimal);
+    fixture = TestBed.createComponent(FichaAnimalPage);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+it('should create', () => {
+  expect(component).toBeTruthy();
+});
 });

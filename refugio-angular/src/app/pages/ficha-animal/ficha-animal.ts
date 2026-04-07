@@ -7,13 +7,13 @@ import { Animal } from '../../models/data.model';
 import { DataService } from '../../services/data.service';
 
 @Component({
-  selector: 'app-ficha-animal',
+  selector: 'app-ficha-animal-page',
   standalone: true,
   imports: [RouterLink],
   templateUrl: './ficha-animal.html',
   styleUrl: './ficha-animal.css',
 })
-export class FichaAnimal {
+export class FichaAnimalPage {
   private readonly route = inject(ActivatedRoute);
   private readonly dataService = inject(DataService);
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-adopcion',
+  standalone: true,
   imports: [],
   templateUrl: './adopcion.html',
   styleUrl: './adopcion.css',

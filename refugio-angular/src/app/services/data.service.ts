@@ -21,6 +21,10 @@ export class DataService {
     return this.data$.pipe(map((data) => data.animales));
   }
 
+  getAnimalById(id: number): Observable<Animal | undefined> {
+    return this.getAnimales().pipe(map((animales) => animales.find((animal) => animal.id === id)));
+  }
+
   getAnimalesDestacados(limit = 3): Observable<Animal[]> {
     return this.getAnimales().pipe(map((animales) => animales.slice(0, limit)));
   }
