@@ -37,3 +37,19 @@ body {
   position: relative;
   text-align: center;
 }
+:root {
+  --crema:       #F7F3EE;
+  --arena:       #EDE3D4;
+  --terracota:   #C0674A;
+  --terracota-l: #D98B72;
+  --musgo:       #4A6741;
+  --musgo-l:     #6B8F66;
+  --marron:      #5C3D2E;
+  --texto:       #2E2218;
+  --gris-suave:  #8A7F76;
+  --blanco:      #FFFFFF;
+  --radio:       18px;
+  --sombra:      0 8px 40px rgba(92,61,46,0.10);
+  --sombra-sm:   0 2px 12px rgba(92,61,46,0.08);
+}
+

@@ -14,8 +14,15 @@
   --sombra-sm:   0 2px 12px rgba(92,61,46,0.08);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
 
+* { box-sizing: border-box; margin: 0; padding: 0; }
+.contenedor-contador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+}
 body {
   background-color: var(--crema);
   color: var(--texto);
@@ -204,7 +211,7 @@ em {
 
 /* ── CONTADOR ───────────────────────────────────────────── */
 .animalesAdoptados {
-  background: linear-gradient(135deg, var(--musgo) 0%, #2E4229 100%);
+  background: linear-gradient(135deg, #242430 0%, #161620 100%);
   padding: 80px 24px;
   text-align: center;
   position: relative;

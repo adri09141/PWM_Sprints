@@ -19,17 +19,17 @@
 
 <!-- Reseñas -->
 <div class="resenas-seccion">
+
   <div class="resenas-seccion-header">
     <span class="resenas-seccion-titulo">Testimonios</span>
-    <div class="grid-contenedor">
-      @for(item of resenas(); track item.id)
-      {
-        <app-tarjeta-resena [resenas]="item"></app-tarjeta-resena>
-      }
-    </div>
-  </div>
+    <span class="resenas-seccion-linea"></span> </div>
 
   <div class="grupo-tarjetas-resenas">
-    <section class="grid-contenedor" id="tarjetaResena"></section>
+    <section class="grid-contenedor">
+      @for(item of resenas(); track item.id) {
+        <app-tarjeta-resena [resenas]="item"></app-tarjeta-resena>
+      }
+    </section>
   </div>
+
 </div>
