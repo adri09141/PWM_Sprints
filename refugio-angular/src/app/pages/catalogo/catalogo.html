@@ -25,7 +25,7 @@
     <div class="campo-grupo">
       <label class="campo-label" for="boton_filtro">Filtro</label>
       <div class="campo-wrapper">
-        <select class="campo-input" id="filtro" name="filtro" required>
+        <select class="campo-input" id="filtro" name="filtro" required #miFiltro (change)="EventoFiltro(miFiltro.value)">
           <option value="Todos" selected>Todos los animales</option>
           <option value="Perro">Perro</option>
           <option value="Gato">Gato</option>
@@ -37,7 +37,7 @@
 
   <div class="grupo-tarjetas">
     <section class="grid-contenedor" id="tarjetaAnimal">
-      @for (item of animales(); track item.id) {
+      @for (item of animalesFiltrados(); track item.id) {
         <app-tarjeta-animal [animal]="item"></app-tarjeta-animal>
       }
     </section>

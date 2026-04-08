@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal, computed } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { TarjetaAnimal } from '../../components/tarjeta-animal/tarjeta-animal';
@@ -18,4 +18,14 @@ export class Catalogo {
   private readonly dataService = inject(DataService);
 
   animales = toSignal(this.dataService.getAnimales(), { initialValue: [] as Animal[] });
+  filtro = signal("Todos")
+
+  animalesFiltrados = computed(() => {
+    if (this.filtro() === "Todos") return this.animales();
+    return this.animales().filter(animal => animal.especie === this.filtro());
+  });
+
+  EventoFiltro(filtro: string) {
+    this.filtro.set(filtro);
+  }
 }
