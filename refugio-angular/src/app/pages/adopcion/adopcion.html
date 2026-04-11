@@ -68,7 +68,7 @@
 
           </div>
         }
-        @if (mensajeModel.invalid && botonPulsado)
+        @if (mensajeModel.invalid && botonPulsado && !mensajeModel.touched)
         {
           <div style="color: red; font-size: 12px; margin-top: 5px;">
 
