@@ -10,6 +10,7 @@ import { FichaAnimalPage } from './pages/ficha-animal/ficha-animal';
 import { Adopcion } from './pages/adopcion/adopcion';
 import { Perfil } from './pages/perfil/perfil';
 import {Adoptados} from './pages/adoptados/adoptados';
+import { CambioPassword } from "./pages/cambio-password/cambio-password";
 
 export const routes: Routes = [
   { path: '', component: Inicio },
@@ -22,5 +23,6 @@ export const routes: Routes = [
   {path: 'IniciarSesion', component: IniciarSesion},
   {path: 'AnadirResena', component: AnadirResena},
   {path: 'perfil', component: Perfil},
-  {path: 'adoptados', component: Adoptados}
+  {path: 'adoptados', component: Adoptados},
+  {path: 'cambio-password', component: CambioPassword}
 ];
