@@ -24,5 +24,5 @@ export const routes: Routes = [
   {path: 'AnadirResena', component: AnadirResena},
   {path: 'perfil', component: Perfil},
   {path: 'adoptados', component: Adoptados},
-  {path: 'cambio-password', component: CambioPassword}
+  {path: 'cambioPassword', component: CambioPassword}
 ];
