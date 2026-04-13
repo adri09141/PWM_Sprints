@@ -1,4 +1,4 @@
-<header class="main-header">
+<header class="main-header" [class.menu-open]="isMenuOpen()" (window:resize)="onResize($event)">
   <div class="contenedor-header">
 
     <div class="header-brand">
@@ -7,38 +7,64 @@
       </a>
     </div>
 
-    <button class="header-burger" type="button" aria-label="Abrir menú" aria-controls="headerMenu" aria-expanded="false">
+    <button class="header-burger" type="button" [attr.aria-label]="burgerAriaLabel" aria-controls="headerMenu" [attr.aria-expanded]="burgerAriaExpanded" (click)="toggleMenu()">
       <span class="header-burger__bars" aria-hidden="true"></span>
     </button>
 
     <nav class="header-nav" id="headerMenu">
-      <a routerLink="/" class="enlace-nav">Inicio</a>
-      <a routerLink="/catalogo" class="enlace-nav">Quiero adoptar</a>
-      <a routerLink="/sobreNosotros" class="enlace-nav">Sobre nosotros</a>
-      <a routerLink="/finalesFelices" class="enlace-nav">Finales felices</a>
+      <a routerLink="/" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }" class="enlace-nav" (click)="closeMenu()">Inicio</a>
+      <a routerLink="/catalogo" routerLinkActive="activo" class="enlace-nav" (click)="closeMenu()">Quiero adoptar</a>
+      <a routerLink="/sobreNosotros" routerLinkActive="activo" class="enlace-nav" (click)="closeMenu()">Sobre nosotros</a>
+      <a routerLink="/finalesFelices" routerLinkActive="activo" class="enlace-nav" (click)="closeMenu()">Finales felices</a>
+
+      <ng-container *ngIf="isMobile()">
+        <div class="header-perfil">
+          <ng-container *ngIf="currentUser$ | async as user; else noAuthMobile">
+            <a routerLink="/perfil" id="enlacePerfilHeader" (click)="closeMenu()">
+              <img
+                src="https://img.freepik.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg?semt=ais_user_personalization&w=740&q=80"
+                alt="Perfil" width="30" height="30"
+              >
+              <span class="perfil" id="textoPerfilHeader">{{user.nombre}}</span>
+            </a>
+            <a href="#" id="enlaceLogout" class="enlace-nav" (click)="logout($event); closeMenu()">Salir</a>
+          </ng-container>
+
+          <ng-template #noAuthMobile>
+            <a routerLink="/IniciarSesion" id="enlacePerfilHeader" (click)="closeMenu()">
+              <img
+                src="https://img.freepik.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg?semt=ais_user_personalization&w=740&q=80"
+                alt="Perfil" width="30" height="30"
+              >
+              <span class="perfil" id="textoPerfilHeader">Iniciar Sesion</span>
+            </a>
+          </ng-template>
+        </div>
+      </ng-container>
     </nav>
 
     <div id="headerPerfilSlot"></div>
 
-    <div class="header-perfil">
-      <ng-container *ngIf="currentUser$ | async as user; else noAuth">
-        <a routerLink="/perfil" id="enlacePerfilHeader">
-          <img src="https://img.freepik.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg?semt=ais_user_personalization&w=740&q=80"
-               alt="Perfil" width="30" height="30">
-          <span class="perfil" id="textoPerfilHeader">{{user.nombre}}</span>
-        </a>
-        <a href="#" id="enlaceLogout" class="enlace-nav" (click)="logout($event)">Salir</a>
-      </ng-container>
+    <ng-container *ngIf="!isMobile()">
+      <div class="header-perfil">
+        <ng-container *ngIf="currentUser$ | async as user; else noAuth">
+          <a routerLink="/perfil" id="enlacePerfilHeader">
+            <img src="https://img.freepik.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg?semt=ais_user_personalization&w=740&q=80"
+              alt="Perfil" width="30" height="30">
+            <span class="perfil" id="textoPerfilHeader">{{user.nombre}}</span>
+          </a>
+          <a href="#" id="enlaceLogout" class="enlace-nav" (click)="logout($event)">Salir</a>
+        </ng-container>
 
-      <ng-template #noAuth>
-        <a routerLink="/IniciarSesion" id="enlacePerfilHeader">
-          <img src="https://img.freepik.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg?semt=ais_user_personalization&w=740&q=80"
-               alt="Perfil" width="30" height="30">
-          <span class="perfil" id="textoPerfilHeader">Iniciar Sesión</span>
-        </a>
-      </ng-template>
-    </div>
-
+        <ng-template #noAuth>
+          <a routerLink="/IniciarSesion" id="enlacePerfilHeader">
+            <img src="https://img.freepik.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg?semt=ais_user_personalization&w=740&q=80"
+              alt="Perfil" width="30" height="30">
+            <span class="perfil" id="textoPerfilHeader">Iniciar Sesion</span>
+          </a>
+        </ng-template>
+      </div>
+    </ng-container>
 
   </div>
 </header>
