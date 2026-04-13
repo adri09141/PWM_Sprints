@@ -1,0 +1,102 @@
+<main class="pagina-acceso">
+
+  <!-- Panel izquierdo decorativo -->
+  <div class="acceso-panel-izq">
+    <p class="panel-tag">Tu espacio personal</p>
+    <h1 class="panel-titulo">Tu perfil,<br>tu <em>historia</em></h1>
+    <p class="panel-descripcion">
+      Mantén tus datos actualizados para que podamos agilizar cualquier proceso de adopción y mantenerte informado.
+    </p>
+    <div class="panel-mascotas">
+      <div class="mascota-chip"><span>🐾</span> Mis datos</div>
+      <div class="mascota-chip"><span>❤️</span> Adopciones</div>
+    </div>
+  </div>
+
+  <!-- Panel derecho con formulario -->
+  <div class="acceso-panel-der">
+    <div class="acceso-card acceso-card--wide">
+
+      <!-- Tabs de perfil -->
+      <nav class="acceso-tabs">
+        <a href="reiniciarContrasena.html" class="acceso-tab">Contraseña</a>
+        <span class="acceso-tab activo">Mis Datos</span>
+        <a href="adoptados.html" class="acceso-tab">Adoptados</a>
+      </nav>
+
+      <h2 class="acceso-titulo">Sobre mí</h2>
+      <p class="acceso-subtitulo">Revisa y actualiza tu información personal cuando lo necesites.</p>
+
+      <form id="formulario_perfil" *ngIf="user">
+        <div class="campos-grid">
+          <div class="campo-grupo">
+            <label class="campo-label" for="nombre">Nombre</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="text" id="nombre" name="nombre" required minlength="2" placeholder="Tu nombre" [(ngModel)]="user.nombre">
+            </div>
+          </div>
+          <div class="campo-grupo">
+            <label class="campo-label" for="apellidos">Apellidos</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="text" id="apellidos" name="apellidos" required minlength="2" placeholder="Tus apellidos" [(ngModel)]="user.apellido">
+            </div>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="fecha_nacimiento">Fecha de Nacimiento</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="date" id="fecha_nacimiento" name="fecha_nacimiento" [(ngModel)]="user.fechaNacimiento">
+              <div id="error_fecha" class="acceso-error" style="margin-top: 20px"></div>
+            </div>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="dni">DNI</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="text" id="dni" name="dni" required pattern="\d{8}[a-zA-Z]" title="Debe contener 8 números seguidos de 1 letra (ej: 12345678A)" [(ngModel)]="user.dni">
+            </div>
+          </div>
+
+          <div class="campo-grupo campo-grupo--full">
+            <label class="campo-label" for="direccion">Dirección</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="text" id="direccion" name="direccion" required placeholder="Calle, número, ciudad" [(ngModel)]="user.direccion">
+            </div>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="telefono">Teléfono</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="tel" id="telefono" name="telefono" [(ngModel)]="user.telefono">
+              <div id="error_telefono" class="acceso-error" style="margin-top: 20px"></div>
+            </div>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-label" for="correo">Correo electrónico</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="email" id="correo" name="correo" readonly [(ngModel)]="user.correo">
+            </div>
+          </div>
+
+          <div class="campo-grupo campo-grupo--full">
+            <label class="campo-label" for="n_adopciones">Nº de adopciones</label>
+            <div class="campo-wrapper">
+              <input class="campo-input" type="text" id="n_adopciones" name="n_adopciones" readonly
+                     style="opacity: 0.7; cursor: default;" [(ngModel)]="user.numeroAdopciones">
+            </div>
+          </div>
+        </div>
+        <button type="submit" id="btn_actualizar" class="btn-acceso-principal">
+          Guardar cambios
+        </button>
+      </form>
+
+      <button type='button' id="btn_borrar_cuenta" class="btn-acceso-principal" (click)="logout()">
+        Cerrar sesión
+      </button>
+
+    </div>
+  </div>
+
+</main>

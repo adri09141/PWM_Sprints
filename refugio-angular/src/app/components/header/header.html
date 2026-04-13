@@ -21,13 +21,24 @@
     <div id="headerPerfilSlot"></div>
 
     <div class="header-perfil">
-      <a routerLink="/crearCuenta" id="enlacePerfilHeader">
-        <img src="https://img.freepik.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg?semt=ais_user_personalization&w=740&q=80"
-             alt="Perfil" width="30" height="30">
-        <span class="perfil" id="textoPerfilHeader">Iniciar Sesión</span>
-      </a>
-      <a href="#" id="enlaceLogout" style="display: none;" class="enlace-nav">Salir</a>
+      <ng-container *ngIf="currentUser$ | async as user; else noAuth">
+        <a routerLink="/perfil" id="enlacePerfilHeader">
+          <img src="https://img.freepik.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg?semt=ais_user_personalization&w=740&q=80"
+               alt="Perfil" width="30" height="30">
+          <span class="perfil" id="textoPerfilHeader">{{user.nombre}}</span>
+        </a>
+        <a href="#" id="enlaceLogout" class="enlace-nav" (click)="logout($event)">Salir</a>
+      </ng-container>
+
+      <ng-template #noAuth>
+        <a routerLink="/IniciarSesion" id="enlacePerfilHeader">
+          <img src="https://img.freepik.com/vector-premium/icono-perfil-usuario-estilo-plano-ilustracion-vector-avatar-miembro-sobre-fondo-aislado-concepto-negocio-signo-permiso-humano_157943-15752.jpg?semt=ais_user_personalization&w=740&q=80"
+               alt="Perfil" width="30" height="30">
+          <span class="perfil" id="textoPerfilHeader">Iniciar Sesión</span>
+        </a>
+      </ng-template>
     </div>
+
 
   </div>
 </header>

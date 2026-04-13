@@ -8,6 +8,8 @@ import {IniciarSesion} from './pages/iniciar-sesion/iniciar-sesion';
 import {AnadirResena} from './pages/anadir-resena/anadir-resena';
 import { FichaAnimalPage } from './pages/ficha-animal/ficha-animal';
 import { Adopcion } from './pages/adopcion/adopcion';
+import { Perfil } from './pages/perfil/perfil';
+
 export const routes: Routes = [
   { path: '', component: Inicio },
   { path: 'catalogo', component: Catalogo },
@@ -17,6 +19,6 @@ export const routes: Routes = [
   {path: 'sobreNosotros', component: SobreNosotros},
   {path: 'crearCuenta', component: CrearCuenta},
   {path: 'IniciarSesion', component: IniciarSesion},
-  {path: 'AnadirResena', component: AnadirResena}
-
+  {path: 'AnadirResena', component: AnadirResena},
+  {path: 'perfil', component: Perfil}
 ];
