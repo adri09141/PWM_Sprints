@@ -16,8 +16,7 @@
     <div class="acceso-card acceso-card--wide">
 
       <h2 class="acceso-titulo" routerLink="/AnadirResena">Añadir Reseña</h2>
-
-      <form id="formulario_resena">
+      <form #miformulario="ngForm" (ngSubmit)="enviarDatos(miformulario)" >
 
         <div class="campos-grid">
 
@@ -45,14 +44,28 @@
           <div class="campo-grupo">
             <label class="campo-label" for="nombre_mascota">Nombre de tu peludo</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="text" id="nombre_mascota" name="nombre_mascota" required placeholder="Ej: Toby">
+              <input class="campo-input" type="text" id="nombre_mascota" name="nombre_mascota" ngModel #nombreInput = "ngModel" required minlength="3" placeholder="Ej: Toby">
             </div>
+            @if(nombreInput.touched && nombreInput.invalid)
+            {
+              <div class="error" style="color: red; font-size: 12px;">
+                @if (nombreInput.errors?.['required']) { <span>⚠️ El nombre es obligatorio.</span> }
+                @if (nombreInput.errors?.['minlength']) { <span>⚠️ Debe tener al menos 3 letras.</span> }
+              </div>
+            }
           </div>
 
           <div class="campo-grupo">
             <label class="campo-label" for="valoracion">Valoración</label>
             <div class="campo-wrapper">
-              <select class="campo-input" id="valoracion" name="valoracion" required>
+              <select
+                class="campo-input"
+                id="valoracion"
+                name="valoracion"
+                required
+                ngModel
+                #valoracionInput="ngModel">
+
                 <option value="" disabled selected>Elige una puntuación...</option>
                 <option value="5">⭐⭐⭐⭐⭐ (5/5) ¡Increíble!</option>
                 <option value="4">⭐⭐⭐⭐ (4/5) Muy buena</option>
@@ -61,36 +74,76 @@
                 <option value="1">⭐ (1/5) Mala</option>
               </select>
             </div>
+
+            @if(valoracionInput.touched && valoracionInput.invalid) {
+              <div class="error" style="color: red; font-size: 12px; margin-top: 5px;">
+                @if (valoracionInput.errors?.['required']) {
+                  <span>⚠️ Por favor, dale una puntuación a tu peludo.</span>
+                }
+              </div>
+            }
           </div>
 
           <div class="campo-grupo campo-grupo--full">
             <label class="campo-label" for="titulo_resena">Titular de tu reseña</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="text" id="titulo_resena" name="titulo_resena" required maxlength="40" placeholder="Ej: ¡La mejor decisión de mi vida!">
+              <input class="campo-input" type="text" id="titulo_resena" name="titulo_resena" ngModel #tituloInput="ngModel" required minlength="3" maxlength="40" placeholder="Ej: ¡La mejor decisión de mi vida!">
             </div>
+            @if(tituloInput.touched && tituloInput.invalid)
+            {
+              <div class="error" style="color: red; font-size: 12px;">
+                @if (tituloInput.errors?.['required']) { <span>⚠️ El titulo es obligatorio.</span> }
+                @if (tituloInput.errors?.['minlength']) { <span>⚠️ Debe tener al menos 3 letras.</span> }
+              </div>
+            }
           </div>
 
           <div class="campo-grupo campo-grupo--full">
             <label class="campo-label" for="descripcion_resena">Resumen de tu historia</label>
             <div class="campo-wrapper">
-              <textarea class="campo-input" id="descripcion_resena" name="descripcion_resena" rows="3" required maxlength="150" placeholder="Ej: Desde que llegó a casa, todo son risas. Se ha adaptado genial a la familia..." style="resize: vertical; padding: 15px; font-family: inherit;"></textarea>
+              <textarea class="campo-input" id="descripcion_resena" name="descripcion_resena" rows="3" ngModel #descripcionInput="ngModel" required  minlength="50" maxlength="300" placeholder="Ej: Desde que llegó a casa, todo son risas. Se ha adaptado genial a la familia..." style="resize: vertical; padding: 15px; font-family: inherit;"></textarea>
             </div>
+            @if (descripcionInput.invalid && descripcionInput.touched)
+            {
+              <div class="error" style="color: red; font-size: 12px;">
+                @if (descripcionInput.errors?.['required']) { <span>⚠️ La descripción es obligatorio.</span> }
+                @if (descripcionInput.errors?.['minlength']) { <span>⚠️ Escribe al menos 50 letras. Te faltan {{ 50 - (descripcionInput.value?.length || 0) }}.</span> }
+
+              </div>
+            }
           </div>
 
           <div class="campo-grupo campo-grupo--full">
             <label class="campo-label" for="foto_mascota">Sube una foto de tu amigo</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="file" id="foto_mascota" name="foto_mascota" accept="image/png, image/jpeg" required>
+              <input class="campo-input" type="file" id="foto_mascota" name="foto_mascota" accept="image/png, image/jpeg" required ngModel #fotoInput="ngModel" (change)="capturarFoto($event)"
+                     (cancel)="fotoCancelada = true">
             </div>
+            @if (fotoCancelada && fotoInput.invalid) {
+              <div class="error" style="color: red; font-size: 12px;">
+                <span>⚠️ Subir una foto es obligatorio.</span>
+              </div>
+            }
           </div>
 
           <div class="campo-grupo campo-grupo--full" style="margin-top: 15px;">
-            <button type="submit" id="btn_resena" class="btn-acceso-principal" style="width: 100%;">
+            @if (miformulario.invalid && miformulario.submitted)
+            {
+              <div class="error" style="color: red; font-size: 13px; margin-bottom: 10px; text-align: center; font-weight: bold;">
+                ⚠️ Por favor, revisa los campos en rojo para poder continuar.
+              </div>
+            }
+            <button
+              type="submit"
+              class="btn-acceso-principal"
+              [class.boton-bloqueado]="miformulario.invalid"
+              style="width: 100%;">
               Enviar mi historia a revisión
             </button>
           </div>
 
-        </div> </form>
+        </div>
+      </form>
 
     </div>
   </div>
