@@ -9,6 +9,7 @@ import {AnadirResena} from './pages/anadir-resena/anadir-resena';
 import { FichaAnimalPage } from './pages/ficha-animal/ficha-animal';
 import { Adopcion } from './pages/adopcion/adopcion';
 import { Perfil } from './pages/perfil/perfil';
+import { CambioPassword } from "./pages/cambio-password/cambio-password";
 
 export const routes: Routes = [
   { path: '', component: Inicio },
@@ -20,5 +21,6 @@ export const routes: Routes = [
   {path: 'crearCuenta', component: CrearCuenta},
   {path: 'IniciarSesion', component: IniciarSesion},
   {path: 'AnadirResena', component: AnadirResena},
-  {path: 'perfil', component: Perfil}
+  {path: 'perfil', component: Perfil},
+  {path: 'cambio-password', component: CambioPassword}
 ];
