@@ -60,6 +60,11 @@ main {
   radial-gradient(ellipse 60% 80% at 10% 50%, rgba(200, 149, 108, 0.12) 0%, transparent 70%);
 }
 
+.botonesSeccionPrincipal {
+  display: flex;
+  gap: 16px;
+}
+
 /* Todo el contenido textual sobre el overlay */
 .hero-contenido {
   position: relative;
@@ -248,9 +253,11 @@ main {
   }
 
   .botonesSeccionPrincipal {
+    display: flex;
+    gap: 12px;
     flex-direction: column;
     width: 100%;
-    align-items: center;
+    align-items: stretch;
   }
 
 
