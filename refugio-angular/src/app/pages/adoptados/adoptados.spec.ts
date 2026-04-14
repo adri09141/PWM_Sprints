@@ -1,6 +1,29 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { BehaviorSubject, of } from 'rxjs';
 
 import { Adoptados } from './adoptados';
+import { AuthService } from '../../services/auth.service';
+import { DataService } from '../../services/data.service';
+
+class AuthServiceMock {
+  private subject = new BehaviorSubject<any>(null);
+  currentUser$ = this.subject.asObservable();
+
+  isLoggedIn(): boolean {
+    return true;
+  }
+}
+
+class DataServiceMock {
+  getAnimales() {
+    return of([]);
+  }
+}
+
+class RouterMock {
+  navigate() {}
+}
 
 describe('Adoptados', () => {
   let component: Adoptados;
@@ -9,6 +32,11 @@ describe('Adoptados', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Adoptados],
+      providers: [
+        { provide: AuthService, useClass: AuthServiceMock },
+        { provide: DataService, useClass: DataServiceMock },
+        { provide: Router, useClass: RouterMock },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Adoptados);

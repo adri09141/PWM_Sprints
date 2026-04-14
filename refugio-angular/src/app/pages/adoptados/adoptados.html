@@ -1,6 +1,5 @@
 <main class="pagina-adoptados">
 
-  <!-- Panel izquierdo -->
   <div class="adoptados-panel-izq">
     <p class="panel-tag">Mi familia</p>
     <h1 class="panel-titulo">Vidas que has<br><em>cambiado</em></h1>
@@ -8,9 +7,8 @@
       Cada adopción es una historia de amor. Aquí puedes ver a todos los animales que ahora forman parte de tu vida.
     </p>
     <div class="panel-stats" id="panelStats">
-      <!-- Se rellena con JS -->
       <div class="stat-item">
-        <span class="stat-num" id="statNum">—</span>
+        <span class="stat-num" id="statNum">{{ adoptados().length }}</span>
         <div class="stat-texto">
           <strong>Animales adoptados</strong>
           Gracias a ti
@@ -19,9 +17,7 @@
     </div>
   </div>
 
-  <!-- Panel derecho -->
   <div class="adoptados-panel-der">
-
     <nav class="acceso-tabs">
       <a routerLink="/cambioPassword" class="acceso-tab">Contraseña</a>
       <a routerLink="/perfil" class="acceso-tab">Mis Datos</a>
@@ -32,9 +28,32 @@
     <p class="adoptados-subtitulo">Todos los animales que has acogido en tu hogar.</p>
 
     <div id="contenido-adoptados">
-      <!-- Se rellena con JS -->
+      @if (adoptados().length === 0) {
+        <div class="adoptados-vacio">
+          <div class="vacio-icono">🐾</div>
+          <p>Todavía no has adoptado ningún animal.<br>Tu hogar esta esperando a alguien especial.</p>
+          <a routerLink="/catalogo">Ver animales disponibles →</a>
+        </div>
+      } @else {
+        <div class="adoptados-grid">
+          @for (animal of adoptados(); track animal.id) {
+            <a [routerLink]="['/catalogo', animal.id]" class="tarjeta-adoptado">
+              <div class="tarjeta-foto">
+                <img [src]="animal.foto1" [alt]="animal.nombre" loading="lazy">
+              </div>
+              <div class="tarjeta-info">
+                <h3 class="tarjeta-nombre">{{ animal.nombre }}</h3>
+                <p class="tarjeta-raza">{{ animal.raza }}</p>
+                <div class="tarjeta-meta">
+                  <span class="tarjeta-chip">{{ animal.edad }} años</span>
+                  <span class="tarjeta-chip">{{ animal.sexo }}</span>
+                </div>
+              </div>
+            </a>
+          }
+        </div>
+      }
     </div>
-
   </div>
 
 </main>
