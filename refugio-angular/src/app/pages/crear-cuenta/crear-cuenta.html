@@ -27,7 +27,7 @@
       <h2 class="acceso-titulo">Bienvenido</h2>
       <p class="acceso-subtitulo">Rellena tus datos para registrarte. Solo tardarás un momento.</p>
 
-      <form id="formulario_registro">
+      <form #registroForm="ngForm" (ngSubmit)="crearCuenta(registroForm)">
 
         <div class="campos-grid">
 
