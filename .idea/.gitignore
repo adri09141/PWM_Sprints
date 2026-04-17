@@ -8,3 +8,6 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+# Firebase secrets
+src/environments/environment.ts
+src/environments/environment.development.ts
