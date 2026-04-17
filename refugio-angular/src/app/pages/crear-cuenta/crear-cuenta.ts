@@ -1,7 +1,7 @@
 import {booleanAttribute, Component} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {FormsModule, NgModel} from '@angular/forms';
-
+import { DatabaseService } from '../../services/database';
 @Component({
   selector: 'app-crear-cuenta',
   standalone: true,
@@ -12,6 +12,7 @@ import {FormsModule, NgModel} from '@angular/forms';
 export class CrearCuenta {
   menorEdad: boolean = true;
   verContrasena: boolean = false;
+  constructor(private db: DatabaseService) {} // Inyectamos tu servicio
   toggleVerContrasena() {
     this.verContrasena = !this.verContrasena;
   }
@@ -28,5 +29,6 @@ export class CrearCuenta {
     } else {
       this.menorEdad = true;
     }
+
   }
 }
