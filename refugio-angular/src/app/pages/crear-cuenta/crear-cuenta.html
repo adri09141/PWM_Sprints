@@ -34,64 +34,127 @@
           <div class="campo-grupo">
             <label class="campo-label" for="nombre">Nombre</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="text" id="nombre" name="nombre" required minlength="2" placeholder="Tu nombre">
+              <input class="campo-input" type="text" id="nombre" name="nombre" ngModel #nombreInput = "ngModel" required minlength="2" placeholder="Tu nombre">
             </div>
+            @if(nombreInput.touched && nombreInput.invalid)
+            {
+              <div class="error" style="color: red; font-size: 12px;">
+                @if (nombreInput.errors?.['required']) { <span>⚠️ El nombre es obligatorio.</span> }
+                @if (nombreInput.errors?.['minlength']) { <span>⚠️ Debe tener al menos 2 letras.</span> }
+              </div>
+            }
           </div>
 
           <div class="campo-grupo">
             <label class="campo-label" for="apellidos">Apellidos</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="text" id="apellidos" name="apellidos" required minlength="2" placeholder="Tus apellidos">
+              <input class="campo-input" type="text" id="apellidos" name="apellidos" ngModel #apellidoInput = "ngModel" required minlength="2" placeholder="Tus apellidos">
             </div>
+            @if(apellidoInput.touched && apellidoInput.invalid)
+            {
+              <div class="error" style="color: red; font-size: 12px;">
+                @if (apellidoInput.errors?.['required']) { <span>⚠️ El apellido es obligatorio.</span> }
+                @if (apellidoInput.errors?.['minlength']) { <span>⚠️ Debe tener al menos 2 letras.</span> }
+              </div>
+            }
           </div>
 
           <div class="campo-grupo">
             <label class="campo-label" for="fecha_nacimiento">Fecha de Nacimiento</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+              <input class="campo-input" type="date" id="fecha_nacimiento" name="fecha_nacimiento" ngModel #fechaInput = "ngModel" required (ngModelChange)="enviarDatos(fechaInput)">
             </div>
+            @if(fechaInput.touched && fechaInput.invalid)
+            {
+              <div class="error" style="color: red; font-size: 12px;">
+                @if (fechaInput.errors?.['required']) { <span>⚠️ La fecha de nacimiento es obligatoria.</span> }
+              </div>
+            }
+            @if(fechaInput.touched && fechaInput.valid)
+            {
+              <div class="error" style="color: red; font-size: 12px;">
+                @if (menorEdad) { <span>⚠️ Debes ser mayor de 18 años.</span> }
+              </div>
+            }
             <div id="error_fecha" class="acceso-error" style="margin-top: 20px"></div>
           </div>
 
           <div class="campo-grupo">
             <label class="campo-label" for="dni">DNI</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="text" id="dni" name="dni" required pattern="\d{8}[a-zA-Z]"
-                     title="Debe contener 8 números seguidos de 1 letra (ej: 12345678A)">
+              <input class="campo-input" type="text" id="dni" name="dni" ngModel #dniInput = "ngModel" required pattern="\d{8}[a-zA-Z]"
+                     placeholder="12345678X">
             </div>
+            @if(dniInput.touched && dniInput.invalid)
+            {
+              <div class="error" style="color: red; font-size: 12px;">
+                @if (dniInput.errors?.['required']) { <span>⚠️ El DNI es obligatorio.</span> }
+                @if (dniInput.errors?.['pattern']) { <span>⚠️ Debe ser ocho números seguidos de una letra.</span> }
+              </div>
+            }
           </div>
 
           <div class="campo-grupo campo-grupo--full">
             <label class="campo-label" for="direccion">Dirección</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="text" id="direccion" name="direccion" required placeholder="Calle, número, ciudad">
+              <input class="campo-input" type="text" id="direccion" name="direccion" ngModel #direccionInput = "ngModel" required placeholder="Calle, número, ciudad">
             </div>
+            @if(direccionInput.touched && direccionInput.invalid)
+            {
+              <div class="error" style="color: red; font-size: 12px;">
+                @if (direccionInput.errors?.['required']) { <span>⚠️ La dirección es obligatoria.</span> }
+              </div>
+            }
           </div>
 
           <div class="campo-grupo">
             <label class="campo-label" for="telefono">Teléfono</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="tel" id="telefono" name="telefono" required pattern="\d{9}"
+              <input class="campo-input" type="tel" id="telefono" name="telefono" ngModel #telefInput = "ngModel" required pattern="\d{9}"
                      title="Debe contener 9 números" placeholder="612345678">
             </div>
+            @if(telefInput.touched && telefInput.invalid)
+            {
+              <div class="error" style="color: red; font-size: 12px;">
+                @if (telefInput.errors?.['required']) { <span>⚠️ El apellido es obligatorio.</span> }
+                @if (telefInput.errors?.['pattern']) { <span>⚠️ Debe ser nueve números seguidos.</span> }
+              </div>
+            }
           </div>
 
           <div class="campo-grupo">
             <label class="campo-label" for="correo">Correo electrónico</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="email" id="correo" name="correo" required placeholder="ejemplo@gmail.com">
+              <input class="campo-input" type="email" id="correo" name="correo" ngModel #correoInput = "ngModel" required pattern=".+@.+" placeholder="ejemplo@gmail.com">
             </div>
+            @if(correoInput.touched && correoInput.invalid)
+            {
+              <div class="error" style="color: red; font-size: 12px;">
+                @if (correoInput.errors?.['required']) { <span>⚠️ El correo es obligatorio.</span> }
+                @if (correoInput.errors?.['pattern']) { <span>⚠️ Debe tener algo escrito, con un arroba entremedias.</span> }
+              </div>
+            }
             <div id="error_correo" class="acceso-error" style="margin-top: 20px"></div>
           </div>
 
           <div class="campo-grupo campo-grupo--full">
             <label class="campo-label" for="contrasena">Contraseña</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="password" id="contrasena" name="contrasena" required
+              <input class="campo-input" [type]="verContrasena ? 'text': 'password'" id="contrasena" name="contrasena" ngModel #contrasenaInput = "ngModel" required
+                     pattern="(?=(?:.*[A-Za-z]){3,})(?=.*\d)(?=.*[^A-Za-z\d]).+"
                      placeholder="Mín. 3 letras, 1 número y 1 especial (Ej: Perro1!)"
                      title="Debe tener al menos 3 letras, 1 número y 1 carácter especial">
-              <button type="button" id="btn_ver_contrasena" class="btn-ver-pass">Ver</button>
+              <button type="button" class="btn-ver-pass" (click)="toggleVerContrasena()">
+                {{ verContrasena ? 'Ocultar' : 'Ver' }}
+              </button>
             </div>
+            @if(contrasenaInput.touched && contrasenaInput.invalid)
+            {
+              <div class="error" style="color: red; font-size: 12px;">
+                @if (contrasenaInput.errors?.['required']) { <span>⚠️ La contraseña es obligatoria.</span> }
+                @if (contrasenaInput.errors?.['pattern']) { <span>⚠️ Debe tener al menos 3 letras, 1 número y 1 carácter especial.</span> }
+              </div>
+            }
             <div id="error_contrasena" class="acceso-error" style="margin-top: 20px"></div>
           </div>
 
