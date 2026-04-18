@@ -13,6 +13,9 @@ export class AuthService {
 
   constructor(private http: HttpClient, private  db: DatabaseService) {
     const savedUser = localStorage.getItem('currentUser');
+    if (savedUser) {
+      this.currentUserSubject.next(JSON.parse(savedUser));
+    }
   }
 
   login(correo: string, contrasena: string): Observable<boolean> {
