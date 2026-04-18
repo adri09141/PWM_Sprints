@@ -3,6 +3,7 @@ import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import {DatabaseService} from '../../services/database';
 
 @Component({
   selector: 'app-perfil',
@@ -14,7 +15,8 @@ import { AuthService } from '../../services/auth.service';
 export class Perfil implements OnInit {
   private authService = inject(AuthService);
   private router = inject(Router);
-  
+  constructor(private db: DatabaseService) {
+  }
   user: any = null;
 
   ngOnInit() {
@@ -28,7 +30,11 @@ export class Perfil implements OnInit {
   }
 
   logout() {
-     this.authService.logout();
-     this.router.navigate(['/IniciarSesion']);
+    const usuario = this.authService.getCurrentUser();
+    if(usuario && usuario.id) {
+      this.authService.logout();
+      this.db.eliminar("usuarios", usuario.id)
+      this.router.navigate(['/IniciarSesion']);
+    }
   }
 }

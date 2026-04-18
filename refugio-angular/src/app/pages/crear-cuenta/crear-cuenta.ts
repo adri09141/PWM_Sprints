@@ -3,6 +3,8 @@ import { RouterLink } from '@angular/router';
 import {FormsModule, NgModel, NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import { DatabaseService } from '../../services/database';
+import { AuthService } from '../../services/auth.service';
+
 @Component({
   selector: 'app-crear-cuenta',
   standalone: true,
@@ -13,7 +15,7 @@ import { DatabaseService } from '../../services/database';
 export class CrearCuenta {
   menorEdad: boolean = true;
   verContrasena: boolean = false;
-  constructor(private db: DatabaseService, private router: Router) {} // Inyectamos tu servicio
+  constructor(private db: DatabaseService, private router: Router, private auth: AuthService) {} // Inyectamos tu servicio
   toggleVerContrasena() {
     this.verContrasena = !this.verContrasena;
   }
@@ -35,7 +37,7 @@ export class CrearCuenta {
   {
     const datos = formulario.value;
     datos.numeroAdopciones = 0;
-    this.db.insertar("usuarios", datos) // Te lo he cambiado a "usuarios" para que no haya mil carpetas raras
+    this.auth.registro(datos) // Te lo he cambiado a "usuarios" para que no haya mil carpetas raras
       .then(() => {
         // 💬 AVISO: Si ha ido bien, celebramos y limpiamos
         alert("🎉 ¡Bienvenido a la familia! Tu cuenta ha sido creada.");

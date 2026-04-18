@@ -38,14 +38,14 @@
           <div class="campo-grupo">
             <label class="campo-label" for="apellidos">Apellidos</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="text" id="apellidos" name="apellidos" required minlength="2" placeholder="Tus apellidos" [(ngModel)]="user.apellido">
+              <input class="campo-input" type="text" id="apellidos" name="apellidos" required minlength="2" placeholder="Tus apellidos" [(ngModel)]="user.apellidos">
             </div>
           </div>
 
           <div class="campo-grupo">
             <label class="campo-label" for="fecha_nacimiento">Fecha de Nacimiento</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="date" id="fecha_nacimiento" name="fecha_nacimiento" [(ngModel)]="user.fechaNacimiento">
+              <input class="campo-input" type="date" id="fecha_nacimiento" name="fecha_nacimiento" [(ngModel)]="user.fecha_nacimiento">
               <div id="error_fecha" class="acceso-error" style="margin-top: 20px"></div>
             </div>
           </div>
