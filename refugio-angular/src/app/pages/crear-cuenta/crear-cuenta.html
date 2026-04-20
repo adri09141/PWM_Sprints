@@ -160,6 +160,11 @@
 
         </div>
 
+
+        @if (errorMessage) {
+          <div style="color: red; font-size: 14px; margin-bottom: 8px;">{{ errorMessage }}</div>
+        }
+
         <button id="crear" type="submit" class="btn-acceso-principal">
           Crear cuenta
         </button>
