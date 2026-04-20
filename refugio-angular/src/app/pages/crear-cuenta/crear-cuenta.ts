@@ -1,8 +1,7 @@
-import {booleanAttribute, Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {FormsModule, NgModel, NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
-import { DatabaseService } from '../../services/database';
+import { FormsModule, NgModel, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -15,10 +14,14 @@ import { AuthService } from '../../services/auth.service';
 export class CrearCuenta {
   menorEdad: boolean = true;
   verContrasena: boolean = false;
-  constructor(private db: DatabaseService, private router: Router, private auth: AuthService) {} // Inyectamos tu servicio
+  errorMessage: string = '';
+
+  constructor(private router: Router, private auth: AuthService) {}
+
   toggleVerContrasena() {
     this.verContrasena = !this.verContrasena;
   }
+
   enviarDatos(fecha: NgModel) {
     if (!fecha.value) return;
     const hoy = new Date();
@@ -26,29 +29,33 @@ export class CrearCuenta {
     const edadMinima = new Date();
     edadMinima.setFullYear(hoy.getFullYear() - 18);
 
-    if (fechaNacimiento < edadMinima) {
-      this.menorEdad = false;
-    } else {
-      this.menorEdad = true;
-    }
-
+    this.menorEdad = fechaNacimiento >= edadMinima;
   }
-  crearCuenta(formulario: NgForm)
-  {
+
+  crearCuenta(formulario: NgForm) {
+    if (formulario.invalid || this.menorEdad) return;
+
     const datos = formulario.value;
     datos.numeroAdopciones = 0;
-    this.auth.registro(datos) // Te lo he cambiado a "usuarios" para que no haya mil carpetas raras
-      .then(() => {
-        // 💬 AVISO: Si ha ido bien, celebramos y limpiamos
-        alert("🎉 ¡Bienvenido a la familia! Tu cuenta ha sido creada.");
-        formulario.resetForm(); // Esto vacía todos los inputs automáticamente
-        this.router.navigate(['/']);
+    this.errorMessage = '';
+
+    // AuthService se encarga de:
+    //  1. Crear el usuario en Firebase Authentication
+    //  2. Guardar el perfil (sin contraseña) en Firestore con el uid como ID
+    this.auth.registro(datos)
+      .then((exito) => {
+        if (exito) {
+          alert('🎉 ¡Bienvenido a la familia! Tu cuenta ha sido creada.');
+          formulario.resetForm();
+          this.router.navigate(['/']);
+        } else {
+          this.errorMessage = '❌ No se pudo crear la cuenta. Es posible que el correo ya esté en uso.';
+        }
       })
       .catch((error) => {
-        // Por si acaso se cae internet o falla algo
-        console.error("Error al crear cuenta:", error);
-        alert("❌ Vaya, hubo un problema al conectar con el servidor.");
+        console.error('Error al crear cuenta:', error);
+        this.errorMessage = '❌ Hubo un problema al conectar con el servidor.';
       });
-
   }
 }
+

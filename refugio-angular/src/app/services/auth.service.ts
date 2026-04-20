@@ -1,68 +1,122 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, map, take } from 'rxjs';
-import {DataService} from '../services/data.service';
+import { Injectable, inject } from '@angular/core';
+import {
+  Auth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  User
+} from '@angular/fire/auth';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { DatabaseService } from './database';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private dataUrl = 'assets/data.json';
+  private auth = inject(Auth);
+  private db = inject(DatabaseService);
+
+  // Emite el perfil completo del usuario (datos de Firestore) o null si no hay sesión
   private currentUserSubject = new BehaviorSubject<any>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(private http: HttpClient, private  db: DatabaseService) {
-    const savedUser = localStorage.getItem('currentUser');
-    if (savedUser) {
-      this.currentUserSubject.next(JSON.parse(savedUser));
-    }
+  constructor() {
+    // Escuchamos los cambios de sesión de Firebase Auth en tiempo real.
+    // Cuando el usuario ya tiene sesión activa (p.ej. al recargar la página),
+    // recuperamos su perfil de Firestore automáticamente.
+    onAuthStateChanged(this.auth, async (firebaseUser: User | null) => {
+      if (firebaseUser) {
+        // El usuario tiene sesión: cargamos su perfil desde Firestore
+        const perfil = await this.db.obtenerPorId('usuarios', firebaseUser.uid);
+        this.currentUserSubject.next(perfil ?? { uid: firebaseUser.uid, correo: firebaseUser.email });
+      } else {
+        // Sin sesión activa
+        this.currentUserSubject.next(null);
+      }
+    });
   }
 
-  login(correo: string, contrasena: string): Observable<boolean> {
-    return this.db.obtenerPorCorreo("usuarios", correo).pipe(
-      take(1),
-      map(data => {
-        if(data.length > 0){
-          const user = data[0];
-          if(user.contrasena == contrasena)
-          {
-            this.currentUserSubject.next(user);
-            localStorage.setItem('currentUser', JSON.stringify(user));
-            return true;
-          }
-        }
-        return false;
-      })
-    );
-  }
+  /**
+   * REGISTRO: crea la cuenta en Firebase Auth y guarda el perfil (sin contraseña) en Firestore.
+   * @param datosUsuario Objeto con los campos del formulario (nombre, correo, contrasena, etc.)
+   * @returns true si el registro fue exitoso, false en caso de error
+   */
   async registro(datosUsuario: any): Promise<boolean> {
     try {
-      // 1. Guardamos el usuario en Firebase
-      const documento = await this.db.insertar("usuarios", datosUsuario);
+      // 1. Creamos el usuario en Firebase Authentication (gestiona la contraseña de forma segura)
+      const credencial = await createUserWithEmailAndPassword(
+        this.auth,
+        datosUsuario.correo,
+        datosUsuario.contrasena
+      );
 
-      // 2. Le añadimos el ID secreto que genera Firebase a los datos (muy útil para el futuro)
-      datosUsuario.id = documento.id;
+      const uid = credencial.user.uid;
 
-      // 3. ¡Lo autologueamos! Lo guardamos en memoria y en localStorage
-      this.currentUserSubject.next(datosUsuario);
-      localStorage.setItem('currentUser', JSON.stringify(datosUsuario));
+      // 2. Construimos el perfil SIN la contraseña para guardarlo en Firestore
+      const { contrasena, ...perfilSinContrasena } = datosUsuario;
+      const perfil = {
+        ...perfilSinContrasena,
+        uid,
+        numeroAdopciones: datosUsuario.numeroAdopciones ?? 0,
+        fechaRegistro: new Date().toISOString()
+      };
 
-      return true; // Todo salió perfecto
-    } catch (error) {
-      console.error("Error al registrar en AuthService:", error);
-      return false; // Algo falló
+      // 3. Guardamos el perfil en Firestore usando el uid como ID del documento
+      await this.db.insertarConId('usuarios', uid, perfil);
+
+      // 4. Actualizamos el estado local de la sesión
+      this.currentUserSubject.next({ ...perfil, id: uid });
+
+      return true;
+    } catch (error: any) {
+      console.error('Error al registrar usuario:', error);
+      return false;
     }
   }
-  logout(): void {
-    this.currentUserSubject.next(null);
-    localStorage.removeItem('currentUser');
+
+  /**
+   * LOGIN: valida con Firebase Auth y recupera el perfil adicional de Firestore.
+   * @returns Observable<boolean> — true si el login fue exitoso
+   */
+  login(correo: string, contrasena: string): Observable<boolean> {
+    return new Observable<boolean>(observer => {
+      signInWithEmailAndPassword(this.auth, correo, contrasena)
+        .then(async (credencial) => {
+          // Auth validó las credenciales. Recuperamos el perfil desde Firestore.
+          const perfil = await this.db.obtenerPorId('usuarios', credencial.user.uid);
+          this.currentUserSubject.next(perfil ?? { uid: credencial.user.uid, correo });
+          observer.next(true);
+          observer.complete();
+        })
+        .catch((error) => {
+          console.error('Error al iniciar sesión:', error);
+          observer.next(false);
+          observer.complete();
+        });
+    });
   }
 
+  /**
+   * CIERRE DE SESIÓN: cierra la sesión en Firebase y limpia el estado local.
+   */
+  logout(): void {
+    signOut(this.auth).catch(err => console.error('Error al cerrar sesión:', err));
+    this.currentUserSubject.next(null);
+  }
+
+  /**
+   * Devuelve true si hay un usuario con sesión activa.
+   */
   isLoggedIn(): boolean {
     return !!this.currentUserSubject.value;
   }
 
+  /**
+   * Devuelve el perfil del usuario actual (sincrónico, desde BehaviorSubject).
+   */
   getCurrentUser(): any {
     return this.currentUserSubject.value;
   }
 }
+
