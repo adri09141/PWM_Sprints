@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  deleteUser,
   User
 } from '@angular/fire/auth';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -117,6 +118,34 @@ export class AuthService {
    */
   getCurrentUser(): any {
     return this.currentUserSubject.value;
+  }
+  /**
+   * ELIMINAR CUENTA: Borra el perfil de Firestore y destruye la cuenta en Firebase Auth.
+   */
+  async eliminarCuentaPropia(): Promise<boolean> {
+    // 1. Pillamos al usuario actual de la Bóveda de Firebase
+    const firebaseUser = this.auth.currentUser;
+
+    if (!firebaseUser) {
+      console.error("No hay ningún usuario logueado en este momento.");
+      return false;
+    }
+
+    try {
+      // 2. Primero, borramos su documento de datos en Firestore
+      await this.db.eliminar('usuarios', firebaseUser.uid);
+
+      // 3. Segundo, destruimos su cuenta real de Firebase Auth
+      await deleteUser(firebaseUser);
+
+      // 4. Limpiamos la sesión en Angular
+      this.currentUserSubject.next(null);
+
+      return true; // ¡Borrado con éxito!
+    } catch (error: any) {
+      console.error('Error al eliminar la cuenta:', error);
+      return false;
+    }
   }
 }
 

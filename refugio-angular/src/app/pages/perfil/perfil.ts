@@ -32,8 +32,7 @@ export class Perfil implements OnInit {
   logout() {
     const usuario = this.authService.getCurrentUser();
     if(usuario && usuario.id) {
-      this.authService.logout();
-      this.db.eliminar("usuarios", usuario.id)
+      this.authService.eliminarCuentaPropia();
       this.router.navigate(['/IniciarSesion']);
     }
   }
