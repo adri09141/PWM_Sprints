@@ -116,7 +116,7 @@
             @if(telefInput.touched && telefInput.invalid)
             {
               <div class="error" style="color: red; font-size: 12px;">
-                @if (telefInput.errors?.['required']) { <span>⚠️ El apellido es obligatorio.</span> }
+                @if (telefInput.errors?.['required']) { <span>⚠️ El teléfono es obligatorio.</span> }
                 @if (telefInput.errors?.['pattern']) { <span>⚠️ Debe ser nueve números seguidos.</span> }
               </div>
             }
@@ -160,7 +160,7 @@
 
         </div>
 
-        <button id="crear" type="submit" class="btn-acceso-principal">
+        <button id="crear" type="submit" class="btn-acceso-principal" [disabled]="registroForm.invalid || menorEdad">
           Crear cuenta
         </button>
 
