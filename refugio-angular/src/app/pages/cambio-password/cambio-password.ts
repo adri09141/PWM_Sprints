@@ -38,9 +38,9 @@ export class CambioPassword {
       this.errorMessage = "⚠️ Por favor, rellena todos los campos.";
       return;
     }
-    const patronSeguro = /^(?=(?:.*[a-zA-Z]){3,})(?=.*\d)(?=.*[^a-zA-Z\d]).+$/;
+    const patronSeguro = /^(?=(?:.*[a-zA-Z]){4,})(?=.*\d)(?=.*[^a-zA-Z\d]).+$/;
     if (!patronSeguro.test(this.contrasenaNueva)) {
-      this.errorMessage = "⚠️ La nueva contraseña es muy débil. Debe tener al menos 3 letras, 1 número y 1 carácter especial.";
+      this.errorMessage = "⚠️ La nueva contraseña es muy débil. Debe tener al menos 4 letras, 1 número y 1 carácter especial.";
       return;
     }
     if (this.contrasenaNueva !== this.contrasenaRepetida) {
