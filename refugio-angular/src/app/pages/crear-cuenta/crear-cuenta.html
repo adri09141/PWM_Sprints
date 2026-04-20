@@ -141,9 +141,9 @@
             <label class="campo-label" for="contrasena">Contraseña</label>
             <div class="campo-wrapper">
               <input class="campo-input" [type]="verContrasena ? 'text': 'password'" id="contrasena" name="contrasena" ngModel #contrasenaInput = "ngModel" required
-                     pattern="(?=(?:.*[A-Za-z]){3,})(?=.*\d)(?=.*[^A-Za-z\d]).+"
-                     placeholder="Mín. 3 letras, 1 número y 1 especial (Ej: Perro1!)"
-                     title="Debe tener al menos 3 letras, 1 número y 1 carácter especial">
+                     pattern="(?=(?:.*[A-Za-z]){4,})(?=.*\d)(?=.*[^A-Za-z\d]).+"
+                     placeholder="Mín. 4 letras, 1 número y 1 especial (Ej: Perro1!)"
+                     title="Debe tener al menos 4 letras, 1 número y 1 carácter especial">
               <button type="button" class="btn-ver-pass" (click)="toggleVerContrasena()">
                 {{ verContrasena ? 'Ocultar' : 'Ver' }}
               </button>
@@ -152,7 +152,7 @@
             {
               <div class="error" style="color: red; font-size: 12px;">
                 @if (contrasenaInput.errors?.['required']) { <span>⚠️ La contraseña es obligatoria.</span> }
-                @if (contrasenaInput.errors?.['pattern']) { <span>⚠️ Debe tener al menos 3 letras, 1 número y 1 carácter especial.</span> }
+                @if (contrasenaInput.errors?.['pattern']) { <span>⚠️ Debe tener al menos 4 letras, 1 número y 1 carácter especial.</span> }
               </div>
             }
             <div id="error_contrasena" class="acceso-error" style="margin-top: 20px"></div>
@@ -164,7 +164,7 @@
           <div style="color: red; font-size: 14px; margin-bottom: 8px;">{{ errorMessage }}</div>
         }
 
-        <button id="crear" type="submit" class="btn-acceso-principal" [disabled]="registroForm.invalid || menorEdad"></button>
+        <button id="crear" type="submit" class="btn-acceso-principal" [disabled]="registroForm.invalid || menorEdad">
           Crear cuenta
         </button>
 
