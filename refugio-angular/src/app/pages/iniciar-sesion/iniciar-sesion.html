@@ -54,6 +54,10 @@
           {{ errorMessage }}
         </div>
 
+        @if (errorMessage) {
+          <div style="color: red; font-size: 14px; margin-bottom: 8px;">{{ errorMessage }}</div>
+        }
+
         <button type="submit" class="btn-acceso-principal" [disabled]="!loginForm.form.valid">
           Entrar
         </button>
