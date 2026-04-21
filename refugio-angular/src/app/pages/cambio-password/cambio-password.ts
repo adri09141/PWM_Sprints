@@ -30,8 +30,7 @@ export class CambioPassword {
   toggleVerNueva() {
     this.verNueva = !this.verNueva;
   }
-  cambiarContrasena()
-  {
+  cambiarContrasena() {
     this.errorMessage = '';
 
     if (!this.contrasenaActual || !this.contrasenaNueva || !this.contrasenaRepetida) {
@@ -48,27 +47,15 @@ export class CambioPassword {
       return;
     }
 
-    const usuarioLogueado = this.auth.getCurrentUser();
-    if (this.contrasenaActual !== usuarioLogueado.contrasena) {
-      this.errorMessage = "❌ La contraseña actual que has introducido es incorrecta.";
-      return;
-    }
 
-    const datosActualizados = {
-      contrasena: this.contrasenaNueva
-    };
-
-    this.db.actualizar("usuarios", usuarioLogueado.id, datosActualizados)
+    this.auth.cambiarContrasenaPropia(this.contrasenaActual, this.contrasenaNueva)
       .then(() => {
-        usuarioLogueado.contrasena = this.contrasenaNueva;
-        localStorage.setItem('currentUser', JSON.stringify(usuarioLogueado));
-
-        alert("¡Contraseña Cambiada con éxito! 🎉"); // El de éxito lo podemos dejar como alert o cambiarlo también si quieres
+        alert("¡Contraseña Cambiada con éxito! 🎉");
         this.router.navigate(["/"]);
       })
       .catch((error) => {
-        console.error("Error al actualizar:", error);
-        this.errorMessage = "❌ Hubo un error al conectar con el servidor.";
+        // Atrapamos el error que nos mande el AuthService (ej. "Contraseña actual incorrecta")
+        this.errorMessage = "❌ " + error.message;
       });
   }
 }

@@ -4,6 +4,9 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updatePassword,
+  EmailAuthProvider,
+  reauthenticateWithCredential,
   onAuthStateChanged,
   deleteUser,
   User
@@ -145,6 +148,34 @@ export class AuthService {
     } catch (error: any) {
       console.error('Error al eliminar la cuenta:', error);
       return false;
+    }
+  }
+  /**
+   * CAMBIAR CONTRASEÑA: Comprueba la contraseña actual y la actualiza en Firebase Auth
+   */
+  async cambiarContrasenaPropia(contrasenaActual: string, nuevaContrasena: string): Promise<boolean> {
+    const firebaseUser = this.auth.currentUser;
+
+    if (!firebaseUser || !firebaseUser.email) {
+      throw new Error("No hay usuario logueado.");
+    }
+
+    try {
+      // 1. Demostrar a Firebase que somos los dueños de la cuenta (Reautenticación)
+      const credenciales = EmailAuthProvider.credential(firebaseUser.email, contrasenaActual);
+      await reauthenticateWithCredential(firebaseUser, credenciales);
+
+      // 2. Si la vieja es correcta, Firebase nos deja poner la nueva
+      await updatePassword(firebaseUser, nuevaContrasena);
+
+      return true;
+    } catch (error: any) {
+      console.error('Error al cambiar contraseña:', error);
+      // Firebase nos devuelve un error si la contraseña vieja es incorrecta
+      if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
+        throw new Error("La contraseña actual es incorrecta.");
+      }
+      throw new Error("Hubo un error al conectar con el servidor.");
     }
   }
 }
