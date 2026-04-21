@@ -11,7 +11,7 @@ import {
   deleteUser,
   User
 } from '@angular/fire/auth';
-import { BehaviorSubject, Observable } from 'rxjs';
+  import { BehaviorSubject, Observable } from 'rxjs';
 import { DatabaseService } from './database';
 
 @Injectable({
@@ -39,6 +39,11 @@ export class AuthService {
         this.currentUserSubject.next(null);
       }
     });
+  }
+
+  getActualUID(): string | null {
+    const user = this.currentUserSubject.value;
+    return user ? (user.uid || user.id) : null;
   }
 
   /**
