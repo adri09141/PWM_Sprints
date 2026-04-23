@@ -49,12 +49,12 @@ export class CrearCuenta {
           formulario.resetForm();
           this.router.navigate(['/']);
         } else {
-          this.errorMessage = '❌ No se pudo crear la cuenta. Es posible que el correo ya esté en uso.';
+          this.errorMessage = 'No se pudo crear la cuenta. Es posible que el correo ya esté en uso.';
         }
       })
       .catch((error) => {
         console.error('Error al crear cuenta:', error);
-        this.errorMessage = '❌ Hubo un problema al conectar con el servidor.';
+        this.errorMessage = 'Hubo un problema al conectar con el servidor.';
       });
   }
 }

@@ -3,7 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 import { Contador } from '../../components/contador/contador';
 import { ContadorItem } from '../../models/data.model';
-import { DataService } from '../../services/data.service';
+import { ContadorService } from '../../services/contador/contador.service';
 
 @Component({
   selector: 'app-sobre-nosotros',
@@ -15,7 +15,7 @@ import { DataService } from '../../services/data.service';
   styleUrl: './sobre-nosotros.css',
 })
 export class SobreNosotros {
-  private readonly dataService = inject(DataService);
+  private readonly contadorService = inject(ContadorService);
 
-  contador = toSignal(this.dataService.getContador(), { initialValue: [] as ContadorItem[] });
+  contador = toSignal(this.contadorService.getContador(), { initialValue: [] as ContadorItem[] });
 }

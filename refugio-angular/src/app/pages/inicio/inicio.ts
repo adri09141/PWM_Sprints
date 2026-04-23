@@ -6,7 +6,10 @@ import { Contador } from '../../components/contador/contador';
 import { TarjetaAnimal } from '../../components/tarjeta-animal/tarjeta-animal';
 import { TarjetaResena } from '../../components/tarjeta-resena/tarjeta-resena';
 import { Animal, ContadorItem, Resena } from '../../models/data.model';
-import { DataService } from '../../services/data.service';
+import { AuthService } from '../../services/auth.service';
+import { AnimalService } from '../../services/animals/animal.service';
+import { ContadorService } from '../../services/contador/contador.service';
+import { ResenaService } from '../../services/resenas/resena.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -24,16 +27,18 @@ import { Router } from '@angular/router';
   styleUrl: './inicio.css',
 })
 export class Inicio {
-  private readonly dataService = inject(DataService);
+  private readonly animalService = inject(AnimalService);
+  private readonly resenaService = inject(ResenaService);
+  private readonly contadorService = inject(ContadorService);
+  private readonly authService = inject(AuthService);
   constructor(private route: Router) {
   }
-  animales = toSignal(this.dataService.getAnimalesDestacados(3), { initialValue: [] as Animal[] });
-  resenas = toSignal(this.dataService.getResenasDestacadas(3), { initialValue: [] as Resena[] });
-  contador = toSignal(this.dataService.getContador(), { initialValue: [] as ContadorItem[] });
+  animales = toSignal(this.animalService.getAnimalesDestacados(3), { initialValue: [] as Animal[] });
+  resenas = toSignal(this.resenaService.getResenasDestacadas(3), { initialValue: [] as Resena[] });
+  contador = toSignal(this.contadorService.getContador(), { initialValue: [] as ContadorItem[] });
   registrarse()
   {
-    const usuarioGuardado = localStorage.getItem('currentUser');
-    if (!usuarioGuardado) {
+    if (!this.authService.isLoggedIn()) {
       this.route.navigate(["/crearCuenta"]);
       return;
     }

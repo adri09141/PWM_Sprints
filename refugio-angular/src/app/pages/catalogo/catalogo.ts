@@ -3,7 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 import { TarjetaAnimal } from '../../components/tarjeta-animal/tarjeta-animal';
 import { Animal } from '../../models/data.model';
-import { DataService } from '../../services/data.service';
+import { AnimalService } from '../../services/animals/animal.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -15,9 +15,9 @@ import { DataService } from '../../services/data.service';
   styleUrl: './catalogo.css',
 })
 export class Catalogo {
-  private readonly dataService = inject(DataService);
+  private readonly animalService = inject(AnimalService);
 
-  animales = toSignal(this.dataService.getAnimales(), { initialValue: [] as Animal[] });
+  animales = toSignal(this.animalService.getAnimales(), { initialValue: [] as Animal[] });
   filtro = signal("Todos")
 
   animalesFiltrados = computed(() => {

@@ -1,10 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { of } from 'rxjs';
 
 import { FichaAnimal } from './ficha-animal';
+import { AnimalService } from '../../services/animals/animal.service';
+
+class AnimalServiceMock {
+  getAnimalById() {
+    return of(undefined);
+  }
+}
 
 describe('FichaAnimal', () => {
   let component: FichaAnimal;
@@ -14,8 +19,7 @@ describe('FichaAnimal', () => {
     await TestBed.configureTestingModule({
       imports: [FichaAnimal],
       providers: [
-        provideHttpClient(),
-        provideHttpClientTesting(),
+        { provide: AnimalService, useClass: AnimalServiceMock },
         {
           provide: ActivatedRoute,
           useValue: {

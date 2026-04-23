@@ -1,10 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { of } from 'rxjs';
 
 import { FichaAnimalPage } from './ficha-animal';
+import { AnimalService } from '../../services/animals/animal.service';
+
+class AnimalServiceMock {
+  getAnimalById() {
+    return of(undefined);
+  }
+}
 
 describe('FichaAnimalPage', () => {
   let component: FichaAnimalPage;
@@ -14,8 +19,7 @@ describe('FichaAnimalPage', () => {
     await TestBed.configureTestingModule({
       imports: [FichaAnimalPage],
       providers: [
-        provideHttpClient(),
-        provideHttpClientTesting(),
+        { provide: AnimalService, useClass: AnimalServiceMock },
         {
           provide: ActivatedRoute,
           useValue: {
@@ -30,7 +34,7 @@ describe('FichaAnimalPage', () => {
     await fixture.whenStable();
   });
 
-it('should create', () => {
-  expect(component).toBeTruthy();
-});
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

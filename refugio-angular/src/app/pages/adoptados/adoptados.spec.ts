@@ -4,7 +4,7 @@ import { BehaviorSubject, of } from 'rxjs';
 
 import { Adoptados } from './adoptados';
 import { AuthService } from '../../services/auth.service';
-import { DataService } from '../../services/data.service';
+import { AnimalService } from '../../services/animals/animal.service';
 
 class AuthServiceMock {
   private subject = new BehaviorSubject<any>(null);
@@ -15,7 +15,7 @@ class AuthServiceMock {
   }
 }
 
-class DataServiceMock {
+class AnimalServiceMock {
   getAnimales() {
     return of([]);
   }
@@ -34,7 +34,7 @@ describe('Adoptados', () => {
       imports: [Adoptados],
       providers: [
         { provide: AuthService, useClass: AuthServiceMock },
-        { provide: DataService, useClass: DataServiceMock },
+        { provide: AnimalService, useClass: AnimalServiceMock },
         { provide: Router, useClass: RouterMock },
       ],
     }).compileComponents();

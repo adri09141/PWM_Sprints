@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 
 import { TarjetaResena } from '../../components/tarjeta-resena/tarjeta-resena';
 import { Resena } from '../../models/data.model';
-import { DataService } from '../../services/data.service';
+import { ResenaService } from '../../services/resenas/resena.service';
 
 @Component({
   selector: 'app-finales-felices',
@@ -17,7 +17,7 @@ import { DataService } from '../../services/data.service';
   styleUrl: './finales-felices.css',
 })
 export class FinalesFelices {
-  private readonly dataService = inject(DataService);
+  private readonly resenaService = inject(ResenaService);
 
-  resenas = toSignal(this.dataService.getResenas(), { initialValue: [] as Resena[] });
+  resenas = toSignal(this.resenaService.getResenas(), { initialValue: [] as Resena[] });
 }

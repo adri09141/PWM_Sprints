@@ -24,30 +24,36 @@ export interface Animal {
 
 export interface Resena {
   id: number;
-  idUsuario: number;
+  idUsuario: number | string;
   nombreAnimal: string;
   titulo: string;
   resena: string;
   fecha: string;
   foto: string;
+  valoracion?: number;
 }
 
 export interface Usuario {
-  id: number;
+  uid: string;
   nombre: string;
-  apellido: string;
-  fechaNacimiento: string;
+  apellidos: string;
+  fecha_nacimiento: string;
   dni: string;
   direccion: string;
   telefono: string;
   correo: string;
-  contrasena: string;
   numeroAdopciones: number;
+  fechaRegistro?: string;
+  animalesAdoptados?: number[];
+  adoptados?: number[];
+}
+
+export interface RegistroUsuario extends Omit<Usuario, 'uid' | 'fechaRegistro'> {
+  contrasena: string;
 }
 
 export interface AppData {
   contador: ContadorItem[];
   animales: Animal[];
   resenas: Resena[];
-  usuarios: Usuario[];
 }

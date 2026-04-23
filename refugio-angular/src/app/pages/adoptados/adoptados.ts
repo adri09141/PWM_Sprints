@@ -5,7 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 
 import { Animal } from '../../models/data.model';
 import { AuthService } from '../../services/auth.service';
-import { DataService } from '../../services/data.service';
+import { AnimalService } from '../../services/animals/animal.service';
 
 @Component({
   selector: 'app-adoptados',
@@ -16,11 +16,11 @@ import { DataService } from '../../services/data.service';
 })
 export class Adoptados {
   private readonly authService = inject(AuthService);
-  private readonly dataService = inject(DataService);
+  private readonly animalService = inject(AnimalService);
   private readonly router = inject(Router);
 
-  user = toSignal(this.authService.currentUser$, { initialValue: null as any });
-  animales = toSignal(this.dataService.getAnimales(), { initialValue: [] as Animal[] });
+  user = toSignal(this.authService.currentUser$, { initialValue: null });
+  animales = toSignal(this.animalService.getAnimales(), { initialValue: [] as Animal[] });
 
   adoptadoIds = computed(() => {
     const user = this.user();

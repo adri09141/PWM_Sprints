@@ -1,49 +1,68 @@
-import { Component } from '@angular/core';
-import {FormsModule, NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { Component, inject } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
+import {Router, RouterLink} from '@angular/router';
+
+import { Usuario } from '../../models/data.model';
+import { AuthService } from '../../services/auth.service';
+import { ResenaService } from '../../services/resenas/resena.service';
+
 @Component({
   selector: 'app-anadir-resena',
   standalone: true,
-  imports: [
-    FormsModule
-  ],
+  imports: [FormsModule, RouterLink],
   templateUrl: './anadir-resena.html',
   styleUrl: './anadir-resena.css',
 })
 export class AnadirResena {
-  private currentUserSubject = new BehaviorSubject<any>(null);
-  public currentUser$ = this.currentUserSubject.asObservable();
-  private islogin = false;
-  user: any = null;
+  private readonly authService = inject(AuthService);
+  private readonly resenaService = inject(ResenaService);
+
+  archivoFoto: File | null = null;
+  fotoCancelada = false;
+  user: Usuario | null = null;
+
   constructor(private router: Router) {
-    const usuarioGuardado = localStorage.getItem('currentUser');
-    if (usuarioGuardado) {
-      this.islogin = true;
-      this.user = JSON.parse(usuarioGuardado);
-      this.currentUserSubject.next(this.user);
-    }
-    if(!this.islogin){
-      alert("no esta logueado");
+    this.authService.currentUser$.subscribe((user) => {
+      this.user = user;
+    });
+
+    if (!this.authService.isLoggedIn()) {
+      alert('No esta logueado');
       this.router.navigate(['/crearCuenta']);
     }
   }
-  archivoFoto: File | null = null;
-  fotoCancelada: boolean = false;
-  enviarDatos(formulario: NgForm)
-  {
-    if (formulario.invalid) {
+
+  async enviarDatos(formulario: NgForm) {
+    if (formulario.invalid || !this.user) {
       return;
     }
-    console.log(formulario.value)
-    alert("Estamos validando tu reseña sobre tu pequeño: " + formulario.value.nombre_mascota);
-    this.router.navigate(['/']);
+
+    try {
+      await this.resenaService.createResena({
+        idUsuario: this.user.uid,
+        nombreAnimal: formulario.value.nombre_mascota,
+        titulo: formulario.value.titulo_resena,
+        resena: formulario.value.descripcion_resena,
+        fecha: new Date().toISOString().slice(0, 10),
+        foto: this.archivoFoto ? `assets/img/resenas/${this.archivoFoto.name}` : 'assets/img/resenas/Foto1.png',
+        valoracion: Number(formulario.value.valoracion),
+      });
+
+      alert(`Estamos validando tu resena sobre tu pequeno: ${formulario.value.nombre_mascota}`);
+      this.router.navigate(['/']);
+    } catch (error) {
+      console.error('Error al guardar la resena:', error);
+      alert('No se pudo guardar la resena. Intentalo de nuevo.');
+    }
   }
-  capturarFoto(event: any) {
-    const archivoQueHaSubido = event.target.files[0];
+
+  capturarFoto(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const archivoQueHaSubido = input.files?.[0] ?? null;
+
     if (archivoQueHaSubido) {
       this.archivoFoto = archivoQueHaSubido;
-      this.fotoCancelada = false; // Si sube foto, apagamos el error
+      this.fotoCancelada = false;
     }
   }
 }

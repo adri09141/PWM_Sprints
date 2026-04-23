@@ -4,7 +4,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map, switchMap } from 'rxjs';
 
 import { Animal } from '../../models/data.model';
-import { DataService } from '../../services/data.service';
+import { AnimalService } from '../../services/animals/animal.service';
 
 @Component({
   selector: 'app-ficha-animal-page',
@@ -15,12 +15,12 @@ import { DataService } from '../../services/data.service';
 })
 export class FichaAnimalPage {
   private readonly route = inject(ActivatedRoute);
-  private readonly dataService = inject(DataService);
+  private readonly animalService = inject(AnimalService);
 
   fichaAnimal = toSignal(
     this.route.paramMap.pipe(
       map((params) => Number(params.get('id'))),
-      switchMap((id) => this.dataService.getAnimalById(id))
+      switchMap((id) => this.animalService.getAnimalById(id))
     ),
     { initialValue: undefined as Animal | undefined }
   );

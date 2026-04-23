@@ -1,187 +1,165 @@
 import { Injectable, inject } from '@angular/core';
 import {
   Auth,
+  EmailAuthProvider,
+  User,
   createUserWithEmailAndPassword,
+  deleteUser,
+  onAuthStateChanged,
+  reauthenticateWithCredential,
   signInWithEmailAndPassword,
   signOut,
   updatePassword,
-  EmailAuthProvider,
-  reauthenticateWithCredential,
-  onAuthStateChanged,
-  deleteUser,
-  User
 } from '@angular/fire/auth';
-  import { BehaviorSubject, Observable } from 'rxjs';
-import { DatabaseService } from './database';
+import { BehaviorSubject, Observable } from 'rxjs';
+
+import { RegistroUsuario, Usuario } from '../models/data.model';
+import { UserProfileService } from './usuarios/user-profile.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private auth = inject(Auth);
-  private db = inject(DatabaseService);
+  private readonly auth = inject(Auth);
+  private readonly userProfileService = inject(UserProfileService);
 
-  // Emite el perfil completo del usuario (datos de Firestore) o null si no hay sesión
-  private currentUserSubject = new BehaviorSubject<any>(null);
-  public currentUser$ = this.currentUserSubject.asObservable();
+  private readonly currentUserSubject = new BehaviorSubject<Usuario | null>(null);
+  readonly currentUser$ = this.currentUserSubject.asObservable();
 
   constructor() {
-    // Escuchamos los cambios de sesión de Firebase Auth en tiempo real.
-    // Cuando el usuario ya tiene sesión activa (p.ej. al recargar la página),
-    // recuperamos su perfil de Firestore automáticamente.
     onAuthStateChanged(this.auth, async (firebaseUser: User | null) => {
-      if (firebaseUser) {
-        // El usuario tiene sesión: cargamos su perfil desde Firestore
-        const perfil = await this.db.obtenerPorId('usuarios', firebaseUser.uid);
-        this.currentUserSubject.next(perfil ?? { uid: firebaseUser.uid, correo: firebaseUser.email });
-      } else {
-        // Sin sesión activa
+      if (!firebaseUser) {
         this.currentUserSubject.next(null);
+        return;
       }
+
+      const perfil = await this.userProfileService.getProfileOnce(firebaseUser.uid);
+      this.currentUserSubject.next(
+        perfil ?? {
+          uid: firebaseUser.uid,
+          nombre: '',
+          apellidos: '',
+          fecha_nacimiento: '',
+          dni: '',
+          direccion: '',
+          telefono: '',
+          correo: firebaseUser.email ?? '',
+          numeroAdopciones: 0,
+        }
+      );
     });
   }
 
   getActualUID(): string | null {
-    const user = this.currentUserSubject.value;
-    return user ? (user.uid || user.id) : null;
+    return this.currentUserSubject.value?.uid ?? null;
   }
 
-  /**
-   * REGISTRO: crea la cuenta en Firebase Auth y guarda el perfil (sin contraseña) en Firestore.
-   * @param datosUsuario Objeto con los campos del formulario (nombre, correo, contrasena, etc.)
-   * @returns true si el registro fue exitoso, false en caso de error
-   */
-  async registro(datosUsuario: any): Promise<boolean> {
+  async registro(datosUsuario: RegistroUsuario): Promise<boolean> {
     try {
-      // 1. Creamos el usuario en Firebase Authentication (gestiona la contraseña de forma segura)
       const credencial = await createUserWithEmailAndPassword(
         this.auth,
         datosUsuario.correo,
         datosUsuario.contrasena
       );
 
-      const uid = credencial.user.uid;
-
-      // 2. Construimos el perfil SIN la contraseña para guardarlo en Firestore
       const { contrasena, ...perfilSinContrasena } = datosUsuario;
-      const perfil = {
+      const perfil: Usuario = {
         ...perfilSinContrasena,
-        uid,
+        uid: credencial.user.uid,
         numeroAdopciones: datosUsuario.numeroAdopciones ?? 0,
-        fechaRegistro: new Date().toISOString()
+        fechaRegistro: new Date().toISOString(),
       };
 
-      // 3. Guardamos el perfil en Firestore usando el uid como ID del documento
-      await this.db.insertarConId('usuarios', uid, perfil);
-
-      // 4. Actualizamos el estado local de la sesión
-      this.currentUserSubject.next({ ...perfil, id: uid });
-
+      await this.userProfileService.createProfile(credencial.user.uid, perfil);
+      this.currentUserSubject.next(perfil);
       return true;
-    } catch (error: any) {
+    } catch (error) {
       console.error('Error al registrar usuario:', error);
       return false;
     }
   }
 
-  /**
-   * LOGIN: valida con Firebase Auth y recupera el perfil adicional de Firestore.
-   * @returns Observable<boolean> — true si el login fue exitoso
-   */
   login(correo: string, contrasena: string): Observable<boolean> {
-    return new Observable<boolean>(observer => {
+    return new Observable<boolean>((observer) => {
       signInWithEmailAndPassword(this.auth, correo, contrasena)
         .then(async (credencial) => {
-          // Auth validó las credenciales. Recuperamos el perfil desde Firestore.
-          const perfil = await this.db.obtenerPorId('usuarios', credencial.user.uid);
-          this.currentUserSubject.next(perfil ?? { uid: credencial.user.uid, correo });
+          const perfil = await this.userProfileService.getProfileOnce(credencial.user.uid);
+          this.currentUserSubject.next(
+            perfil ?? {
+              uid: credencial.user.uid,
+              nombre: '',
+              apellidos: '',
+              fecha_nacimiento: '',
+              dni: '',
+              direccion: '',
+              telefono: '',
+              correo,
+              numeroAdopciones: 0,
+            }
+          );
+
           observer.next(true);
           observer.complete();
         })
         .catch((error) => {
-          console.error('Error al iniciar sesión:', error);
+          console.error('Error al iniciar sesion:', error);
           observer.next(false);
           observer.complete();
         });
     });
   }
 
-  /**
-   * CIERRE DE SESIÓN: cierra la sesión en Firebase y limpia el estado local.
-   */
   logout(): void {
-    signOut(this.auth).catch(err => console.error('Error al cerrar sesión:', err));
+    signOut(this.auth).catch((error) => console.error('Error al cerrar sesion:', error));
     this.currentUserSubject.next(null);
   }
 
-  /**
-   * Devuelve true si hay un usuario con sesión activa.
-   */
   isLoggedIn(): boolean {
     return !!this.currentUserSubject.value;
   }
 
-  /**
-   * Devuelve el perfil del usuario actual (sincrónico, desde BehaviorSubject).
-   */
-  getCurrentUser(): any {
+  getCurrentUser(): Usuario | null {
     return this.currentUserSubject.value;
   }
-  /**
-   * ELIMINAR CUENTA: Borra el perfil de Firestore y destruye la cuenta en Firebase Auth.
-   */
+
   async eliminarCuentaPropia(): Promise<boolean> {
-    // 1. Pillamos al usuario actual de la Bóveda de Firebase
     const firebaseUser = this.auth.currentUser;
 
     if (!firebaseUser) {
-      console.error("No hay ningún usuario logueado en este momento.");
+      console.error('No hay ningun usuario logueado en este momento.');
       return false;
     }
 
     try {
-      // 2. Primero, borramos su documento de datos en Firestore
-      await this.db.eliminar('usuarios', firebaseUser.uid);
-
-      // 3. Segundo, destruimos su cuenta real de Firebase Auth
+      await this.userProfileService.deleteProfile(firebaseUser.uid);
       await deleteUser(firebaseUser);
-
-      // 4. Limpiamos la sesión en Angular
       this.currentUserSubject.next(null);
-
-      return true; // ¡Borrado con éxito!
-    } catch (error: any) {
+      return true;
+    } catch (error) {
       console.error('Error al eliminar la cuenta:', error);
       return false;
     }
   }
-  /**
-   * CAMBIAR CONTRASEÑA: Comprueba la contraseña actual y la actualiza en Firebase Auth
-   */
+
   async cambiarContrasenaPropia(contrasenaActual: string, nuevaContrasena: string): Promise<boolean> {
     const firebaseUser = this.auth.currentUser;
 
     if (!firebaseUser || !firebaseUser.email) {
-      throw new Error("No hay usuario logueado.");
+      throw new Error('No hay usuario logueado.');
     }
 
     try {
-      // 1. Demostrar a Firebase que somos los dueños de la cuenta (Reautenticación)
       const credenciales = EmailAuthProvider.credential(firebaseUser.email, contrasenaActual);
       await reauthenticateWithCredential(firebaseUser, credenciales);
-
-      // 2. Si la vieja es correcta, Firebase nos deja poner la nueva
       await updatePassword(firebaseUser, nuevaContrasena);
-
       return true;
     } catch (error: any) {
-      console.error('Error al cambiar contraseña:', error);
-      // Firebase nos devuelve un error si la contraseña vieja es incorrecta
+      console.error('Error al cambiar contrasena:', error);
       if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
-        throw new Error("La contraseña actual es incorrecta.");
+        throw new Error('La contrasena actual es incorrecta.');
       }
-      throw new Error("Hubo un error al conectar con el servidor.");
+
+      throw new Error('Hubo un error al conectar con el servidor.');
     }
   }
 }
-

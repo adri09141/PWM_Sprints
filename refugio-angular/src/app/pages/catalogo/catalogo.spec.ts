@@ -1,8 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { of } from 'rxjs';
 
 import { Catalogo } from './catalogo';
+import { AnimalService } from '../../services/animals/animal.service';
+
+class AnimalServiceMock {
+  getAnimales() {
+    return of([]);
+  }
+}
 
 describe('Catalogo', () => {
   let component: Catalogo;
@@ -11,7 +17,7 @@ describe('Catalogo', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Catalogo],
-      providers: [provideHttpClient(), provideHttpClientTesting()],
+      providers: [{ provide: AnimalService, useClass: AnimalServiceMock }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Catalogo);

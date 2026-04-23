@@ -1,9 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
-import {FormsModule, NgForm, NgModel} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormsModule, NgForm, NgModel } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+
+import { Usuario } from '../../models/data.model';
 import { AuthService } from '../../services/auth.service';
-import {DatabaseService} from '../../services/database';
+import { UserProfileService } from '../../services/usuarios/user-profile.service';
 
 @Component({
   selector: 'app-perfil',
@@ -13,25 +15,27 @@ import {DatabaseService} from '../../services/database';
   styleUrl: './perfil.css',
 })
 export class Perfil implements OnInit {
-  menorEdad: boolean = true;
-  private authService = inject(AuthService);
-  private router = inject(Router);
-  constructor(private db: DatabaseService) {
-  }
-  user: any = null;
+  menorEdad = true;
+  user: Usuario | null = null;
+
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+
+  constructor(private readonly userProfileService: UserProfileService) {}
 
   ngOnInit() {
-    this.authService.currentUser$.subscribe(currentUser => {
+    this.authService.currentUser$.subscribe((currentUser) => {
       if (currentUser) {
-         this.user = { ...currentUser };
+        this.user = { ...currentUser };
       } else {
-         this.router.navigate(['/IniciarSesion']);
+        this.router.navigate(['/IniciarSesion']);
       }
     });
   }
 
   enviarDatos(fecha: NgModel) {
     if (!fecha.value) return;
+
     const hoy = new Date();
     const fechaNacimiento = new Date(fecha.value);
     const edadMinima = new Date();
@@ -42,25 +46,25 @@ export class Perfil implements OnInit {
 
   logout() {
     const usuario = this.authService.getCurrentUser();
-    if(usuario && usuario.id) {
+    if (usuario?.uid) {
       this.authService.eliminarCuentaPropia();
       this.router.navigate(['/IniciarSesion']);
     }
   }
 
   modificarDatos(formulario: NgForm) {
-    if (formulario.invalid || this.menorEdad) return;
-
-    const uid = this.user.uid || this.user.id;
-    console.log("El UID que se va a enviar es:", uid);
-    if (uid) {
-      this.db.actualizar("usuarios", uid, formulario.value)
-        .then(() => {
-          alert('Perfil actualizado con éxito');
-        })
-        .catch(error => {
-          console.error('Error al actualizar:', error);
-        });
+    if (formulario.invalid || this.menorEdad || !this.user?.uid) {
+      return;
     }
+
+    this.userProfileService
+      .updateProfile(this.user.uid, formulario.value)
+      .then(() => {
+        this.user = { ...this.user!, ...formulario.value };
+        alert('Perfil actualizado con exito');
+      })
+      .catch((error) => {
+        console.error('Error al actualizar el perfil:', error);
+      });
   }
 }
