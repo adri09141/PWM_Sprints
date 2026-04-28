@@ -45,6 +45,11 @@ export class CambioPassword {
       return;
     }
 
+    if (this.contrasenaNueva == this.contrasenaActual) {
+      this.errorMessage = 'Las contrasena nueva no puede ser identica a la anterior.';
+      return;
+    }
+
     if (this.contrasenaNueva !== this.contrasenaRepetida) {
       this.errorMessage = 'Las contrasenas nuevas no coinciden.';
       return;

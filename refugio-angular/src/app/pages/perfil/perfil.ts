@@ -15,7 +15,7 @@ import { UserProfileService } from '../../services/usuarios/user-profile.service
   styleUrl: './perfil.css',
 })
 export class Perfil implements OnInit {
-  menorEdad = true;
+  menorEdad = false;
   user: Usuario | null = null;
 
   private readonly authService = inject(AuthService);
@@ -62,14 +62,26 @@ export class Perfil implements OnInit {
       return;
     }
 
+    const datosActualizados = {
+      nombre: formulario.value.nombre,
+      apellidos: formulario.value.apellidos,
+      fecha_nacimiento: formulario.value.fecha_nacimiento,
+      dni: formulario.value.dni,
+      direccion: formulario.value.direccion,
+      telefono: formulario.value.telefono
+    };
+
     this.userProfileService
-      .updateProfile(this.user.uid, formulario.value)
+      .updateProfile(this.user.uid, datosActualizados)
       .then(() => {
-        this.user = { ...this.user!, ...formulario.value };
-        alert('Perfil actualizado con exito');
+        // 4. Si todo va bien, actualizamos el objeto local para que se vea el cambio
+        this.user = { ...this.user!, ...datosActualizados };
+        alert('¡Perfil actualizado con éxito! ✨');
       })
       .catch((error) => {
         console.error('Error al actualizar el perfil:', error);
+        alert('No se pudieron guardar los cambios.');
       });
   }
 }
+
