@@ -44,7 +44,7 @@ export class AnadirResena {
         titulo: formulario.value.titulo_resena,
         resena: formulario.value.descripcion_resena,
         fecha: new Date().toISOString().slice(0, 10),
-        foto: this.archivoFoto ? `assets/img/resenas/${this.archivoFoto.name}` : 'assets/img/resenas/Foto1.png',
+        foto: 'assets/img/resenas/fondoNegro.jpg',
         valoracion: Number(formulario.value.valoracion),
       });
 
