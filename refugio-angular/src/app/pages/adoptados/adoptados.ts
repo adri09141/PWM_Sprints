@@ -38,8 +38,10 @@ export class Adoptados {
   });
 
   constructor() {
-    if (!this.authService.isLoggedIn()) {
-      this.router.navigate(['/IniciarSesion']);
-    }
+    setTimeout(() => {
+      if (!this.authService.isLoggedIn()) {
+        this.router.navigate(['/IniciarSesion']);
+      }
+    }, 800);
   }
 }

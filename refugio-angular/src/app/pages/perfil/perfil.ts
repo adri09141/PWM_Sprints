@@ -26,9 +26,14 @@ export class Perfil implements OnInit {
   ngOnInit() {
     this.authService.currentUser$.subscribe((currentUser) => {
       if (currentUser) {
+        // Si hay usuario, lo cargamos al instante
         this.user = { ...currentUser };
       } else {
-        this.router.navigate(['/IniciarSesion']);
+        setTimeout(() => {
+          if (!this.authService.isLoggedIn()) {
+            this.router.navigate(['/IniciarSesion']);
+          }
+        }, 800);
       }
     });
   }
