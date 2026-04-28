@@ -21,8 +21,11 @@ export class Catalogo {
   filtro = signal("Todos")
 
   animalesFiltrados = computed(() => {
-    if (this.filtro() === "Todos") return this.animales();
-    return this.animales().filter(animal => animal.especie === this.filtro());
+    // Mostrar solo los animales que NO han sido adoptados
+    const disponibles = this.animales().filter(animal => !animal.adoptado);
+
+    if (this.filtro() === "Todos") return disponibles;
+    return disponibles.filter(animal => animal.especie === this.filtro());
   });
 
   EventoFiltro(filtro: string) {

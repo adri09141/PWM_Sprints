@@ -20,6 +20,7 @@ export interface Animal {
   foto2: string;
   foto3: string;
   foto4: string;
+  adoptado?: boolean;
 }
 
 export interface Resena {

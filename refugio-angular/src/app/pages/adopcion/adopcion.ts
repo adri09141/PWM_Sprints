@@ -4,6 +4,7 @@ import { NgForm, FormsModule } from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
 import { UserProfileService } from '../../services/usuarios/user-profile.service';
+import { AnimalService } from '../../services/animals/animal.service';
 
 @Component({
   selector: 'app-adopcion',
@@ -17,6 +18,7 @@ export class Adopcion implements OnInit {
   private route = inject(ActivatedRoute);
   private authService = inject(AuthService);
   private userProfileService = inject(UserProfileService);
+  private animalService = inject(AnimalService);
 
   botonPulsado: boolean = false;
   animalId: number | null = null;
@@ -60,6 +62,9 @@ export class Adopcion implements OnInit {
             });
             // Actualizamos también en local
             this.user.numeroAdopciones = nuevoNumeroAdopciones;
+
+            // Marcamos el animal como adoptado en Firestore
+            await this.animalService.updateAnimal(this.animalId, { adoptado: true });
           }
 
           alert('¡Felicidades! Has adoptado a tu nuevo mejor amigo. 🐾');
