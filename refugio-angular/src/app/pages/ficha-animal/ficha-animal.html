@@ -38,9 +38,15 @@
           </span>
         </div>
 
-        <a [routerLink]="['/adopcion', animal.id]" class="btn-adoptar">
-          Quiero adoptarlo
-        </a>
+        @if (animal.adoptado) {
+          <button (click)="desadoptar(animal.id)" class="btn-adoptar" style="background-color: #e74c3c; cursor: pointer; border: none; width: 100%; font-family: inherit; font-size: inherit;">
+            Desadoptar
+          </button>
+        } @else {
+          <a [routerLink]="['/adopcion', animal.id]" class="btn-adoptar">
+            Quiero adoptarlo
+          </a>
+        }
       </div>
     </div>
 
