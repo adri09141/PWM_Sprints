@@ -125,13 +125,13 @@
           <div class="campo-grupo">
             <label class="campo-label" for="correo">Correo electrónico</label>
             <div class="campo-wrapper">
-              <input class="campo-input" type="email" id="correo" name="correo" ngModel #correoInput = "ngModel" required pattern=".+@.+" placeholder="ejemplo@gmail.com">
+              <input class="campo-input" type="email" id="correo" name="correo" ngModel #correoInput = "ngModel" required pattern=".+@.+\...+" placeholder="ejemplo@gmail.com">
             </div>
             @if(correoInput.touched && correoInput.invalid)
             {
               <div class="error" style="color: red; font-size: 12px;">
                 @if (correoInput.errors?.['required']) { <span>⚠️ El correo es obligatorio.</span> }
-                @if (correoInput.errors?.['pattern']) { <span>⚠️ Debe tener algo escrito, con un arroba entremedias.</span> }
+                @if (correoInput.errors?.['pattern']) { <span>⚠️ Debe tener algo escrito, con un arroba entremedias y finalizado con "." y dos caracteres.</span> }
               </div>
             }
             <div id="error_correo" class="acceso-error" style="margin-top: 20px"></div>
