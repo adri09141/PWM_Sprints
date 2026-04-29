@@ -69,8 +69,10 @@ export class Adopcion implements OnInit {
 
           alert('¡Felicidades! Has adoptado a tu nuevo mejor amigo. 🐾');
 
-          // ¡Redirección limpia, SIN reload!
-          this.router.navigate(['/adoptados']);
+          // ¡Redirección limpia!
+          this.router.navigate(['/adoptados']).then(() => {
+            window.location.reload();
+          });
         } catch (error) {
           console.error('Error al adoptar: ', error);
           alert('Hubo un problema con la adopción.');

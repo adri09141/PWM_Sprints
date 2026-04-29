@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Usuario } from '../../models/data.model';
 import { AuthService } from '../../services/auth.service';
 import { UserProfileService } from '../../services/usuarios/user-profile.service';
+import {AnimalService} from '../../services/animals/animal.service';
 
 @Component({
   selector: 'app-perfil',
@@ -20,6 +21,7 @@ export class Perfil implements OnInit {
 
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
+  private animalService = inject(AnimalService);
 
   constructor(private readonly userProfileService: UserProfileService) {}
 
@@ -52,6 +54,11 @@ export class Perfil implements OnInit {
   logout() {
     const usuario = this.authService.getCurrentUser();
     if (usuario?.uid) {
+      if(usuario.animalesAdoptados){
+        for (const animalID of usuario.animalesAdoptados) {
+          this.animalService.updateAnimal(animalID, { adoptado: false });
+        }
+      }
       this.authService.eliminarCuentaPropia();
       this.router.navigate(['/IniciarSesion']);
     }
