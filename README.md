@@ -9,7 +9,9 @@
 ---
 
 ## Descripción del Proyecto
-La web trata sobre la adopción de animales donde un usuario puede ver un catalogo un catalogo de diferentes animales, para cada animal podra acceder a su información como sexo, edad, especie, su historia y cómo llegó a la fundación además de varias fotos y videos de el, si se decanta por su adopcion puede mandar una solicitud de adopcion 
+La web trata sobre la adopción de animales donde un usuario puede ver un catálogo de diferentes animales. Para cada animal podrá acceder a su información detallada como sexo, edad, especie, su historia y cómo llegó a la fundación, además de varias fotos y vídeos de él. Si se decanta por su adopción, puede mandar una solicitud de adopción a través de la plataforma.
+
+*Nota: El proyecto ha sido migrado a una Single Page Application (SPA) utilizando **Angular** para el Frontend y **Firebase** para el Backend y Base de Datos.*
 
 ---
 
@@ -27,44 +29,53 @@ A continuación se detallan los requisitos que cumple la aplicación:
 
 ---
 
-## Mockups y Storyboard
+## Mockups, Storyboard y Evolución
 * **Nombre del archivo (Mockups_Antiguos):** `mockups_Sprint0.pdf`
 * **Nombre del archivo (Mockups_Nuevos):** `mockups_Sprint1.pdf`
 * **Nombre del archivo (Storyboard):** `storyboard.pdf`
 * **Ubicación:** `/docs`
+* **Evolución del Proyecto (Trello):** https://trello.com/invite/b/6981e95a94e63f69bf8a9a14/ATTIab9077f1ea78544ba7aae94d52fa7bf36BE69112/pwm-pract
 
 ---
 
-## Listado de Páginas HTML y Mockups
-**Página de inicio de la aplicación web:** `index.html`
+## Estructura del Código y Rutas (Pages)
+Al migrar a Angular, la navegación se gestiona mediante el enrutador (`app.routes.ts`).
 
-| Archivo HTML          | Mockup que implementa  | Descripción / Notas                                                                                 |
+**Página de inicio de la aplicación web:** `localhost:4200/` (Componente Inicio)
+
+| Ruta Angular (URL)    | Componente (Page)      | Descripción / Notas                                                                                 |
 |:----------------------|:-----------------------|:----------------------------------------------------------------------------------------------------|
-| `index.html`          | *Pagina principal*     | Página principal de aterrizaje.                                                                     |
-| `catalogo.html`       | *Catalogo*             | Donde se ven los diferentes animales disponibles.                                                   |
-| `fichaAnimal.html`    | *Ficha animal*         | Donde se ve toda la información de un animal                                                        |
-| `reseñas.html`        | *Finales Felices*      | Aqui se verá las reseñas de los usuarios que adoptaron                                              |
-| `sobreNosotros.html`  | *Sobre nosotros*       | Página donde abarca toda la informacion de nuestra fundación                                        |
-| `perfil.html`         | *Perfil*               | Página donde se ve la informacion del perfil de cada usuario                                        |
-| `adopcion.html`       | *Adopción*             | Página que pregunta al usuario su motivo para querer adopatar el animal que quiere                  |
-| `iniciarSension`      | *Iniciar Sesion*       | Página donde el usuario inicia sesión ingresando su correo electrónico y contraseña.                |
-| `reiniciarContraseña` | *Reiniciar Contraseña* | Página donde el usuario puede recuperar o restablecer su contraseña mediante su correo electrónico. |
-| `crearCuenta`         | *Crear Cuenta*         | Página donde el usuario puede registrarse creando una nueva cuenta con sus datos personales.        |
-| `adoptados`           | *Adoptados*            | Página donde podrás ver tus mascotas adoptadas y gestionar su desadopción si lo deseas.             |        
-| `anadirResena`        | *Añadir Reseña*        | Página donde puede añadir tu reseña.                                                                |   
+| `/`                   | *Inicio*               | Página principal de aterrizaje.                                                                     |
+| `/catalogo`           | *Catalogo*             | Donde se ven los diferentes animales disponibles.                                                   |
+| `/catalogo/:id`       | *FichaAnimalPage*      | Donde se ve toda la información detallada de un animal específico.                                  |
+| `/finalesFelices`     | *Finales Felices*      | Aquí se verán las reseñas de los usuarios que adoptaron.                                            |
+| `/sobreNosotros`      | *Sobre nosotros*       | Página que abarca toda la información de nuestra fundación.                                         |
+| `/perfil`             | *Perfil*               | Página donde se ve la información del perfil de cada usuario.                                       |
+| `/adopcion/:id`       | *Adopcion*             | Página que pregunta al usuario su motivo para querer adoptar el animal que quiere.                  |
+| `/IniciarSesion`      | *Iniciar Sesion*       | Página donde el usuario inicia sesión ingresando su correo electrónico y contraseña.                |
+| `/cambioPassword`     | *Cambio Password*      | Página donde el usuario puede recuperar o restablecer su contraseña.                                |
+| `/crearCuenta`        | *Crear Cuenta*         | Página donde el usuario puede registrarse creando una nueva cuenta con sus datos personales.        |
+| `/adoptados`          | *Adoptados*            | Página donde podrás ver tus mascotas adoptadas y gestionar su desadopción si lo deseas.             |        
+| `/AnadirResena`       | *Añadir Reseña*        | Página donde el usuario puede añadir su reseña.                                                     |   
 
 ---
 
-## Archivos Templates (Plantillas)
-Lista de fragmentos de código o plantillas reutilizables identificadas:
+## Componentes Reutilizables (Templates)
+En Angular, las plantillas repetitivas se han convertido en **Componentes Independientes**:
 
-| Nombre del Archivo Template | Archivo(s) donde se carga/usa |
-|:----------------------------|:------------------------------|
-| `_header.html`              | Todas las paginas             |
-| `_footer.html`              | Todas las páginas             |
-| `_tarjetaAnimal.html`       | `index.html` `catalogo.html`  |
-| `_fichaAnimal.html`         | `fichaAnimal.html`            |
-| `_tarjeReseñas.html`        | `index.html` `reseñas.html`   |
-| `_tarjeAdoptado.html`       | `adoptados.html`              |
-| `_contador.html`            | `index.html`                  |
+| Nombre del Componente       | Archivo(s) / Vistas donde se carga o usa |
+|:----------------------------|:-----------------------------------------|
+| `HeaderComponent`           | Todas las páginas (Layout principal)     |
+| `FooterComponent`           | Todas las páginas (Layout principal)     |
+| `TarjetaAnimalComponent`    | `/` (Inicio) y `/catalogo`               |
+| `TarjetaResenaComponent`    | `/` (Inicio) y `/finalesFelices`         |
+| `ContadorComponent`         | `/` (Inicio)                             |
 
+---
+
+## Estructura de Datos (Firebase Firestore)
+Nuestra base de datos NoSQL en Firebase está organizada en las siguientes colecciones:
+
+* **`usuarios`**: Almacena los datos personales, UID de autenticación, el array de IDs de los animales que ha adoptado (`animalesAdoptados`) y su número total de adopciones.
+* **`animales`**: Contiene la información técnica de cada mascota (edad, especie, descripción, raza, rutas de las fotos, etc.).
+* **`resenas`**: Guarda los testimonios vinculando el ID del usuario que la escribe con el animal adoptado.
