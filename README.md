@@ -9,7 +9,7 @@
 ---
 
 ## Descripción del Proyecto
-La web trata sobre la adopción de animales donde un usuario puede ver un catálogo de diferentes animales. Para cada animal podrá acceder a su información detallada como sexo, edad, especie, su historia y cómo llegó a la fundación, además de varias fotos y vídeos de él. Si se decanta por su adopción, puede mandar una solicitud de adopción a través de la plataforma.
+La web trata sobre la adopción de animales donde un usuario puede ver un catálogo de diferentes animales. Para cada animal, podrá acceder a su información detallada como sexo, edad, especie, su historia y cómo llegó a la fundación, además de varias fotos de él. Si se decanta por su adopción, puede mandar una solicitud de adopción a través de la plataforma.
 
 *Nota: El proyecto ha sido migrado a una Single Page Application (SPA) utilizando **Angular** para el Frontend y **Firebase** para el Backend y Base de Datos.*
 
@@ -19,7 +19,7 @@ La web trata sobre la adopción de animales donde un usuario puede ver un catál
 A continuación se detallan los requisitos que cumple la aplicación:
 
 **RF-01 (Catálogo Interactivo)**: Galería de animales posibles a adoptar con filtrado por tipo y acceso a cada una de las fichas de los animales.  
-**RF-02 (Ficha de animal)**: Visualización de posible animal a adoptar con detalles técnicos (nombre, género, especie, edad, tiempo en el centro, raza, peso, leve descripción y tasa de adopción).  
+**RF-02 (Ficha de animal)**: Visualización de posible animal a adoptar con detalles técnicos (nombre, género, especie, edad, tiempo en el centro, raza, peso y leve descripción).  
 **RF-03 (Registro de usuario)**: Formulario que captura los datos del usuario (nombre, apellidos, fecha de nacimiento, DNI, dirección, teléfono, correo y contraseña) para habilitar funciones privadas.  
 **RF-04 (Perfil)**: Página con información del usuario que incluye la funcionalidad para editar y actualizar sus datos personales.  
 **RF-05 (Gestión de adopciones)**: Funcionalidad para adoptar y “desadoptar”, con ventana emergente de mensaje obligatorio (motivo de la acción) para los usuarios registrados.  
@@ -53,7 +53,7 @@ Al migrar a Angular, la navegación se gestiona mediante el enrutador (`app.rout
 | `/perfil`             | *Perfil*               | Página donde se ve la información del perfil de cada usuario.                                       |
 | `/adopcion/:id`       | *Adopcion*             | Página que pregunta al usuario su motivo para querer adoptar el animal que quiere.                  |
 | `/IniciarSesion`      | *Iniciar Sesion*       | Página donde el usuario inicia sesión ingresando su correo electrónico y contraseña.                |
-| `/cambioPassword`     | *Cambio Password*      | Página donde el usuario puede recuperar o restablecer su contraseña.                                |
+| `/cambioPassword`     | *Cambio Password*      | Página donde el usuario puede restablecer su contraseña.                                            |
 | `/crearCuenta`        | *Crear Cuenta*         | Página donde el usuario puede registrarse creando una nueva cuenta con sus datos personales.        |
 | `/adoptados`          | *Adoptados*            | Página donde podrás ver tus mascotas adoptadas y gestionar su desadopción si lo deseas.             |        
 | `/AnadirResena`       | *Añadir Reseña*        | Página donde el usuario puede añadir su reseña.                                                     |   
@@ -69,7 +69,7 @@ En Angular, las plantillas repetitivas se han convertido en **Componentes Indepe
 | `FooterComponent`           | Todas las páginas (Layout principal)     |
 | `TarjetaAnimalComponent`    | `/` (Inicio) y `/catalogo`               |
 | `TarjetaResenaComponent`    | `/` (Inicio) y `/finalesFelices`         |
-| `ContadorComponent`         | `/` (Inicio)                             |
+| `ContadorComponent`         | `/` (Inicio) y `/sobreNosotros`          |
 
 ---
 
@@ -77,5 +77,5 @@ En Angular, las plantillas repetitivas se han convertido en **Componentes Indepe
 Nuestra base de datos NoSQL en Firebase está organizada en las siguientes colecciones:
 
 * **`usuarios`**: Almacena los datos personales, UID de autenticación, el array de IDs de los animales que ha adoptado (`animalesAdoptados`) y su número total de adopciones.
-* **`animales`**: Contiene la información técnica de cada mascota (edad, especie, descripción, raza, rutas de las fotos, etc.).
-* **`resenas`**: Guarda los testimonios vinculando el ID del usuario que la escribe con el animal adoptado.
+* **`animales`**: Contiene la información técnica de cada mascota (edad, especie, descripción, raza, rutas de las fotos, etc.) y si ha sido adoptado.
+* **`resenas`**: Guarda los testimonios de los adoptantes.
